@@ -1,0 +1,3 @@
+DB: sms_work
+USER: sms_work
+PASS: _2-%J-%eZz
