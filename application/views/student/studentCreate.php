@@ -179,7 +179,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1"><?php echo $this->lang->line('mobile_no'); ?></label>
-                                                    <input id="mobileno" name="mobileno" placeholder="" type="text" class="form-control" value="<?php echo set_value('mobileno'); ?>" />
+                                                    <input id="mobileno" name="mobileno" placeholder="" type="number" class="form-control" value="<?php echo set_value('mobileno'); ?>" />
                                                     <span class="text-danger"><?php echo form_error('mobileno'); ?></span>
                                                 </div>
                                             </div>
@@ -262,11 +262,11 @@
                                         <?php if ($sch_setting->student_height) {  ?>
                                             <div class="col-md-3 col-xs-12">
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1"><?php echo $this->lang->line('height'); ?></label>
+                                                    <label for="exampleInputEmail1"><?php echo $this->lang->line('height'); ?> (in cms.)</label>
                                                     <?php
 
                                                     ?>
-                                                    <input type="text" name="height" class="form-control" value="<?php echo set_value('height'); ?>">
+                                                    <input type="number" name="height" class="form-control" value="<?php echo set_value('height'); ?>">
                                                     <span class="text-danger"><?php echo form_error('height'); ?></span>
                                                 </div>
                                             </div>
@@ -274,11 +274,11 @@
                                         if ($sch_setting->student_weight) { ?>
                                             <div class="col-md-3 col-xs-12">
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1"><?php echo $this->lang->line('weight'); ?></label>
+                                                    <label for="exampleInputEmail1"><?php echo $this->lang->line('weight'); ?> (in kg.)</label>
                                                     <?php
 
                                                     ?>
-                                                    <input type="text" name="weight" class="form-control" value="<?php echo set_value('weight'); ?>">
+                                                    <input type="number" name="weight" class="form-control" value="<?php echo set_value('weight'); ?>">
                                                     <span class="text-danger"><?php echo form_error('weight'); ?></span>
                                                 </div>
                                             </div>

@@ -1,3 +1,7 @@
 DB: sms_work
 USER: sms_work
 PASS: _2-%J-%eZz
+
+demo - login
+USer_id: gursharan.smartdesignhut@gmail.com
+pass: Smart@1234

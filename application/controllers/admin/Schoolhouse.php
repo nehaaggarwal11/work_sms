@@ -27,11 +27,12 @@ class Schoolhouse extends Admin_Controller {
         if (!$this->rbac->hasPrivilege('student_houses', 'can_add')) {
             access_denied();
         }
+        // die(json_encode($_REQUEST));
         $data['title'] = 'Add School House';
         $houselist = $this->schoolhouse_model->get();
-        $val_list = $this->schoolhouse_model->select('*')->Where('house_name', $this->input->post('house_name'));
+        // $val_list = $this->schoolhouse_model->select('*')->Where('house_name', $this->input->post('house_name'));
 
-        echo sizeof($val_list);
+        // echo sizeof($val_list);
 
         $data["houselist"] = $houselist;
         $data["house_name"] = "";
@@ -50,7 +51,7 @@ class Schoolhouse extends Admin_Controller {
             $this->schoolhouse_model->add($data);
 
             $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">'.$this->lang->line('success_message').'</div>');
-            //redirect('admin/schoolhouse/index');
+            redirect('admin/schoolhouse/index');
         }
     }
 

@@ -200,7 +200,7 @@ class Timetable extends Admin_Controller
             $this->load->view('layout/footer', $data);
         }
     }
-
+ 
     public function classreport()
     {
         if (!$this->rbac->hasPrivilege('class_timetable', 'can_view')) {

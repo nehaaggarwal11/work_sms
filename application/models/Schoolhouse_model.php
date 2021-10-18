@@ -36,6 +36,7 @@ class Schoolhouse_model extends MY_model {
 			//return $return_value;
 			}
         } else {
+            // die(json_encode($data));
             $this->db->insert("school_houses", $data);
 			$id=$this->db->insert_id();
 			$message      = INSERT_RECORD_CONSTANT." On school houses id ".$id;

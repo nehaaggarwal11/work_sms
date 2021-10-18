@@ -1601,7 +1601,26 @@ class Staff extends Admin_Controller {
                                 $result[$r_key]['designation'] = $this->input->post('designation');
                                 $result[$r_key]['department'] = $this->input->post('department');
                                 $result[$r_key]['is_active'] = 1;
-
+                                if(empty($result[$r_key]['employee_id'])){
+                                    $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Please Enter Employee Id </div>');
+                                    redirect('admin/staff/import');
+                                }
+                                else if(empty($result[$r_key]['name'])){
+                                    $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Please Enter Firstname </div>');
+                                    redirect('admin/staff/import');
+                                }
+                                else if(empty($result[$r_key]['email'])){
+                                    $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Please Enter Email Adddress </div>');
+                                    redirect('admin/staff/import');
+                                }
+                                else if(empty($result[$r_key]['dob'])){
+                                    $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Please Enter Date Of Birth </div>');
+                                    redirect('admin/staff/import');
+                                }
+                                else if(empty($result[$r_key]['gender'])){
+                                    $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Please Enter Gender </div>');
+                                    redirect('admin/staff/import');
+                                }
                                 $password = $this->role->get_random_password($chars_min = 6, $chars_max = 6, $use_upper_case = false, $include_numbers = true, $include_special_chars = false);
 
                                 $result[$r_key]['password'] = $this->enc_lib->passHashEnc($password);

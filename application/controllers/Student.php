@@ -939,7 +939,7 @@ public function handle_uploadcreate_doc()
             $this->load->view('student/import', $data);
             $this->load->view('layout/footer', $data);
         } else {
-
+ 
             $student_categorize = 'class';
             if ($student_categorize == 'class') {
                 $section = 0;
@@ -977,13 +977,37 @@ public function handle_uploadcreate_doc()
                             $adm_no                            = $student_data[$i]["admission_no"];
                             $mobile_no                         = $student_data[$i]["mobileno"];
                             $email                             = $student_data[$i]["email"];
+                            $gender                            = $student_data[$i]["gender"];
+                            $guardian_is                       = $student_data[$i]["guardian_is"];
+                            $guardian_name                     = $student_data[$i]["guardian_name"];
                             $guardian_phone                    = $student_data[$i]["guardian_phone"];
                             $guardian_email                    = $student_data[$i]["guardian_email"];
                             $data_setting                      = array();
                             $data_setting['id']                = $this->sch_setting_detail->id;
                             $data_setting['adm_auto_insert']   = $this->sch_setting_detail->adm_auto_insert;
                             $data_setting['adm_update_status'] = $this->sch_setting_detail->adm_update_status;
-                            if ($this->form_validation->is_unique($adm_no, 'students.admission_no')) {
+
+                            if(empty($adm_no)){
+                                $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Please Enter Admission Number</div>');
+                                redirect('student/import');
+                            }
+                            else if(empty($gender)){
+                                $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Please Enter Gender </div>');
+                                redirect('student/import');
+                            }
+                            else if(empty($guardian_is)){
+                                $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Please Enter Relation With Guardian  </div>');
+                                redirect('student/import');
+                            }
+                            else if(empty($guardian_name)){
+                                $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Please Enter Guardian Name </div>');
+                                redirect('student/import');
+                            }
+                            else if(empty($guardian_phone)){
+                                $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Please Enter Guardian Phone Number </div>');
+                                redirect('student/import');
+                            }
+                            else if ($this->form_validation->is_unique($adm_no, 'students.admission_no')) {
 
                                 if (!empty($roll_no)) {
 

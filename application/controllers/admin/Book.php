@@ -177,6 +177,10 @@ class Book extends Admin_Controller {
                      $result[$r_key]['postdate']=$this->encoding_lib->toUTF8($result[$r_key]['postdate']);
                      $result[$r_key]['description']=$this->encoding_lib->toUTF8($result[$r_key]['description']);
                      $rowcount++;
+                     if(empty($result[$r_key]['book_title'])){
+                        $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Please Enter Your Book Title </div>');
+                        redirect('admin/book/import');
+                     }
                      }
                     
                     $this->db->insert_batch('books', $result);

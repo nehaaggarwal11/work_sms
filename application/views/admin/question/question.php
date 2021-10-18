@@ -279,6 +279,7 @@ function findOption($questionOpt, $find)
     $(document).ready(function() {
         ///// sdh
         $('#sdh-add-quest-btn').click((event) => {
+            var num = 1;
             event.preventDefault();
             var a = $('.sdh-clone-question').clone();
             $('#sdh_add_question').append(a);
@@ -287,7 +288,9 @@ function findOption($questionOpt, $find)
                     toolbar: 'Ques',
                     customConfig: baseurl + '/backend/js/ckeditor_config.js'
                 });
+                $('#sdh_add_question').find('.cke_' + num++).remove();
             });
+            $('#sdh_add_question').find('.sdh-clone-question').removeClass('hidden');
         });
         ///// sdh
         $('#myModal').modal({
