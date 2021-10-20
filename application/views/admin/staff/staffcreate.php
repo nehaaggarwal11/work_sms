@@ -178,7 +178,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1"><?php echo $this->lang->line('phone'); ?></label>
-                                                    <input id="mobileno" name="contactno" placeholder="" type="text" class="form-control"  value="<?php echo set_value('contactno') ?>" />
+                                                    <input id="mobileno" name="contactno" placeholder="" type="number" class="form-control"  value="<?php echo set_value('contactno') ?>" />
                                                     <span class="text-danger"><?php echo form_error('contactno'); ?></span>
                                                 </div>
                                             </div> 
@@ -186,7 +186,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1"><?php echo $this->lang->line('emergency_contact_number'); ?></label>
-                                                    <input id="mobileno" name="emergency_no" placeholder="" type="text" class="form-control"  value="<?php echo set_value('emergency_no') ?>" />
+                                                    <input id="mobileno" name="emergency_no" placeholder="" type="number" class="form-control"  value="<?php echo set_value('emergency_no') ?>" />
                                                     <span class="text-danger"><?php echo form_error('emergency_no'); ?></span>
                                                 </div>
                                             </div>

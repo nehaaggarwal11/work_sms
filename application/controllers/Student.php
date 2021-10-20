@@ -327,7 +327,7 @@ class Student extends Admin_Controller
             }
             if (empty($hostel_room_id)) {
                 $hostel_room_id = 0;
-            }
+            } 
 
             $data_insert = array(
                 'firstname'           => $this->input->post('firstname'),

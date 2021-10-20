@@ -27,7 +27,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"> <?php echo $this->lang->line('phone'); ?></label>
-                                    <input id="phone" name="phone" placeholder="" type="text" class="form-control"  value="<?php echo set_value('phone', $itemsupplier['phone']); ?>" />
+                                    <input id="phone" name="phone" placeholder="" type="number" class="form-control"  value="<?php echo set_value('phone', $itemsupplier['phone']); ?>" />
                                     <span class="text-danger"><?php echo form_error('phone'); ?></span>
                                 </div>
                                 <div class="form-group">
@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"> <?php echo $this->lang->line('contact_person_phone'); ?></label>
-                                    <input id="contact_person_phone" name="contact_person_phone" placeholder="" type="text" class="form-control"  value="<?php echo set_value('contact_person_phone', $itemsupplier['contact_person_phone']); ?>" />
+                                    <input id="contact_person_phone" name="contact_person_phone" placeholder="" type="number" class="form-control"  value="<?php echo set_value('contact_person_phone', $itemsupplier['contact_person_phone']); ?>" />
                                     <span class="text-danger"><?php echo form_error('contact_person_phone'); ?></span>
                                 </div>
                                 <div class="form-group">

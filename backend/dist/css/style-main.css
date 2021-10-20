@@ -3864,22 +3864,22 @@ input[type=checkbox], input[type=radio] {
 
 /* Question Bank */
 @media only screen and (min-width:1024px){
-.sdh-question{
+.sdh-question,#sdh_add_question{
     display: inline-table;
 }
-.sdh-question .form-group:nth-child(1){
+.sdh-question .form-group:nth-child(1),#sdh_add_question .form-group:nth-child(1){
     display: block;
     width: 100%;
     margin-left: 0% !important;
 }
-.sdh-question .form-group{
+.sdh-question .form-group,#sdh_add_question .form-group{
     width: 49%;
     display: inline-block;
 }
-.sdh-question .form-group:nth-child(odd){
+.sdh-question .form-group:nth-child(odd),#sdh_add_question .form-group:nth-child(odd){
     margin-left: 1%;
 }
-.sdh-question .form-group:last-child{
+.sdh-question .form-group:last-child,#sdh_add_question .form-group:last-child {
     display: block;
     margin-left: 0% !important;
 }

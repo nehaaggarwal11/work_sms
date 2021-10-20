@@ -449,7 +449,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1"><?php echo $this->lang->line('guardian_phone'); ?></label><small class="req"> *</small>
-                                                        <input id="guardian_phone" name="guardian_phone" placeholder="" type="text" class="form-control" value="<?php echo set_value('guardian_phone'); ?>" required required />
+                                                        <input id="guardian_phone" name="guardian_phone" placeholder="" type="number" class="form-control" value="<?php echo set_value('guardian_phone'); ?>" required required />
                                                         <span class="text-danger"><?php echo form_error('guardian_phone'); ?></span>
                                                     </div>
                                                 </div>
@@ -1129,5 +1129,12 @@
         }
 
     });
+</script>
+<script>
+    // var currentDate=new Date();
+    // var givenDate= document.getElementById("measure_date").value;
+    // if(givenDate>currentDate){
+    //     alert("Please select current As on date.");
+    // }
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>backend/dist/js/savemode.js"></script>
