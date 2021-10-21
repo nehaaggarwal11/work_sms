@@ -618,14 +618,23 @@ if ($language_name != 'en') {
 
     $(document).ready(function() {
         var start = new Date();
-        // set end date to max one year period:
         var end = new Date(new Date().setYear(start.getFullYear() - 2));
+        var six_month_before = new Date(new Date().setMonth(start.getMonth() - 5));
+        var six_month_after = new Date(new Date().setMonth(start.getMonth() + 5));
 
         $('.dob').datepicker({
             todayHighlight: true,
             format: date_format,
+            autoclose: true,
             endDate: new Date(new Date().setYear(start.getFullYear() - 2)),
             yearRange: "2002:2012",
+        });
+
+        $('.measure_date').datepicker({
+            todayHighlight: true,
+            autoclose:true,
+            format: date_format,
+            endDate: start
         });
 
         $('#dob').change(function() {
@@ -645,7 +654,32 @@ if ($language_name != 'en') {
             }
         })
 
-        
+        $('.returnDate').datepicker({
+            todayHighlight: true,
+            format: date_format,
+            autoclose: true,
+            startDate: start,
+            endDate: six_month_after
+        });
+
+        var issudt = $('.issueDate').datepicker({
+            todayHighlight: true,
+            format: date_format,
+            autoclose: true,
+            startDate: six_month_before,
+            endDate: six_month_after,
+        });
+
+        issudt.change(function() {
+            var issuedt = $(this).datepicker('getDate');
+            $('.rangeReturnDate').datepicker({
+                format: date_format,
+                autoclose: true,
+                startDate: new Date(new Date().setDate(issuedt.getDate() + 1)),
+                endDate: six_month_after
+            }).removeAttr('data-toggle');
+        });
+
 
     });
 </script>

@@ -120,9 +120,8 @@
 .datepicker table tr td.disabled,
 .datepicker table tr td.disabled:hover {
   background: #ff00001a;
-  color: #444;
+  color: #bfbfbf;
   cursor: default;
-  display: none;
 }
 .datepicker table tr td.today,
 .datepicker table tr td.today:hover,
@@ -593,9 +592,8 @@ fieldset[disabled] .datepicker table tr td.active.disabled:hover.active {
 .datepicker table tr td span.disabled,
 .datepicker table tr td span.disabled:hover {
   background: #ff00001a;
-  color: #000;
+  color: #bfbfbf;
   cursor: default;
-  display: none;
 }
 .datepicker table tr td span.active,
 .datepicker table tr td span.active:hover,

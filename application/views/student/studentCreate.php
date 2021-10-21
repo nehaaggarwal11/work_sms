@@ -290,7 +290,7 @@
                                                     <?php
 
                                                     ?>
-                                                    <input type="text" id="measure_date" value="<?php echo set_value('measure_date', date($this->customlib->getSchoolDateFormat())); ?>" name="measure_date" class="form-control date">
+                                                    <input type="text" id="measure_date" value="<?php echo set_value('measure_date', date($this->customlib->getSchoolDateFormat())); ?>" name="measure_date" class="form-control measure_date">
                                                     <span class="text-danger"><?php echo form_error('measure_date'); ?></span>
                                                 </div>
                                             </div>
