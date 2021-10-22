@@ -44,7 +44,6 @@ class Alumni_model extends MY_Model
         } else {
             $this->db->insert('alumni_students', $data);
           
-
 			$insert_id =  $this->db->insert_id();
             $message      = INSERT_RECORD_CONSTANT." On Alumni Student id ".$insert_id;
 			$action       = "Insert";
