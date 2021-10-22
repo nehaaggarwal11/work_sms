@@ -161,7 +161,7 @@
 
                         if ($this->rbac->hasPrivilege('student', 'can_delete')) {
                         ?>
-                            <li class="<?php echo set_Submenu('student/all_students'); ?>"><a href="<?php echo base_url(); ?>show_all_students/show"><i class="fa fa-angle-double-right"></i> <?php echo $this->lang->line('show') . " " . $this->lang->line('all') . " " . $this->lang->line('students'); ?></a></li>
+                            <li class="<?php echo set_Submenu('show_all_students/show'); ?>"><a href="<?php echo base_url(); ?>show_all_students/show"><i class="fa fa-angle-double-right"></i> <?php echo $this->lang->line('show') . " " . $this->lang->line('all') . " " . $this->lang->line('students'); ?></a></li>
                         <?php
                         }
                         ?>
@@ -468,7 +468,7 @@
             <?php }
                 } ?>
             <?php
-            if ($this->module_lib->hasActive('gmeet_live_classes')) {
+            if ($this->module_lib->hasActive('lesson_plan')) {
                 if (($this->rbac->hasPrivilege('gmeet_live_classes', 'can_view')) || ($this->rbac->hasPrivilege('manage_syllabus_status', 'can_view')) || ($this->rbac->hasPrivilege('lesson', 'can_view')) || ($this->rbac->hasPrivilege('topic', 'can_view'))) {
             ?>
                     <li class="treeview <?php echo set_Topmenu('gmeet'); ?>">

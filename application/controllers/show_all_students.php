@@ -58,10 +58,11 @@ class show_all_students extends Admin_Controller
         if (!$this->rbac->hasPrivilege('student', 'can_edit')) {
             access_denied();
         }
-        die("Hii");
-        $this->load->view('layout/header', $data);
-        $this->load->view('student/studentsLeaved', $data);
-        $this->load->view('layout/footer', $data);
+        $data['id']      = $id;
+        // die("Hii");
+        $this->load->view('layout/header',$data);
+        $this->load->view('student/studentsLeavededit',$data);
+        $this->load->view('layout/footer',$data);
     }
 }
     ?>
