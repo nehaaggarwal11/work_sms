@@ -161,7 +161,7 @@
 
                         if ($this->rbac->hasPrivilege('student', 'can_delete')) {
                         ?>
-                            <li class="<?php echo set_Submenu('show_all_students/show'); ?>"><a href="<?php echo base_url(); ?>show_all_students/show"><i class="fa fa-angle-double-right"></i> <?php echo $this->lang->line('show') . " " . $this->lang->line('all') . " " . $this->lang->line('students'); ?></a></li>
+                            <li class="<?php echo set_Submenu('show_all_students/show'); ?>"><a href="<?php echo base_url(); ?>admin/show_all_students/show"><i class="fa fa-angle-double-right"></i> <?php echo $this->lang->line('show') . " " . $this->lang->line('all') . " " . $this->lang->line('students'); ?></a></li>
                         <?php
                         }
                         ?>
