@@ -29,8 +29,8 @@ class show_all_students extends Admin_Controller
             access_denied();
         }
         $this->session->set_userdata('top_menu', 'Student Information');
-        $this->session->set_userdata('sub_menu', 'student/search');
-        $data['title']           = 'Student Search';
+        $this->session->set_userdata('sub_menu', 'show_all_students/show');
+        $data['title']           = 'All Student Information';
         $data['adm_auto_insert'] = $this->sch_setting_detail->adm_auto_insert;
         $data['sch_setting']     = $this->sch_setting_detail;
         $data['fields']          = $this->customfield_model->get_custom_fields('students', 1);

@@ -112,12 +112,13 @@ CREATE TABLE `books` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 INSERT INTO `books` (`id`, `book_title`, `book_no`, `isbn_no`, `subject`, `rack_no`, `publish`, `author`, `qty`, `perunitcost`, `postdate`, `description`, `available`, `is_active`, `created_at`, `updated_at`) VALUES (1, 'C++ with oops', 'b121', 'sa1', '1', '1', 'xzy', 'das', 2, '100.00', '0000-00-00', 'asasa', 'yes', 'no', '2021-10-20 15:51:22', NULL);
 INSERT INTO `books` (`id`, `book_title`, `book_no`, `isbn_no`, `subject`, `rack_no`, `publish`, `author`, `qty`, `perunitcost`, `postdate`, `description`, `available`, `is_active`, `created_at`, `updated_at`) VALUES (2, 'Science Fiction', 'b523', 'sa2', '2', '2', 'wqq', 'sdad', 3, '200.00', '0000-00-00', 'sasasasa', 'No', 'no', '2021-10-20 15:51:22', NULL);
 INSERT INTO `books` (`id`, `book_title`, `book_no`, `isbn_no`, `subject`, `rack_no`, `publish`, `author`, `qty`, `perunitcost`, `postdate`, `description`, `available`, `is_active`, `created_at`, `updated_at`) VALUES (3, 'Code with java', 'b56', 'sa13', '12', '3', 'ddw', 'wsa', 6, '315.00', '0000-00-00', 'sasasasasxcsxdsas', 'yes', 'no', '2021-10-20 15:51:22', NULL);
 INSERT INTO `books` (`id`, `book_title`, `book_no`, `isbn_no`, `subject`, `rack_no`, `publish`, `author`, `qty`, `perunitcost`, `postdate`, `description`, `available`, `is_active`, `created_at`, `updated_at`) VALUES (4, 'Engineering Drawing', 'b652', 'sa1546', '1325', '3', 'dasd', 'ssa', 4, '452.00', '0000-00-00', 'sdasdasdadada', 'yes', 'no', '2021-10-20 15:51:22', NULL);
+INSERT INTO `books` (`id`, `book_title`, `book_no`, `isbn_no`, `subject`, `rack_no`, `publish`, `author`, `qty`, `perunitcost`, `postdate`, `description`, `available`, `is_active`, `created_at`, `updated_at`) VALUES (7, 'sas', 'b56', 'sa13', '12', '3', 'ddw', 'wsa', 6, '315.00', '0000-00-00', 'sasasasasxcsxdsas', 'yes', 'no', '2021-10-21 11:31:28', NULL);
 
 
 #
@@ -400,7 +401,10 @@ CREATE TABLE `custom_field_values` (
   PRIMARY KEY (`id`),
   KEY `custom_field_id` (`custom_field_id`),
   CONSTRAINT `custom_field_values_ibfk_1` FOREIGN KEY (`custom_field_id`) REFERENCES `custom_fields` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+INSERT INTO `custom_field_values` (`id`, `belong_table_id`, `custom_field_id`, `field_value`, `created_at`, `updated_at`) VALUES (1, 9, 1, 'test field', '2021-10-22 10:41:21', NULL);
+
 
 #
 # TABLE STRUCTURE FOR: custom_fields
@@ -423,7 +427,10 @@ CREATE TABLE `custom_fields` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+INSERT INTO `custom_fields` (`id`, `name`, `belong_to`, `type`, `bs_column`, `validation`, `field_values`, `show_table`, `visible_on_table`, `weight`, `is_active`, `created_at`, `updated_at`) VALUES (1, 'test field', 'staff', 'input', 12, 1, 'hgfhdfh,dfghfgh', NULL, 1, NULL, 0, '2021-10-20 18:17:21', NULL);
+
 
 #
 # TABLE STRUCTURE FOR: department
@@ -436,7 +443,10 @@ CREATE TABLE `department` (
   `department_name` varchar(200) NOT NULL,
   `is_active` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+INSERT INTO `department` (`id`, `department_name`, `is_active`) VALUES (1, 'Computer Science', 'yes');
+
 
 #
 # TABLE STRUCTURE FOR: disable_reason
@@ -1034,11 +1044,13 @@ CREATE TABLE `front_cms_media_gallery` (
   `vid_url` text NOT NULL,
   `vid_title` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 INSERT INTO `front_cms_media_gallery` (`id`, `image`, `thumb_path`, `dir_path`, `img_name`, `thumb_name`, `created_at`, `file_type`, `file_size`, `vid_url`, `vid_title`) VALUES (1, NULL, 'uploads/gallery/media/thumb/', 'uploads/gallery/media/', 'mobile games background7 by nj365 on DeviantArt.jpg', 'mobile games background7 by nj365 on DeviantArt.jpg', '2021-10-20 17:35:33', 'image/jpeg', '50229', '', '');
 INSERT INTO `front_cms_media_gallery` (`id`, `image`, `thumb_path`, `dir_path`, `img_name`, `thumb_name`, `created_at`, `file_type`, `file_size`, `vid_url`, `vid_title`) VALUES (2, NULL, 'uploads/gallery/media/thumb/', 'uploads/gallery/media/', 'desktop-img.png', 'desktop-img.png', '2021-10-20 17:35:42', 'image/png', '108813', '', '');
 INSERT INTO `front_cms_media_gallery` (`id`, `image`, `thumb_path`, `dir_path`, `img_name`, `thumb_name`, `created_at`, `file_type`, `file_size`, `vid_url`, `vid_title`) VALUES (3, NULL, 'uploads/gallery/media/thumb/', 'uploads/gallery/media/', 'screencapture-localhost-schoolmgmt-site-login-2021-10-18-17_07_18.pdf', 'screencapture-localhost-schoolmgmt-site-login-2021-10-18-17_07_18.pdf', '2021-10-20 17:36:07', 'application/pdf', '11809065', '', '');
+INSERT INTO `front_cms_media_gallery` (`id`, `image`, `thumb_path`, `dir_path`, `img_name`, `thumb_name`, `created_at`, `file_type`, `file_size`, `vid_url`, `vid_title`) VALUES (8, NULL, 'uploads/gallery/media/thumb/', 'uploads/gallery/media/', 'ezgif.com-gif-maker.gif', 'ezgif.com-gif-maker.gif', '2021-10-21 14:55:41', 'image/gif', '720537', '', '');
+INSERT INTO `front_cms_media_gallery` (`id`, `image`, `thumb_path`, `dir_path`, `img_name`, `thumb_name`, `created_at`, `file_type`, `file_size`, `vid_url`, `vid_title`) VALUES (36, NULL, 'uploads/gallery/media/thumb/', 'uploads/gallery/media/', 'Carrera_Homepage_V2a_R2.jpg', 'Carrera_Homepage_V2a_R2.jpg', '2021-10-21 15:21:39', 'image/jpeg', '3375994', '', '');
 
 
 #
@@ -1143,7 +1155,7 @@ CREATE TABLE `front_cms_pages` (
 INSERT INTO `front_cms_pages` (`id`, `page_type`, `is_homepage`, `title`, `url`, `type`, `slug`, `meta_title`, `meta_description`, `meta_keyword`, `feature_image`, `description`, `publish_date`, `publish`, `sidebar`, `is_active`, `created_at`) VALUES (1, 'default', 1, 'Home', 'page/home', 'page', 'home', '', '', '', '', '<p>home page</p>', '0000-00-00', 1, NULL, 'no', '2019-12-02 20:53:47');
 INSERT INTO `front_cms_pages` (`id`, `page_type`, `is_homepage`, `title`, `url`, `type`, `slug`, `meta_title`, `meta_description`, `meta_keyword`, `feature_image`, `description`, `publish_date`, `publish`, `sidebar`, `is_active`, `created_at`) VALUES (2, 'default', 0, 'Complain', 'page/complain', 'page', 'complain', 'Complain form', '                                                                                                                                                                                    complain form                                                                                                                                                                                                                                ', 'complain form', '', '<p>[form-builder:complain]</p>', '0000-00-00', 1, NULL, 'no', '2019-11-13 15:46:36');
 INSERT INTO `front_cms_pages` (`id`, `page_type`, `is_homepage`, `title`, `url`, `type`, `slug`, `meta_title`, `meta_description`, `meta_keyword`, `feature_image`, `description`, `publish_date`, `publish`, `sidebar`, `is_active`, `created_at`) VALUES (54, 'default', 0, '404 page', 'page/404-page', 'page', '404-page', '', '                                ', '', '', '<html>\r\n<head>\r\n <title></title>\r\n</head>\r\n<body>\r\n<p>404 page found</p>\r\n</body>\r\n</html>', '0000-00-00', 0, NULL, 'no', '2018-05-18 20:16:04');
-INSERT INTO `front_cms_pages` (`id`, `page_type`, `is_homepage`, `title`, `url`, `type`, `slug`, `meta_title`, `meta_description`, `meta_keyword`, `feature_image`, `description`, `publish_date`, `publish`, `sidebar`, `is_active`, `created_at`) VALUES (76, 'default', 0, 'Contact us', 'page/contact-us', 'page', 'contact-us', '', '', '', '', '<section class=\"contact\">\r\n<div class=\"container\">\r\n<div class=\"row\">\r\n<h2 class=\"col-md-12 col-sm-12\">Send In Your Query</h2>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<div class=\"col-md-12 col-sm-12\">[form-builder:contact_us]<!--./row--></div>\r\n<!--./col-md-12--></div>\r\n<!--./row--></div>\r\n<!--./container--></section>\r\n\r\n<div class=\"col-md-4 col-sm-4\">\r\n<div class=\"contact-item\"><img src=\"http://192.168.1.81/repos/smartschool/uploads/gallery/media/pin.svg\" />\r\n<h3>Our Location</h3>\r\n\r\n<p>350 Fifth Avenue, 34th floor New York NY 10118-3299 USA</p>\r\n</div>\r\n<!--./contact-item--></div>\r\n<!--./col-md-4-->\r\n\r\n<div class=\"col-md-4 col-sm-4\">\r\n<div class=\"contact-item\"><img src=\"http://192.168.1.81/repos/smartschool/uploads/gallery/media/phone.svg\" />\r\n<h3>CALL US</h3>\r\n\r\n<p>E-mail : info@abcschool.com</p>\r\n\r\n<p>Mobile : +91-9009987654</p>\r\n</div>\r\n<!--./contact-item--></div>\r\n<!--./col-md-4-->\r\n\r\n<div class=\"col-md-4 col-sm-4\">\r\n<div class=\"contact-item\"><img src=\"http://192.168.1.81/repos/smartschool/uploads/gallery/media/clock.svg\" />\r\n<h3>Working Hours</h3>\r\n\r\n<p>Mon-Fri : 9 am to 5 pm</p>\r\n\r\n<p>Sat : 9 am to 3 pm</p>\r\n</div>\r\n<!--./contact-item--></div>\r\n<!--./col-md-4-->\r\n\r\n<div class=\"col-md-12 col-sm-12\">\r\n<div class=\"mapWrapper fullwidth\"><iframe frameborder=\"0\" height=\"500\" marginheight=\"0\" marginwidth=\"0\" scrolling=\"no\" src=\"http://maps.google.com/maps?f=q&source=s_q&hl=EN&q=time+square&aq=&sll=40.716558,-73.931122&sspn=0.40438,1.056747&ie=UTF8&rq=1&ev=p&split=1&radius=33.22&hq=time+square&hnear=&ll=37.061753,-95.677185&spn=0.438347,0.769043&z=9&output=embed\" width=\"100%\"></iframe></div>\r\n</div>', '0000-00-00', 0, NULL, 'no', '2019-05-04 21:16:41');
+INSERT INTO `front_cms_pages` (`id`, `page_type`, `is_homepage`, `title`, `url`, `type`, `slug`, `meta_title`, `meta_description`, `meta_keyword`, `feature_image`, `description`, `publish_date`, `publish`, `sidebar`, `is_active`, `created_at`) VALUES (76, 'default', 0, 'Contact us', 'page/contact-us', 'page', 'contact-us', '', '', '', '', '', '0000-00-00', 0, NULL, 'no', '2019-05-04 21:16:41');
 
 
 #
@@ -1254,6 +1266,126 @@ CREATE TABLE `general_calls` (
   `call_type` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# TABLE STRUCTURE FOR: gmeet
+#
+
+DROP TABLE IF EXISTS `gmeet`;
+
+CREATE TABLE `gmeet` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `purpose` varchar(20) NOT NULL DEFAULT 'class',
+  `staff_id` int(11) DEFAULT NULL,
+  `created_id` int(10) NOT NULL,
+  `title` text DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  `type` varchar(20) NOT NULL DEFAULT 'manual',
+  `api_data` text DEFAULT NULL,
+  `duration` int(11) DEFAULT NULL,
+  `subject` varchar(50) DEFAULT NULL,
+  `url` text NOT NULL,
+  `session_id` int(10) NOT NULL,
+  `description` varchar(50) DEFAULT NULL,
+  `timezone` varchar(100) DEFAULT NULL,
+  `status` int(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `staff_id` (`staff_id`),
+  KEY `created_id` (`created_id`),
+  KEY `session_id` (`session_id`),
+  CONSTRAINT `gmeet_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `gmeet_ibfk_2` FOREIGN KEY (`created_id`) REFERENCES `staff` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `gmeet_ibfk_3` FOREIGN KEY (`session_id`) REFERENCES `sessions` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+INSERT INTO `gmeet` (`id`, `purpose`, `staff_id`, `created_id`, `title`, `date`, `type`, `api_data`, `duration`, `subject`, `url`, `session_id`, `description`, `timezone`, `status`, `created_at`) VALUES (8, 'class', 1, 1, 'fdgdgdsfg', '2021-10-24 18:21:00', 'manual', NULL, 1, NULL, 'fsafs', 15, 'sfas', 'Asia/Kolkata', 0, '2021-10-21 18:22:18');
+INSERT INTO `gmeet` (`id`, `purpose`, `staff_id`, `created_id`, `title`, `date`, `type`, `api_data`, `duration`, `subject`, `url`, `session_id`, `description`, `timezone`, `status`, `created_at`) VALUES (9, 'class', 1, 1, 'dasdsd', '2021-10-18 18:23:00', 'manual', NULL, 1, NULL, 'dasdddvd', 15, 'vzzz', 'Asia/Kolkata', 0, '2021-10-21 18:23:39');
+INSERT INTO `gmeet` (`id`, `purpose`, `staff_id`, `created_id`, `title`, `date`, `type`, `api_data`, `duration`, `subject`, `url`, `session_id`, `description`, `timezone`, `status`, `created_at`) VALUES (10, 'meeting', NULL, 1, 'diwali Celebration', '2021-10-22 13:41:00', 'manual', NULL, 30, NULL, 'dasdsa.dasd.asd', 15, 'Duiwgdsfgd', 'Asia/Kolkata', 0, '2021-10-22 10:42:12');
+
+
+#
+# TABLE STRUCTURE FOR: gmeet_history
+#
+
+DROP TABLE IF EXISTS `gmeet_history`;
+
+CREATE TABLE `gmeet_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `gmeet_id` int(11) NOT NULL,
+  `staff_id` int(11) DEFAULT NULL,
+  `student_id` int(11) DEFAULT NULL,
+  `total_hit` int(10) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `gmeet_id` (`gmeet_id`),
+  KEY `staff_id` (`staff_id`),
+  KEY `student_id` (`student_id`),
+  CONSTRAINT `gmeet_history_ibfk_1` FOREIGN KEY (`gmeet_id`) REFERENCES `gmeet` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `gmeet_history_ibfk_2` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `gmeet_history_ibfk_3` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# TABLE STRUCTURE FOR: gmeet_sections
+#
+
+DROP TABLE IF EXISTS `gmeet_sections`;
+
+CREATE TABLE `gmeet_sections` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `gmeet_id` int(11) NOT NULL,
+  `cls_section_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `cls_section_id` (`cls_section_id`),
+  KEY `gmeet_id` (`gmeet_id`),
+  CONSTRAINT `gmeet_sections_ibfk_1` FOREIGN KEY (`cls_section_id`) REFERENCES `class_sections` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `gmeet_sections_ibfk_2` FOREIGN KEY (`gmeet_id`) REFERENCES `gmeet` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+INSERT INTO `gmeet_sections` (`id`, `gmeet_id`, `cls_section_id`, `created_at`) VALUES (8, 8, 6, '2021-10-21 18:22:18');
+INSERT INTO `gmeet_sections` (`id`, `gmeet_id`, `cls_section_id`, `created_at`) VALUES (9, 9, 4, '2021-10-21 18:23:39');
+
+
+#
+# TABLE STRUCTURE FOR: gmeet_settings
+#
+
+DROP TABLE IF EXISTS `gmeet_settings`;
+
+CREATE TABLE `gmeet_settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `api_key` varchar(200) DEFAULT NULL,
+  `api_secret` varchar(200) DEFAULT NULL,
+  `use_api` int(1) DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+INSERT INTO `gmeet_settings` (`id`, `api_key`, `api_secret`, `use_api`, `created_at`) VALUES (1, '', '', 0, '2021-10-21 18:05:39');
+
+
+#
+# TABLE STRUCTURE FOR: gmeet_staff
+#
+
+DROP TABLE IF EXISTS `gmeet_staff`;
+
+CREATE TABLE `gmeet_staff` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `gmeet_id` int(11) NOT NULL,
+  `staff_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `gmeet_id` (`gmeet_id`),
+  KEY `staff_id` (`staff_id`),
+  CONSTRAINT `gmeet_staff_ibfk_1` FOREIGN KEY (`gmeet_id`) REFERENCES `gmeet` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `gmeet_staff_ibfk_2` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+INSERT INTO `gmeet_staff` (`id`, `gmeet_id`, `staff_id`, `created_at`) VALUES (1, 10, 9, '2021-10-22 10:42:12');
+
 
 #
 # TABLE STRUCTURE FOR: grades
@@ -1745,7 +1877,7 @@ CREATE TABLE `logs` (
   `time` timestamp NOT NULL DEFAULT current_timestamp(),
   `created_at` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8;
 
 INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (1, 'New Record inserted On sections id 1', 1, 1, 'Insert', '127.0.0.1', 'Windows 10', 'Firefox 91.0', '2021-09-04 11:14:53', NULL);
 INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (2, 'New Record inserted On sections id 2', 2, 1, 'Insert', '127.0.0.1', 'Windows 10', 'Firefox 91.0', '2021-09-04 11:14:57', NULL);
@@ -1840,6 +1972,51 @@ INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_addre
 INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (91, 'New Record inserted On  student session id 3', 3, 1, 'Insert', '127.0.0.1', 'Windows 10', 'Firefox 93.0', '2021-10-20 18:10:36', NULL);
 INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (92, 'Record updated On settings id 1', 1, 1, 'Update', '127.0.0.1', 'Windows 10', 'Firefox 93.0', '2021-10-20 18:12:19', NULL);
 INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (93, 'Record updated On settings id 1', 1, 1, 'Update', '127.0.0.1', 'Windows 10', 'Firefox 93.0', '2021-10-20 18:12:37', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (94, 'New Record inserted On custom fields id 1', 1, 1, 'Insert', '127.0.0.1', 'Windows 10', 'Firefox 93.0', '2021-10-20 18:17:21', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (95, 'Record updated On settings id 1', 1, 1, 'Update', '127.0.0.1', 'Windows 10', 'Firefox 93.0', '2021-10-20 18:20:11', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (96, 'Record updated On settings id 1', 1, 1, 'Update', '127.0.0.1', 'Windows 10', 'Firefox 93.0', '2021-10-20 18:20:24', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (97, 'Record updated On settings id 1', 1, 1, 'Update', '127.0.0.1', 'Windows 10', 'Firefox 93.0', '2021-10-20 18:20:55', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (98, 'Record deleted On books id 5', 5, 1, 'Delete', '127.0.0.1', 'Windows 10', 'Firefox 93.0', '2021-10-21 11:34:05', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (99, 'Record deleted On books id 6', 6, 1, 'Delete', '127.0.0.1', 'Windows 10', 'Firefox 93.0', '2021-10-21 11:34:08', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (100, 'Record deleted On books id 8', 8, 1, 'Delete', '127.0.0.1', 'Windows 10', 'Firefox 93.0', '2021-10-21 11:34:11', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (101, 'Record updated On notification setting id 1', 1, 1, 'Update', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:17:14', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (102, 'Record updated On notification setting id 2', 2, 1, 'Update', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:17:14', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (103, 'Record updated On notification setting id 3', 3, 1, 'Update', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:17:14', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (104, 'Record updated On notification setting id 4', 4, 1, 'Update', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:17:14', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (105, 'Record updated On notification setting id 5', 5, 1, 'Update', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:17:14', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (106, 'Record updated On notification setting id 6', 6, 1, 'Update', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:17:14', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (107, 'Record updated On notification setting id 7', 7, 1, 'Update', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:17:14', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (108, 'Record updated On notification setting id 8', 8, 1, 'Update', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:17:14', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (109, 'Record updated On notification setting id 9', 9, 1, 'Update', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:17:14', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (110, 'Record updated On notification setting id 10', 10, 1, 'Update', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:17:14', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (111, 'Record updated On notification setting id 11', 11, 1, 'Update', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:17:14', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (112, 'Record updated On permission group id 600', 600, 1, 'Update', '127.0.0.1', 'Windows 10', 'Firefox 93.0', '2021-10-21 17:43:59', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (113, 'Record updated On permission group id 600', 600, 1, 'Update', '127.0.0.1', 'Windows 10', 'Firefox 93.0', '2021-10-21 17:44:04', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (114, 'New Record inserted On gmeet id 1', 1, 1, 'Insert', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:58:19', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (115, 'New Record inserted On gmeet id 2', 2, 1, 'Insert', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:58:22', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (116, 'New Record inserted On gmeet id 3', 3, 1, 'Insert', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:58:45', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (117, 'New Record inserted On gmeet id 4', 4, 1, 'Insert', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:58:46', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (118, 'New Record inserted On gmeet id 5', 5, 1, 'Insert', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:58:46', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (119, 'Record deleted On gmeet id 5', 5, 1, 'Delete', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:58:54', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (120, 'Record deleted On gmeet id 4', 4, 1, 'Delete', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:58:57', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (121, 'Record deleted On gmeet id 3', 3, 1, 'Delete', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:58:59', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (122, 'Record deleted On gmeet id 2', 2, 1, 'Delete', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 17:59:02', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (123, 'New Record inserted On gmeet settings id 1', 1, 1, 'Insert', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 18:05:39', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (124, 'Record updated On gmeet settings id 1', 1, 1, 'Update', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 18:05:43', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (125, 'Record updated On gmeet id 1', 1, 1, 'Update', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 18:07:03', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (126, 'Record updated On gmeet id 1', 1, 1, 'Update', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 18:07:06', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (127, 'Record updated On gmeet id 1', 1, 1, 'Update', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 18:07:08', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (128, 'New Record inserted On gmeet id 6', 6, 1, 'Insert', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 18:21:06', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (129, 'New Record inserted On gmeet id 7', 7, 1, 'Insert', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 18:21:20', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (130, 'Record deleted On gmeet id 7', 7, 1, 'Delete', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 18:21:46', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (131, 'Record deleted On gmeet id 6', 6, 1, 'Delete', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 18:21:48', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (132, 'New Record inserted On gmeet id 8', 8, 1, 'Insert', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 18:22:18', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (133, 'Record deleted On gmeet id 1', 1, 1, 'Delete', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 18:22:29', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (134, 'New Record inserted On gmeet id 9', 9, 1, 'Insert', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-21 18:23:39', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (135, 'New Record inserted On department id 1', 1, 1, 'Insert', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-22 10:34:51', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (136, 'New Record inserted On  staff designation id 1', 1, 1, 'Insert', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-22 10:35:16', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (137, 'Record updated On staff id 9', 9, 1, 'Update', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-22 10:41:21', NULL);
+INSERT INTO `logs` (`id`, `message`, `record_id`, `user_id`, `action`, `ip_address`, `platform`, `agent`, `time`, `created_at`) VALUES (138, 'New Record inserted On gmeet id 10', 10, 1, 'Insert', '::1', 'Windows 10', 'Chrome 95.0.4638.54', '2021-10-22 10:42:12', NULL);
 
 
 #
@@ -1925,19 +2102,26 @@ CREATE TABLE `notification_setting` (
   `is_sms` varchar(10) DEFAULT '0',
   `is_notification` int(11) NOT NULL DEFAULT 0,
   `display_notification` int(11) NOT NULL DEFAULT 0,
+  `display_sms` text DEFAULT NULL,
+  `subject` text DEFAULT NULL,
+  `template_id` text DEFAULT NULL,
   `template` longtext NOT NULL,
   `variables` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
-INSERT INTO `notification_setting` (`id`, `type`, `is_mail`, `is_sms`, `is_notification`, `display_notification`, `template`, `variables`, `created_at`) VALUES (1, 'student_admission', '1', '0', 0, 0, 'Dear {{firstname}} {{lastname}} your admission is confirm in Class: {{class}} Section:  {{section}} for Session: {{current_session_name}} for more detail contact System Admin\r\n{{firstname}} {{lastname}} {{class}} {{section}} {{admission_no}} {{roll_no}} {{admission_date}} {{mobileno}} {{email}} {{dob}} {{guardian_name}} {{guardian_relation}} {{guardian_phone}} {{father_name}} {{father_phone}} {{blood_group}} {{mother_name}} {{gender}} {{guardian_email}}', '{{firstname}}  {{lastname}}  {{class}}  {{section}}  {{admission_no}}  {{roll_no}}  {{admission_date}}   {{mobileno}}  {{email}}  {{dob}}  {{guardian_name}}  {{guardian_relation}}  {{guardian_phone}}  {{father_name}}  {{father_phone}}  {{blood_group}}  {{mother_name}}  {{gender}}  {{guardian_email}} {{current_session_name}}', '2020-02-01 14:28:40');
-INSERT INTO `notification_setting` (`id`, `type`, `is_mail`, `is_sms`, `is_notification`, `display_notification`, `template`, `variables`, `created_at`) VALUES (2, 'exam_result', '1', '0', 0, 1, 'Dear {{student_name}} - {{exam_roll_no}}, your {{exam}} result has been published.', '{{student_name}} {{exam_roll_no}} {{exam}}', '2020-06-16 00:17:47');
-INSERT INTO `notification_setting` (`id`, `type`, `is_mail`, `is_sms`, `is_notification`, `display_notification`, `template`, `variables`, `created_at`) VALUES (3, 'fee_submission', '1', '0', 0, 1, 'Dear parents, we have received  Fees Amount {{fee_amount}} for  {{firstname}} {{lastname}}  by Your School Name', ' {{firstname}} {{lastname}} {{class}} {{section}} {{fine_type}} {{fine_percentage}} {{fine_amount}} {{fee_group_name}} {{type}} {{code}} {{email}} {{contact_no}} {{invoice_id}} {{sub_invoice_id}} {{due_date}} {{amount}} {{fee_amount}}', '2020-02-08 22:53:20');
-INSERT INTO `notification_setting` (`id`, `type`, `is_mail`, `is_sms`, `is_notification`, `display_notification`, `template`, `variables`, `created_at`) VALUES (4, 'absent_attendence', '1', '0', 0, 1, 'Absent Notice :{{firstname}} {{lastname}}  was absent on date {{date}} in period {{subject_name}} {{subject_code}} {{subject_type}} from Your School Name', '{{firstname}} {{lastname}} {{mobileno}} {{email}} {{father_name}} {{father_phone}} {{father_occupation}} {{mother_name}} {{mother_phone}} {{guardian_name}} {{guardian_phone}} {{guardian_occupation}} {{guardian_email}} {{date}} {{current_session_name}}             {{time_from}} {{time_to}} {{subject_name}} {{subject_code}} {{subject_type}} ', '2020-02-08 23:03:13');
-INSERT INTO `notification_setting` (`id`, `type`, `is_mail`, `is_sms`, `is_notification`, `display_notification`, `template`, `variables`, `created_at`) VALUES (5, 'login_credential', '1', '0', 0, 0, 'Hello {{display_name}} your login details for Url: {{url}} Username: {{username}}  Password: {{password}}', '{{url}} {{display_name}} {{username}} {{password}}', '2020-02-08 21:25:33');
-INSERT INTO `notification_setting` (`id`, `type`, `is_mail`, `is_sms`, `is_notification`, `display_notification`, `template`, `variables`, `created_at`) VALUES (6, 'homework', '1', '0', 0, 1, 'New Homework has been created for {{student_name}} at {{homework_date}} for the class {{class}} {{section}} {{subject}}. kindly submit your homework before {{submit_date}} .Thank you', '{{homework_date}} {{submit_date}} {{class}} {{section}} {{subject}} {{student_name}}', '2020-02-08 21:25:33');
-INSERT INTO `notification_setting` (`id`, `type`, `is_mail`, `is_sms`, `is_notification`, `display_notification`, `template`, `variables`, `created_at`) VALUES (7, 'fees_reminder', '1', '0', 0, 1, 'Dear parents, please pay fee amount Rs.{{due_amount}} of {{fee_type}} before {{due_date}} for {{firstname}} {{lastname}} from smart school (ignore if you already paid)', '{{fee_type}}{{fee_code}}{{due_date}}{{firstname}} {{lastname}}{{school_name}}{{fee_amount}}{{due_amount}}{{deposit_amount}}', '2020-02-08 21:25:33');
+INSERT INTO `notification_setting` (`id`, `type`, `is_mail`, `is_sms`, `is_notification`, `display_notification`, `display_sms`, `subject`, `template_id`, `template`, `variables`, `created_at`) VALUES (1, 'student_admission', '1', '0', 0, 0, '', '', '', 'Dear {{firstname}} {{lastname}} your admission is confirm in Class: {{class}} Section:  {{section}} for Session: {{current_session_name}} for more detail contact System Admin\r\n{{firstname}} {{lastname}} {{class}} {{section}} {{admission_no}} {{roll_no}} {{admission_date}} {{mobileno}} {{email}} {{dob}} {{guardian_name}} {{guardian_relation}} {{guardian_phone}} {{father_name}} {{father_phone}} {{blood_group}} {{mother_name}} {{gender}} {{guardian_email}}', '{{firstname}}  {{lastname}}  {{class}}  {{section}}  {{admission_no}}  {{roll_no}}  {{admission_date}}   {{mobileno}}  {{email}}  {{dob}}  {{guardian_name}}  {{guardian_relation}}  {{guardian_phone}}  {{father_name}}  {{father_phone}}  {{blood_group}}  {{mother_name}}  {{gender}}  {{guardian_email}} {{current_session_name}}', '2020-02-01 14:28:40');
+INSERT INTO `notification_setting` (`id`, `type`, `is_mail`, `is_sms`, `is_notification`, `display_notification`, `display_sms`, `subject`, `template_id`, `template`, `variables`, `created_at`) VALUES (2, 'exam_result', '1', '0', 0, 1, '', '', '', 'Dear {{student_name}} - {{exam_roll_no}}, your {{exam}} result has been published.', '{{student_name}} {{exam_roll_no}} {{exam}}', '2020-06-16 00:17:47');
+INSERT INTO `notification_setting` (`id`, `type`, `is_mail`, `is_sms`, `is_notification`, `display_notification`, `display_sms`, `subject`, `template_id`, `template`, `variables`, `created_at`) VALUES (3, 'fee_submission', '1', '0', 0, 1, '', '', '', 'Dear parents, we have received  Fees Amount {{fee_amount}} for  {{firstname}} {{lastname}}  by Your School Name', ' {{firstname}} {{lastname}} {{class}} {{section}} {{fine_type}} {{fine_percentage}} {{fine_amount}} {{fee_group_name}} {{type}} {{code}} {{email}} {{contact_no}} {{invoice_id}} {{sub_invoice_id}} {{due_date}} {{amount}} {{fee_amount}}', '2020-02-08 22:53:20');
+INSERT INTO `notification_setting` (`id`, `type`, `is_mail`, `is_sms`, `is_notification`, `display_notification`, `display_sms`, `subject`, `template_id`, `template`, `variables`, `created_at`) VALUES (4, 'absent_attendence', '1', '0', 0, 1, '', '', '', 'Absent Notice :{{firstname}} {{lastname}}  was absent on date {{date}} in period {{subject_name}} {{subject_code}} {{subject_type}} from Your School Name', '{{firstname}} {{lastname}} {{mobileno}} {{email}} {{father_name}} {{father_phone}} {{father_occupation}} {{mother_name}} {{mother_phone}} {{guardian_name}} {{guardian_phone}} {{guardian_occupation}} {{guardian_email}} {{date}} {{current_session_name}}             {{time_from}} {{time_to}} {{subject_name}} {{subject_code}} {{subject_type}} ', '2020-02-08 23:03:13');
+INSERT INTO `notification_setting` (`id`, `type`, `is_mail`, `is_sms`, `is_notification`, `display_notification`, `display_sms`, `subject`, `template_id`, `template`, `variables`, `created_at`) VALUES (5, 'login_credential', '1', '0', 0, 0, '', '', '', 'Hello {{display_name}} your login details for Url: {{url}} Username: {{username}}  Password: {{password}}', '{{url}} {{display_name}} {{username}} {{password}}', '2020-02-08 21:25:33');
+INSERT INTO `notification_setting` (`id`, `type`, `is_mail`, `is_sms`, `is_notification`, `display_notification`, `display_sms`, `subject`, `template_id`, `template`, `variables`, `created_at`) VALUES (6, 'homework', '1', '0', 0, 1, '', '', '', 'New Homework has been created for {{student_name}} at {{homework_date}} for the class {{class}} {{section}} {{subject}}. kindly submit your homework before {{submit_date}} .Thank you', '{{homework_date}} {{submit_date}} {{class}} {{section}} {{subject}} {{student_name}}', '2020-02-08 21:25:33');
+INSERT INTO `notification_setting` (`id`, `type`, `is_mail`, `is_sms`, `is_notification`, `display_notification`, `display_sms`, `subject`, `template_id`, `template`, `variables`, `created_at`) VALUES (7, 'fees_reminder', '1', '0', 0, 1, '', '', '', 'Dear parents, please pay fee amount Rs.{{due_amount}} of {{fee_type}} before {{due_date}} for {{firstname}} {{lastname}} from smart school (ignore if you already paid)', '{{fee_type}}{{fee_code}}{{due_date}}{{firstname}} {{lastname}}{{school_name}}{{fee_amount}}{{due_amount}}{{deposit_amount}}', '2020-02-08 21:25:33');
+INSERT INTO `notification_setting` (`id`, `type`, `is_mail`, `is_sms`, `is_notification`, `display_notification`, `display_sms`, `subject`, `template_id`, `template`, `variables`, `created_at`) VALUES (8, 'gmeet_online_classes', '1', '0', 0, 1, '1', 'Gmeet Live Classes', '', 'Dear student, your live class {{title}} has been scheduled on {{date}} for the duration of {{duration}} minute, please do not share the link to any body.', '{{title}} {{date}} {{duration}}', '2021-05-20 09:47:22');
+INSERT INTO `notification_setting` (`id`, `type`, `is_mail`, `is_sms`, `is_notification`, `display_notification`, `display_sms`, `subject`, `template_id`, `template`, `variables`, `created_at`) VALUES (9, 'gmeet_online_meeting', '1', '0', 0, 0, '1', 'Gmeet Live Meeting', '', 'Dear staff, your live meeting {{title}} has been scheduled on {{date}} for the duration of {{duration}} minute, please do not share the link to any body.', '{{title}} {{date}} {{duration}} {{employee_id}} {{department}} {{designation}} {{name}} {{contact_no}} {{email}}', '2021-05-20 09:47:09');
+INSERT INTO `notification_setting` (`id`, `type`, `is_mail`, `is_sms`, `is_notification`, `display_notification`, `display_sms`, `subject`, `template_id`, `template`, `variables`, `created_at`) VALUES (10, 'gmeet_online_classes_start', '1', '0', 0, 1, '1', 'Gmeet  Live Classes Start', '', 'Dear student, your live class {{title}} has been started  for the duration of {{duration}} minute.', '{{title}} {{date}} {{duration}}', '2021-05-20 09:47:41');
+INSERT INTO `notification_setting` (`id`, `type`, `is_mail`, `is_sms`, `is_notification`, `display_notification`, `display_sms`, `subject`, `template_id`, `template`, `variables`, `created_at`) VALUES (11, 'gmeet_online_meeting_start', '1', '0', 0, 0, '1', 'Gmeet Live Meeting Start', '', 'Dear {{name}},  your live meeting {{title}} has been started  for the duration of {{duration}} minute.', '{{title}} {{date}} {{duration}} {{employee_id}} {{department}} {{designation}} {{name}} {{contact_no}} {{email}}', '2021-05-20 09:47:31');
 
 
 #
@@ -2195,7 +2379,7 @@ CREATE TABLE `permission_category` (
   `enable_delete` int(11) DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=243 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6006 DEFAULT CHARSET=utf8;
 
 INSERT INTO `permission_category` (`id`, `perm_group_id`, `name`, `short_code`, `enable_view`, `enable_add`, `enable_edit`, `enable_delete`, `created_at`) VALUES (1, 1, 'Student', 'student', 1, 1, 1, 1, '2019-10-24 11:12:03');
 INSERT INTO `permission_category` (`id`, `perm_group_id`, `name`, `short_code`, `enable_view`, `enable_add`, `enable_edit`, `enable_delete`, `created_at`) VALUES (2, 1, 'Import Student', 'import_student', 1, 0, 0, 0, '2018-06-22 15:47:19');
@@ -2391,6 +2575,11 @@ INSERT INTO `permission_category` (`id`, `perm_group_id`, `name`, `short_code`, 
 INSERT INTO `permission_category` (`id`, `perm_group_id`, `name`, `short_code`, `enable_view`, `enable_add`, `enable_edit`, `enable_delete`, `created_at`) VALUES (240, 14, 'Syllabus Status Report', 'syllabus_status_report', 1, 0, 0, 0, '2020-05-29 04:47:54');
 INSERT INTO `permission_category` (`id`, `perm_group_id`, `name`, `short_code`, `enable_view`, `enable_add`, `enable_edit`, `enable_delete`, `created_at`) VALUES (241, 14, 'Teacher Syllabus Status Report', 'teacher_syllabus_status_report', 1, 0, 0, 0, '2020-05-29 04:47:54');
 INSERT INTO `permission_category` (`id`, `perm_group_id`, `name`, `short_code`, `enable_view`, `enable_add`, `enable_edit`, `enable_delete`, `created_at`) VALUES (242, 14, 'Alumni Report', 'alumni_report', 1, 0, 0, 0, '2020-06-08 05:29:54');
+INSERT INTO `permission_category` (`id`, `perm_group_id`, `name`, `short_code`, `enable_view`, `enable_add`, `enable_edit`, `enable_delete`, `created_at`) VALUES (6001, 600, 'Live Classes', 'gmeet_live_classes', 1, 1, 0, 1, '2020-09-22 10:03:29');
+INSERT INTO `permission_category` (`id`, `perm_group_id`, `name`, `short_code`, `enable_view`, `enable_add`, `enable_edit`, `enable_delete`, `created_at`) VALUES (6002, 600, 'Live Meeting', 'gmeet_live_meeting', 1, 1, 0, 1, '2020-09-22 10:03:44');
+INSERT INTO `permission_category` (`id`, `perm_group_id`, `name`, `short_code`, `enable_view`, `enable_add`, `enable_edit`, `enable_delete`, `created_at`) VALUES (6003, 600, 'Live Meeting Report', 'gmeet_live_meeting_report', 1, 0, 0, 0, '2020-09-22 10:03:57');
+INSERT INTO `permission_category` (`id`, `perm_group_id`, `name`, `short_code`, `enable_view`, `enable_add`, `enable_edit`, `enable_delete`, `created_at`) VALUES (6004, 600, 'Live Classes Report', 'gmeet_live_classes_report', 1, 0, 0, 0, '2020-09-22 10:04:08');
+INSERT INTO `permission_category` (`id`, `perm_group_id`, `name`, `short_code`, `enable_view`, `enable_add`, `enable_edit`, `enable_delete`, `created_at`) VALUES (6005, 600, 'Setting', 'gmeet_setting', 1, 0, 1, 0, '2020-09-22 10:04:08');
 
 
 #
@@ -2407,7 +2596,7 @@ CREATE TABLE `permission_group` (
   `system` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=601 DEFAULT CHARSET=utf8;
 
 INSERT INTO `permission_group` (`id`, `name`, `short_code`, `is_active`, `system`, `created_at`) VALUES (1, 'Student Information', 'student_information', 1, 1, '2019-03-15 15:00:22');
 INSERT INTO `permission_group` (`id`, `name`, `short_code`, `is_active`, `system`, `created_at`) VALUES (2, 'Fees Collection', 'fees_collection', 1, 0, '2020-06-11 06:21:35');
@@ -2437,6 +2626,7 @@ INSERT INTO `permission_group` (`id`, `name`, `short_code`, `is_active`, `system
 INSERT INTO `permission_group` (`id`, `name`, `short_code`, `is_active`, `system`, `created_at`) VALUES (27, 'Online Admission', 'online_admission', 1, 0, '2019-11-27 08:12:13');
 INSERT INTO `permission_group` (`id`, `name`, `short_code`, `is_active`, `system`, `created_at`) VALUES (28, 'Alumni', 'alumni', 1, 0, '2020-05-29 05:56:38');
 INSERT INTO `permission_group` (`id`, `name`, `short_code`, `is_active`, `system`, `created_at`) VALUES (29, 'Lesson Plan', 'lesson_plan', 1, 0, '2020-06-07 11:08:30');
+INSERT INTO `permission_group` (`id`, `name`, `short_code`, `is_active`, `system`, `created_at`) VALUES (600, 'Gmeet Live Classes', 'gmeet_live_classes', 1, 0, '2021-10-21 17:44:04');
 
 
 #
@@ -2455,7 +2645,7 @@ CREATE TABLE `permission_student` (
   `group_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 INSERT INTO `permission_student` (`id`, `name`, `short_code`, `system`, `student`, `parent`, `group_id`, `created_at`) VALUES (1, 'Fees', 'fees', 0, 1, 1, 2, '2020-06-11 06:21:35');
 INSERT INTO `permission_student` (`id`, `name`, `short_code`, `system`, `student`, `parent`, `group_id`, `created_at`) VALUES (2, 'Class Timetable', 'class_timetable', 1, 1, 1, 7, '2020-05-31 01:27:50');
@@ -2475,6 +2665,7 @@ INSERT INTO `permission_student` (`id`, `name`, `short_code`, `system`, `student
 INSERT INTO `permission_student` (`id`, `name`, `short_code`, `system`, `student`, `parent`, `group_id`, `created_at`) VALUES (19, 'Lesson Plan', 'lesson_plan', 0, 1, 1, 29, '2020-06-07 11:08:30');
 INSERT INTO `permission_student` (`id`, `name`, `short_code`, `system`, `student`, `parent`, `group_id`, `created_at`) VALUES (20, 'Syllabus Status', 'syllabus_status', 0, 1, 1, 29, '2020-06-07 11:08:30');
 INSERT INTO `permission_student` (`id`, `name`, `short_code`, `system`, `student`, `parent`, `group_id`, `created_at`) VALUES (23, 'Apply Leave', 'apply_leave', 0, 1, 1, 0, '2020-06-11 10:50:23');
+INSERT INTO `permission_student` (`id`, `name`, `short_code`, `system`, `student`, `parent`, `group_id`, `created_at`) VALUES (24, 'Gmeet Live Classes ', 'gmeet_live_classes', 0, 1, 1, 600, '2021-10-21 17:44:04');
 
 
 #
@@ -2629,7 +2820,7 @@ CREATE TABLE `roles_permissions` (
   `can_delete` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1464 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1482 DEFAULT CHARSET=utf8;
 
 INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (10, 1, 17, 1, 1, 1, 1, '2018-07-06 15:18:56');
 INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (11, 1, 78, 1, 1, 1, 1, '2018-07-03 06:19:43');
@@ -3194,6 +3385,24 @@ INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `ca
 INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1461, 2, 242, 1, 0, 0, 0, '2020-06-12 04:15:24');
 INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1462, 3, 242, 1, 0, 0, 0, '2020-06-15 04:16:54');
 INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1463, 6, 242, 1, 0, 0, 0, '2020-06-15 04:18:14');
+INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1464, 2, 6001, 1, 1, 0, 1, '2021-01-29 09:31:16');
+INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1465, 1, 6001, 1, 1, 0, 1, '2020-09-23 12:59:22');
+INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1466, 1, 6002, 1, 1, 0, 1, '2020-09-23 13:01:52');
+INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1467, 1, 6003, 1, 0, 0, 0, '2020-09-23 13:02:06');
+INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1468, 1, 6004, 1, 0, 0, 0, '2020-09-23 13:02:33');
+INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1469, 1, 6005, 1, 0, 1, 0, '2021-01-29 07:45:05');
+INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1470, 2, 6005, 1, 0, 1, 0, '2021-01-29 11:08:20');
+INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1471, 2, 6002, 1, 1, 0, 1, '2021-01-29 07:58:48');
+INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1472, 3, 6002, 1, 1, 0, 1, '2021-01-29 07:26:08');
+INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1473, 3, 6003, 1, 0, 0, 0, '2021-01-29 07:26:08');
+INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1474, 3, 6005, 1, 0, 1, 0, '2021-01-29 07:26:08');
+INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1475, 4, 6001, 1, 1, 0, 1, '2021-01-29 07:26:53');
+INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1476, 4, 6002, 1, 1, 0, 1, '2021-01-29 07:26:53');
+INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1477, 6, 6001, 1, 1, 0, 1, '2021-01-29 07:27:32');
+INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1478, 6, 6002, 1, 1, 0, 1, '2021-01-29 07:27:32');
+INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1479, 6, 6005, 1, 0, 1, 0, '2021-01-29 07:27:32');
+INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1480, 2, 6003, 1, 0, 0, 0, '2021-01-29 09:31:16');
+INSERT INTO `roles_permissions` (`id`, `role_id`, `perm_cat_id`, `can_view`, `can_add`, `can_edit`, `can_delete`, `created_at`) VALUES (1481, 2, 6004, 1, 0, 0, 0, '2021-01-29 09:31:16');
 
 
 #
@@ -3333,7 +3542,7 @@ CREATE TABLE `sch_settings` (
   KEY `session_id` (`session_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `sch_settings` (`id`, `name`, `biometric`, `biometric_device`, `email`, `phone`, `address`, `lang_id`, `languages`, `dise_code`, `date_format`, `time_format`, `currency`, `currency_symbol`, `is_rtl`, `is_duplicate_fees_invoice`, `timezone`, `session_id`, `cron_secret_key`, `currency_place`, `class_teacher`, `start_month`, `attendence_type`, `image`, `admin_logo`, `admin_small_logo`, `theme`, `fee_due_days`, `adm_auto_insert`, `adm_prefix`, `adm_start_from`, `adm_no_digit`, `adm_update_status`, `staffid_auto_insert`, `staffid_prefix`, `staffid_start_from`, `staffid_no_digit`, `staffid_update_status`, `is_active`, `online_admission`, `is_blood_group`, `is_student_house`, `roll_no`, `category`, `religion`, `cast`, `mobile_no`, `student_email`, `admission_date`, `lastname`, `student_photo`, `student_height`, `student_weight`, `measurement_date`, `father_name`, `father_phone`, `father_occupation`, `father_pic`, `mother_name`, `mother_phone`, `mother_occupation`, `mother_pic`, `guardian_relation`, `guardian_email`, `guardian_pic`, `guardian_address`, `current_address`, `permanent_address`, `route_list`, `hostel_id`, `bank_account_no`, `national_identification_no`, `local_identification_no`, `rte`, `previous_school_details`, `student_note`, `upload_documents`, `staff_designation`, `staff_department`, `staff_last_name`, `staff_father_name`, `staff_mother_name`, `staff_date_of_joining`, `staff_phone`, `staff_emergency_contact`, `staff_marital_status`, `staff_photo`, `staff_current_address`, `staff_permanent_address`, `staff_qualification`, `staff_work_experience`, `staff_note`, `staff_epf_no`, `staff_basic_salary`, `staff_contract_type`, `staff_work_shift`, `staff_work_location`, `staff_leaves`, `staff_account_details`, `staff_social_media`, `staff_upload_documents`, `mobile_api_url`, `app_primary_color_code`, `app_secondary_color_code`, `app_logo`, `created_at`, `updated_at`) VALUES (1, 'Your School Name', 0, '', 'yourschoolemail@domain.com', 'Your School Phone', 'Your School Address', 4, '[\"4\"]', 'Your School Code', 'd-m-Y', '12-hour', 'USD', '$', 'disabled', 0, 'UTC', 15, '', 'after_number', 'no', '4', 0, '1.png', 'ww_logo.png', 'ww_favicon.png', 'default.jpg', 60, 0, 'School-', '000001', 6, 1, 0, '', '', 0, 1, 'no', 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '', '#424242', '#eeeeee', '1.png', '2021-10-20 18:12:37', NULL);
+INSERT INTO `sch_settings` (`id`, `name`, `biometric`, `biometric_device`, `email`, `phone`, `address`, `lang_id`, `languages`, `dise_code`, `date_format`, `time_format`, `currency`, `currency_symbol`, `is_rtl`, `is_duplicate_fees_invoice`, `timezone`, `session_id`, `cron_secret_key`, `currency_place`, `class_teacher`, `start_month`, `attendence_type`, `image`, `admin_logo`, `admin_small_logo`, `theme`, `fee_due_days`, `adm_auto_insert`, `adm_prefix`, `adm_start_from`, `adm_no_digit`, `adm_update_status`, `staffid_auto_insert`, `staffid_prefix`, `staffid_start_from`, `staffid_no_digit`, `staffid_update_status`, `is_active`, `online_admission`, `is_blood_group`, `is_student_house`, `roll_no`, `category`, `religion`, `cast`, `mobile_no`, `student_email`, `admission_date`, `lastname`, `student_photo`, `student_height`, `student_weight`, `measurement_date`, `father_name`, `father_phone`, `father_occupation`, `father_pic`, `mother_name`, `mother_phone`, `mother_occupation`, `mother_pic`, `guardian_relation`, `guardian_email`, `guardian_pic`, `guardian_address`, `current_address`, `permanent_address`, `route_list`, `hostel_id`, `bank_account_no`, `national_identification_no`, `local_identification_no`, `rte`, `previous_school_details`, `student_note`, `upload_documents`, `staff_designation`, `staff_department`, `staff_last_name`, `staff_father_name`, `staff_mother_name`, `staff_date_of_joining`, `staff_phone`, `staff_emergency_contact`, `staff_marital_status`, `staff_photo`, `staff_current_address`, `staff_permanent_address`, `staff_qualification`, `staff_work_experience`, `staff_note`, `staff_epf_no`, `staff_basic_salary`, `staff_contract_type`, `staff_work_shift`, `staff_work_location`, `staff_leaves`, `staff_account_details`, `staff_social_media`, `staff_upload_documents`, `mobile_api_url`, `app_primary_color_code`, `app_secondary_color_code`, `app_logo`, `created_at`, `updated_at`) VALUES (1, 'Your School Name', 0, '', 'yourschoolemail@domain.com', 'Your School Phone', 'Your School Address', 4, '[\"4\"]', 'Your School Code', 'd-m-Y', '12-hour', 'INR', '₹', 'disabled', 0, 'Asia/Kolkata', 15, '', 'after_number', 'no', '4', 0, '1.png', 'ww_logo.png', 'ww_favicon.png', 'default.jpg', 60, 0, 'School-', '000001', 6, 1, 0, '', '', 0, 1, 'no', 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '', '#424242', '#eeeeee', '1.png', '2021-10-20 18:20:54', NULL);
 
 
 #
@@ -3526,9 +3735,10 @@ CREATE TABLE `staff` (
   `verification_code` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `employee_id` (`employee_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 INSERT INTO `staff` (`id`, `employee_id`, `lang_id`, `department`, `designation`, `qualification`, `work_exp`, `name`, `surname`, `father_name`, `mother_name`, `contact_no`, `emergency_contact_no`, `email`, `dob`, `marital_status`, `date_of_joining`, `date_of_leaving`, `local_address`, `permanent_address`, `note`, `image`, `password`, `gender`, `account_title`, `bank_account_no`, `bank_name`, `ifsc_code`, `bank_branch`, `payscale`, `basic_salary`, `epf_no`, `contract_type`, `shift`, `location`, `facebook`, `twitter`, `linkedin`, `instagram`, `resume`, `joining_letter`, `resignation_letter`, `other_document_name`, `other_document_file`, `user_id`, `is_active`, `verification_code`) VALUES (1, '9000', 0, 0, 0, '', '', 'Super Admin', '', '', '', '', '', 'gursharan.smartdesignhut@gmail.com', '2020-01-01', '', '0000-00-00', '0000-00-00', '', '', '', '', '$2y$10$5H8IY9bHV5bw6vF7z8oRue6kxD3jxTgIC39LaCFdjgBj47.LLsUuC', 'Male', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 1, '');
+INSERT INTO `staff` (`id`, `employee_id`, `lang_id`, `department`, `designation`, `qualification`, `work_exp`, `name`, `surname`, `father_name`, `mother_name`, `contact_no`, `emergency_contact_no`, `email`, `dob`, `marital_status`, `date_of_joining`, `date_of_leaving`, `local_address`, `permanent_address`, `note`, `image`, `password`, `gender`, `account_title`, `bank_account_no`, `bank_name`, `ifsc_code`, `bank_branch`, `payscale`, `basic_salary`, `epf_no`, `contract_type`, `shift`, `location`, `facebook`, `twitter`, `linkedin`, `instagram`, `resume`, `joining_letter`, `resignation_letter`, `other_document_name`, `other_document_file`, `user_id`, `is_active`, `verification_code`) VALUES (9, 'S-02', 0, 1, 1, 'gdsfgdsfg', 'dsfgdf', 'Tanveer Singh', 'Singh', 'Baljeet Singh', 'Swaraj Kaur', '7894566132', '2314578', 'gursharan.dfr@gmail.com', '1989-06-26', 'Single', '2021-07-15', '0000-00-00', 'sector 88', 'sector 88', 'gdfsgdsfg', '', '$2y$10$Kqi2Fskv0KzRFCzEfIyf..RQSrsOpjZqdl0TIv84lAHJ0hXhBg6Pu', 'Male', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 1, '');
 
 
 #
@@ -3587,7 +3797,10 @@ CREATE TABLE `staff_designation` (
   `designation` varchar(200) NOT NULL,
   `is_active` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+INSERT INTO `staff_designation` (`id`, `designation`, `is_active`) VALUES (1, 'Lecturer', 'yes');
+
 
 #
 # TABLE STRUCTURE FOR: staff_leave_details
@@ -3712,9 +3925,10 @@ CREATE TABLE `staff_roles` (
   KEY `staff_id` (`staff_id`),
   CONSTRAINT `FK_staff_roles_roles` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_staff_roles_staff` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 INSERT INTO `staff_roles` (`id`, `role_id`, `staff_id`, `is_active`, `created_at`, `updated_at`) VALUES (1, 7, 1, 0, '2021-09-04 09:50:03', NULL);
+INSERT INTO `staff_roles` (`id`, `role_id`, `staff_id`, `is_active`, `created_at`, `updated_at`) VALUES (2, 2, 9, 0, '2021-10-22 10:41:21', NULL);
 
 
 #
@@ -4401,7 +4615,7 @@ CREATE TABLE `userlog` (
   `user_agent` varchar(500) DEFAULT NULL,
   `login_datetime` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 INSERT INTO `userlog` (`id`, `user`, `role`, `ipaddress`, `user_agent`, `login_datetime`) VALUES (1, 'gursharan.smartdesignhut@gmail.com', 'Super Admin', '127.0.0.1', 'Firefox 91.0, Windows 10', '2021-09-04 09:50:38');
 INSERT INTO `userlog` (`id`, `user`, `role`, `ipaddress`, `user_agent`, `login_datetime`) VALUES (2, 'gursharan.smartdesignhut@gmail.com', 'Super Admin', '127.0.0.1', 'Firefox 91.0, Windows 10', '2021-09-06 15:01:03');
@@ -4414,6 +4628,12 @@ INSERT INTO `userlog` (`id`, `user`, `role`, `ipaddress`, `user_agent`, `login_d
 INSERT INTO `userlog` (`id`, `user`, `role`, `ipaddress`, `user_agent`, `login_datetime`) VALUES (9, 'gursharan.smartdesignhut@gmail.com', 'Super Admin', '127.0.0.1', 'Firefox 93.0, Windows 10', '2021-10-18 17:11:29');
 INSERT INTO `userlog` (`id`, `user`, `role`, `ipaddress`, `user_agent`, `login_datetime`) VALUES (10, 'gursharan.smartdesignhut@gmail.com', 'Super Admin', '127.0.0.1', 'Firefox 93.0, Windows 10', '2021-10-19 14:36:02');
 INSERT INTO `userlog` (`id`, `user`, `role`, `ipaddress`, `user_agent`, `login_datetime`) VALUES (11, 'gursharan.smartdesignhut@gmail.com', 'Super Admin', '127.0.0.1', 'Firefox 93.0, Windows 10', '2021-10-20 15:01:40');
+INSERT INTO `userlog` (`id`, `user`, `role`, `ipaddress`, `user_agent`, `login_datetime`) VALUES (12, 'gursharan.smartdesignhut@gmail.com', 'Super Admin', '127.0.0.1', 'Firefox 93.0, Windows 10', '2021-10-21 09:44:36');
+INSERT INTO `userlog` (`id`, `user`, `role`, `ipaddress`, `user_agent`, `login_datetime`) VALUES (13, 'gursharan.smartdesignhut@gmail.com', 'Super Admin', '127.0.0.1', 'Firefox 93.0, Windows 10', '2021-10-21 16:28:01');
+INSERT INTO `userlog` (`id`, `user`, `role`, `ipaddress`, `user_agent`, `login_datetime`) VALUES (14, 'gursharan.smartdesignhut@gmail.com', 'Super Admin', '127.0.0.1', 'Firefox 93.0, Windows 10', '2021-10-21 17:03:17');
+INSERT INTO `userlog` (`id`, `user`, `role`, `ipaddress`, `user_agent`, `login_datetime`) VALUES (15, 'gursharan.smartdesignhut@gmail.com', 'Super Admin', '::1', 'Chrome 95.0.4638.54, Windows 10', '2021-10-21 17:06:59');
+INSERT INTO `userlog` (`id`, `user`, `role`, `ipaddress`, `user_agent`, `login_datetime`) VALUES (16, 'gursharan.smartdesignhut@gmail.com', 'Super Admin', '::1', 'Chrome 95.0.4638.54, Windows 10', '2021-10-21 17:16:05');
+INSERT INTO `userlog` (`id`, `user`, `role`, `ipaddress`, `user_agent`, `login_datetime`) VALUES (17, 'gursharan.smartdesignhut@gmail.com', 'Super Admin', '::1', 'Chrome 95.0.4638.54, Windows 10', '2021-10-22 09:36:50');
 
 
 #
