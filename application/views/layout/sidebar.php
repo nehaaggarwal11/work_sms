@@ -488,7 +488,7 @@
                             if ($this->rbac->hasPrivilege('meeting_report', 'can_view')) { ?>
                                 <li class="<?php echo set_Submenu('gmeet/meeting_report'); ?>"><a href="<?php echo base_url(); ?>admin/gmeet/meeting_report"><i class="fa fa-angle-double-right"></i> <?php echo $this->lang->line('live_meeting') . ' ' . $this->lang->line('report'); ?></a></li>
                             <?php }
-                            if ($this->rbac->hasPrivilege('topic', 'can_view')) { ?>
+                            if ($this->rbac->hasPrivilege('gmeet_setting', 'can_view')) { ?>
                                 <li class="<?php echo set_Submenu('gmeet/gmeet_setting'); ?>"><a href="<?php echo base_url(); ?>admin/gmeet/index"><i class="fa fa-angle-double-right"></i> <?php echo $this->lang->line('setting'); ?></a></li>
                             <?php } ?>
 
