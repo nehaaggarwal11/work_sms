@@ -10,19 +10,30 @@
         font-size: 1.2em;
         width: 100% !important;
     }
-    .files label{display: block;}
-    .files input:focus{     /*outline: 2px dashed #92b0b3;  outline-offset: -10px;*/
-        -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
-        transition: outline-offset .15s ease-in-out, background-color .15s linear; border:1px solid #92b0b3;
+
+    .files label {
+        display: block;
     }
-    .files{ position:relative;background-color: rgb(245, 245, 245);    
-            border: 1px solid rgba(0, 0, 0, 0.06);}
+
+    .files input:focus {
+        /*outline: 2px dashed #92b0b3;  outline-offset: -10px;*/
+        -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+        transition: outline-offset .15s ease-in-out, background-color .15s linear;
+        border: 1px solid #92b0b3;
+    }
+
+    .files {
+        position: relative;
+        background-color: rgb(245, 245, 245);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
     .files:after {
         pointer-events: none;
         position: absolute;
         top: 14px;
         left: 20px;
-        color:#767676;
+        color: #767676;
         font-size: 36px;
         font-family: 'FontAwesome';
         /*width: 50px;
@@ -35,7 +46,11 @@
         background-size: 100%;
         background-repeat: no-repeat;
     }
-    .color input{ background-color:#f1f1f1;}
+
+    .color input {
+        background-color: #f1f1f1;
+    }
+
     .files:before {
         position: absolute;
         bottom: 27px;
@@ -52,16 +67,26 @@
         text-align: center;
         transition: .3s;
     }
-    .files:hover:before{color: #faa21c;}
+
+    .files:hover:before {
+        color: #faa21c;
+    }
+
     .files input[type=file] {
-        opacity:0;
+        opacity: 0;
         cursor: pointer;
         height: 70px;
     }
-    .modal-lg{width: 1100px;}
-    @media (max-width:767px){
-        .modal-lg{width:100%;}
-    } 
+
+    .modal-lg {
+        width: 1100px;
+    }
+
+    @media (max-width:767px) {
+        .modal-lg {
+            width: 100%;
+        }
+    }
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -76,29 +101,30 @@
         <div class="row">
             <?php
             if ($this->rbac->hasPrivilege('media_manager', 'can_add')) {
-                ?>
+            ?>
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title"><?php echo $this->lang->line('media_manager'); ?></h3>
                         </div>
                         <div class="box-body">
-                            <div class="row"> 
+                            <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="mailbox-controls">
                                         <form method="post" action="#" id="fileupload">
                                             <div class="form-group">
                                                 <label><?php echo $this->lang->line('upload_your_file'); ?></label>
-                                                <div class="files">  
+                                                <div class="files">
                                                     <input type="file" name="files[]" class="form-control" id="file" multiple="">
-                                                </div>  
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
-                                </div><!--./col-md-6-->
-                                <div class="col-md-6 col-sm-6">    
+                                </div>
+                                <!--./col-md-6-->
+                                <div class="col-md-6 col-sm-6">
                                     <!-- <h4>Upload Youtube Video --r</h4> -->
-                                    <form action="<?php echo site_url('admin/front/media/addVideo'); ?>" id="video_form" method="POST" >
+                                    <form action="<?php echo site_url('admin/front/media/addVideo'); ?>" id="video_form" method="POST">
                                         <div class="form-group">
                                             <label for="video_url"><?php echo $this->lang->line('upload_youtube_video'); ?></label><small class="req"> *</small>
                                             <input type="text" class="form-control" name="video_url" id="video_url" placeholder="<?php echo $this->lang->line('url') ?>">
@@ -106,11 +132,13 @@
                                         </div>
                                         <button type="submit" class="btn btn-info pull-right video_submit" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Loading..."><?php echo $this->lang->line('submit'); ?></button>
                                     </form>
-                                </div>  
-                            </div>    
-                        </div><!--./box-body-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--./box-body-->
                     </div>
-                </div><!--./col-md-12-->             
+                </div>
+                <!--./col-md-12-->
                 <!-- left column -->
             <?php } ?>
             <div class="col-md-12">
@@ -131,45 +159,48 @@
                                                 <option value=""><?php echo $this->lang->line('select'); ?></option>
                                                 <?php
                                                 foreach ($mediaTypes as $type_key => $type_value) {
-                                                    ?>
+                                                ?>
                                                     <option value="<?php echo $type_value; ?>"><?php echo $type_value; ?></option>
 
-                                                    <?php
+                                                <?php
                                                 }
                                                 ?>
                                             </select>
                                         </div>
 
-                                    </form> 
+                                    </form>
                                 </div>
-                                <div class="mediarow">   
-                                    <div class="row" id="media_div"></div></div>
+                                <div class="mediarow">
+                                    <div class="row" id="media_div"></div>
+                                </div>
                                 <div align="right" id="pagination_link"></div>
                             </div>
 
                         </div>
 
-                    </div><!-- /.box-body -->  
-                </div><!--/.col (left) -->
+                    </div><!-- /.box-body -->
+                </div>
+                <!--/.col (left) -->
             </div>
             <div class="row">
                 <div class="col-md-12">
-                </div><!--/.col (right) -->
-            </div>   <!-- /.row -->
+                </div>
+                <!--/.col (right) -->
+            </div> <!-- /.row -->
     </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         load(1);
-        $(document).on("click", ".pagination li a", function (event) {
+        $(document).on("click", ".pagination li a", function(event) {
             event.preventDefault();
             var page = $(this).data("ci-pagination-page");
             load(page);
         });
-        $(".search_text").keyup(function () {
+        $(".search_text").keyup(function() {
             load(1);
         });
-        $(".file_type").change(function () {
+        $(".file_type").change(function() {
             load(1);
         });
 
@@ -183,14 +214,14 @@
             show: false
 
         });
-        $('#confirm-delete').on('show.bs.modal', function (e) {
+        $('#confirm-delete').on('show.bs.modal', function(e) {
 
             var record_id = $(e.relatedTarget).data('record_id');
             $('#record_id').val(0).val(record_id);
             $('.del_modal_title').html("Delete Confirmation");
             $('.del_modal_body').html('<p>Are you sure to delete !</p>');
         });
-        $('#detail').on('show.bs.modal', function (e) {
+        $('#detail').on('show.bs.modal', function(e) {
             var data = $(e.relatedTarget).data();
             var media_content_path = "<a href='" + data.image + "' target='_blank'>" + data.image + "</a>";
             $('#modal_media_name').text("").text(data.media_name);
@@ -228,7 +259,7 @@
         }
 
 
-        $("#video_form").submit(function (e) {
+        $("#video_form").submit(function(e) {
             e.preventDefault(); // avoid to execute the actual submit of the form.
             var url = $(this).attr("action");
             var $this = $('.video_submit');
@@ -238,11 +269,11 @@
                 url: url,
                 dataType: 'json',
                 data: $('#video_form').serialize(),
-                beforeSend: function () {
+                beforeSend: function() {
                     $this.button('loading');
                     $("[class$='_error']").html("");
                 },
-                success: function (data) {
+                success: function(data) {
                     if (data.status == 1) {
                         load(1);
                     } else {
@@ -254,10 +285,10 @@
                     }
 
                 },
-                error: function (xhr) { // if error occured
+                error: function(xhr) { // if error occured
                     $this.button('reset');
                 },
-                complete: function () {
+                complete: function() {
                     $this.button('reset');
                 },
             });
@@ -266,6 +297,7 @@
         });
 
     });
+
     function load(page) {
         var keyword = $('.search_text').val();
         var file_type = $('.file_type').val();
@@ -273,24 +305,26 @@
         $.ajax({
             url: "<?php echo base_url(); ?>admin/front/media/getPage/" + page,
             method: "GET",
-            data: {'keyword': keyword, 'file_type': file_type, 'is_gallery': is_gallery},
+            data: {
+                'keyword': keyword,
+                'file_type': file_type,
+                'is_gallery': is_gallery
+            },
             dataType: "json",
-            beforeSend: function () {
+            beforeSend: function() {
                 $('#media_div').empty();
             },
 
-            success: function (data)
-            {
+            success: function(data) {
                 $('#media_div').empty();
                 if (data.result_status === 1) {
-                    $.each(data.result, function (index, value) {
+                    $.each(data.result, function(index, value) {
                         $("#media_div").append(data.result[index]);
                     });
                     $('#pagination_link').html(data.pagination_link);
-                } else {
-                }
+                } else {}
             },
-            complete: function () {
+            complete: function() {
 
 
             }
@@ -299,9 +333,9 @@
 
     //========================
 
-    $(function () {
+    $(function() {
         // Drop
-        $('.upload-area').on('drop', function (e) {
+        $('.upload-area').on('drop', function(e) {
             e.stopPropagation();
             e.preventDefault();
             console.log(fd);
@@ -317,12 +351,12 @@
         });
 
         // Open file selector on div click
-        $("#files").click(function () {
+        $("#files").click(function() {
             $("#file").click();
         });
 
         // file selected
-        $("#file").change(function () {
+        $("#file").change(function() {
             var fd = new FormData();
             var fileInput = document.getElementById('file');
             var filePath = fileInput.value;
@@ -342,7 +376,7 @@
         });
     });
 
-// Sending AJAX request and upload file
+    // Sending AJAX request and upload file
     function uploadData(formdata) {
         var urls = baseurl + "admin/front/media/addImage";
         $.ajax({
@@ -351,53 +385,65 @@
             data: formdata,
             contentType: false,
             processData: false,
-//            dataType: 'json',
+            //            dataType: 'json',
             dataType: "html",
-            success: function (response) {
-                successMsg('File upload successfully');
-                load(1);
-//                $(response).appendTo(".gallery");
-//                $('#fileupload')[0].reset(); //reset form
+            success: function(response) {
+                if (response.includes("Warning")) {
+                    //console.log(response);
+                    if (response.includes("exceeds")){
+                        errorMsg("File size exceeds the limit of 40MB");
+                    }else{
+                         errorMsg("Fail to upload content");
+                    }
+                } else {
+                    successMsg('File upload successfully');
+                    load(1);
+                    //                $(response).appendTo(".gallery");
+                    //                $('#fileupload')[0].reset(); //reset form
+                }
             },
-            beforeSend: function () {
+            failure: function(response) {
 
             },
-            complete: function () {
+            beforeSend: function() {
+
+            },
+            complete: function() {
 
 
-            }
+            },
         });
     }
-    $(document).on('click', '.btn_delete', function () {
+    $(document).on('click', '.btn_delete', function() {
         var $this = $('.btn_delete');
 
         var record_id = $('#record_id').val();
         $.ajax({
             url: "<?php echo site_url('admin/front/media/deleteItem') ?>",
             type: "POST",
-            data: {'record_id': record_id},
+            data: {
+                'record_id': record_id
+            },
             dataType: 'Json',
-            beforeSend: function () {
+            beforeSend: function() {
                 $this.button('loading');
             },
-            success: function (data, textStatus, jqXHR)
-            {
+            success: function(data, textStatus, jqXHR) {
                 if (data.status === 1) {
                     successMsg(data.msg);
                     load(1);
-//                    $('.div_record_' + record_id).remove();
+                    //                    $('.div_record_' + record_id).remove();
                 } else {
                     errorMsg(data.msg);
                 }
                 $("#confirm-delete").modal('hide');
             },
 
-            complete: function () {
+            complete: function() {
 
                 $this.button('reset');
             },
-            error: function (jqXHR, textStatus, errorThrown)
-            {
+            error: function(jqXHR, textStatus, errorThrown) {
 
             }
         });
@@ -405,17 +451,16 @@
     });
 
 
-// Bytes conversion
+    // Bytes conversion
     function convertSize(bytes, decimalPoint) {
         if (bytes == 0)
             return '0 Bytes';
         var k = 1024,
-                dm = decimalPoint || 2,
-                sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
-                i = Math.floor(Math.log(bytes) / Math.log(k));
+            dm = decimalPoint || 2,
+            sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+            i = Math.floor(Math.log(bytes) / Math.log(k));
         return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
     }
-
 </script>
 
 <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -447,7 +492,8 @@
                 </div>
             </div>
             <!-- <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><?php //echo $this->lang->line('cancel');   ?></button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?php //echo $this->lang->line('cancel');   
+                                                                                    ?></button>
             </div> -->
         </div>
     </div>
@@ -471,4 +517,3 @@
         </div>
     </div>
 </div>
-

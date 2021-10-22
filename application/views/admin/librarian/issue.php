@@ -99,7 +99,7 @@ if (set_value('book_id') == $book['id']) {
                             </div>
                             <div class="form-group">
                                 <label><?php echo $this->lang->line('return_date'); ?></label>
-                                <input id="dateto" name="return_date"  type="text" class="form-control date"  value="<?php echo set_value('return_date', date($this->customlib->getSchoolDateFormat())); ?>" />
+                                <input id="dateto" name="return_date"  type="text" class="form-control returnDate"  value="<?php echo set_value('return_date', date($this->customlib->getSchoolDateFormat())); ?>" />
                                        <span class="text-danger"><?php echo form_error('return_date'); ?></span>
                             </div>
                         </div><!-- /.box-body -->

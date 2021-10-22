@@ -134,6 +134,7 @@ class Media extends Admin_Controller {
                     $insert_id = $this->cms_media_model->add($data);
                     $data['record_id'] = $insert_id;
                     $img_array[] = $data;
+                   
                 }
                 if (!empty($img_array)) {
                     $data['img_array'] = $img_array;

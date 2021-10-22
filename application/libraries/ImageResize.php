@@ -100,7 +100,6 @@ class ImageResize {
                     //thumbnail creation
                     $this->image_size_info = filesize($this->curr_tmp_name);
 
-
                     $img_array = array(
                         'store_name' => $this->new_file_name,
                         'file_type' => $file_ext,
