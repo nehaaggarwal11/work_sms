@@ -195,7 +195,7 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                                                         <?php
                                                         if ($this->rbac->hasPrivilege('student', 'can_edit')) {
                                                             ?>
-                                                            <a href="<?php echo base_url(); ?>show_all_students/leavedstudent/<?php echo $student['id'] ?>" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('edit'); ?>">
+                                                            <a href="<?php echo base_url(); ?>admin/show_all_students/leavedstudent/<?php echo $student['id'] ?>" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('edit'); ?>">
                                                                 <i class="fa fa-pencil"></i>
                                                             </a>
                                                             <?php

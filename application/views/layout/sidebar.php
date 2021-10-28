@@ -468,7 +468,7 @@
             <?php }
                 } ?>
             <?php
-            if ($this->module_lib->hasActive('gmeet_live_classes')) {
+            if ($this->module_lib->hasActive('lesson_plan')) {
                 if (($this->rbac->hasPrivilege('gmeet_live_classes', 'can_view')) || ($this->rbac->hasPrivilege('manage_syllabus_status', 'can_view')) || ($this->rbac->hasPrivilege('lesson', 'can_view')) || ($this->rbac->hasPrivilege('topic', 'can_view'))) {
             ?>
                     <li class="treeview <?php echo set_Topmenu('gmeet'); ?>">
