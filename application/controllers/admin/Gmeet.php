@@ -478,6 +478,7 @@ class Gmeet extends Admin_Controller
                                 'title'       => $this->input->post('title'),
                                 'date'        => $this->input->post('date'),
                                 'duration'    => $this->input->post('duration'),
+                                'Gmeet Link'  => $this->input->post('url'),
                                 'employee_id' => $staff_mail_sms_list_value->employee_id,
                                 'department'  => $staff_mail_sms_list_value->department,
                                 'designation' => $staff_mail_sms_list_value->designation,

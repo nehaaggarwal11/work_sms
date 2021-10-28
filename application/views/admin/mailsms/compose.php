@@ -48,7 +48,7 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_group">
-                            <form action="<?php echo site_url('admin/mailsms/send_group') ?>" method="post" id="group_form">
+                            <form class="sdh_mail_func" action="<?php echo site_url('admin/mailsms/send_group') ?>" method="post" id="group_form">
 
                                 <!-- /.box-header -->
                                 <div class="box-body">
@@ -112,7 +112,7 @@
                                 <!-- /.box-body -->
                                 <div class="box-footer">
                                     <div class="pull-right">
-                                        <button type="submit" class="btn btn-primary submit_group" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Sending"><i class="fa fa-envelope-o"></i> <?php echo $this->lang->line('send'); ?></button>
+                                        <button type="submit" class="btn btn-primary submit" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Sending"><i class="fa fa-envelope-o"></i> <?php echo $this->lang->line('send'); ?></button>
 
                                     </div>
 
@@ -122,7 +122,7 @@
                         </div>
                         <!-- /.tab-pane -->
                         <div class="tab-pane" id="tab_perticular">
-                            <form action="<?php echo site_url('admin/mailsms/send_individual') ?>" method="post" id="individual_form">
+                            <form class="sdh_mail_func" action="<?php echo site_url('admin/mailsms/send_individual') ?>" method="post" id="individual_form">
 
                                 <!-- /.box-header -->
                                 <div class="box-body">
@@ -205,7 +205,7 @@
                                 <!-- /.box-body -->
                                 <div class="box-footer">
                                     <div class="pull-right">
-                                        <button type="submit" class="btn btn-primary submit_individual" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Sending"><i class="fa fa-envelope-o"></i> <?php echo $this->lang->line('send'); ?></button>
+                                        <button type="submit" class="btn btn-primary submit" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Sending"><i class="fa fa-envelope-o"></i> <?php echo $this->lang->line('send'); ?></button>
                                     </div>
 
                                 </div>
@@ -213,8 +213,7 @@
                             </form>
                         </div>
                         <div class="tab-pane" id="tab_class">
-                            <form action="<?php echo site_url('admin/mailsms/send_class') ?>" method="post" id="class_form">
-
+                            <form class="sdh_mail_func" action="<?php echo site_url('admin/mailsms/send_class') ?>" method="post" id="class_form">
                                 <div class="box-body">
                                     <div class="row">
                                         <div class="col-md-8">
@@ -234,9 +233,7 @@
                                                 <textarea id="class_msg_text" name="class_message" class="form-control compose-textarea ckeditor">
                                                     <?php echo set_value('message'); ?>
                                                 </textarea>
-
                                             </div>
-
                                         </div>
                                         <div class="col-md-4">
                                             <div class="row">
@@ -274,21 +271,18 @@
                                 <!-- /.box-body -->
                                 <div class="box-footer">
                                     <div class="pull-right">
-                                        <button type="submit" class="btn btn-primary submit_class" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Sending"><i class="fa fa-envelope-o"></i> <?php echo $this->lang->line('send'); ?></button>
+                                        <button type="submit" class="btn btn-primary submit" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Sending"><i class="fa fa-envelope-o"></i> <?php echo $this->lang->line('send'); ?></button>
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="tab-pane" id="tab_birthday">
-                            <form action="<?php echo site_url('admin/mailsms/send_birthday') ?>" method="post" id="birthday_form">
+                            <form class="sdh_mail_func" action="<?php echo site_url('admin/mailsms/send_birthday') ?>" method="post" id="birthday_form">
 
                                 <!-- /.box-header -->
                                 <div class="box-body">
                                     <div class="row">
                                         <div class="col-md-8">
-
-
-
                                             <div class="form-group">
                                                 <label><?php echo $this->lang->line('title'); ?></label><small class="req"> *</small>
                                                 <input autofocus="" class="form-control" name="birthday_title">
@@ -307,11 +301,7 @@
                                                 <textarea id="birthday_msg_text" name="birthday_message" class="form-control compose-textarea ckeditor" cols="35" rows="20">
                                                     <?php echo set_value('message'); ?>
                                                 </textarea>
-
-
                                             </div>
-
-
                                         </div>
                                         <div class="col-md-4">
 
@@ -361,8 +351,6 @@
                                                             }
                                                                     ?>
 
-
-
                                                 </div>
                                             </div>
                                         </div>
@@ -373,7 +361,7 @@
                                 <!-- /.box-body -->
                                 <div class="box-footer">
                                     <div class="pull-right">
-                                        <button type="submit" class="btn btn-primary submit_birthday" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Sending"><i class="fa fa-envelope-o"></i> <?php echo $this->lang->line('send'); ?></button>
+                                        <button type="submit" class="btn btn-primary submit" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Sending"><i class="fa fa-envelope-o"></i> <?php echo $this->lang->line('send'); ?></button>
 
                                     </div>
 
@@ -591,84 +579,81 @@
     };
 
 
-    $("#individual_form").submit(function(event) {
-        event.preventDefault();
-        for (var instanceName in CKEDITOR.instances) {
-            CKEDITOR.instances[instanceName].updateElement();
-        }
-        // var logoImg = $('input[name="individual_attachment"]').get(0).files[0];
-        var formData = new FormData();
-        var other_data = $(this).serializeArray();
-        $.each(other_data, function(key, input) {
-            formData.append(input.name, input.value);
-        });
-        //For image file
-        // formData.append('logo', logoImg);
+    // $("#individual_form").submit(function(event) {
+    //     event.preventDefault();
+    //     for (var instanceName in CKEDITOR.instances) {
+    //         CKEDITOR.instances[instanceName].updateElement();
+    //     }
+    //     // var logoImg = $('input[name="individual_attachment"]').get(0).files[0];
+    //     var formData = new FormData();
+    //     var other_data = $(this).serializeArray();
+    //     $.each(other_data, function(key, input) {
+    //         formData.append(input.name, input.value);
+    //     });
+    //     //For image file
+    //     // formData.append('logo', logoImg);
 
-        var ins = document.getElementById('individual_file').files.length;
-        for (var x = 0; x < ins; x++) {
-            formData.append("files[]", document.getElementById('individual_file').files[x]);
-        }
-
-
-        var objArr = [];
-        var user_list = (!jQuery.isEmptyObject(attr)) ? JSON.stringify(attr) : "";
-        formData.append('user_list', user_list);
-        var $form = $(this),
-            url = $form.attr('action');
-        var $this = $('.submit_individual');
-        $this.button('loading');
-
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: formData,
-            dataType: "JSON",
-            contentType: false,
-            processData: false,
-
-            beforeSend: function() {
-                $this.button('loading');
-
-            },
-            success: function(data) {
-                if (data.status == 1) {
-                    var message = "";
-                    $.each(data.msg, function(index, value) {
-
-                        message += value;
-                    });
-                    errorMsg(message);
-                } else if (data.status == 2) {
-                    errorMsg(data.msg);
-                } else {
-                    $('#individual_form')[0].reset();
-                    for (instance in CKEDITOR.instances) {
-                        CKEDITOR.instances[instance].setData(" ");
-                    }
-                    $("ul.send_list").empty();
-                    attr = {};
-                    successMsg(data.msg);
-                }
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-
-            },
-            complete: function(data) {
-                $this.button('reset');
-            }
-        })
+    //     var ins = document.getElementById('individual_file').files.length;
+    //     for (var x = 0; x < ins; x++) {
+    //         formData.append("files[]", document.getElementById('individual_file').files[x]);
+    //     }
 
 
+    //     var objArr = [];
+    //     var user_list = (!jQuery.isEmptyObject(attr)) ? JSON.stringify(attr) : "";
+    //     formData.append('user_list', user_list);
+    //     var $form = $(this),
+    //         url = $form.attr('action');
+    //     var $this = $('.submit_individual');
+    //     $this.button('loading');
 
+    //     $.ajax({
+    //         type: "POST",
+    //         url: url,
+    //         data: formData,
+    //         dataType: "JSON",
+    //         contentType: false,
+    //         processData: false,
 
-    });
+    //         beforeSend: function() {
+    //             $this.button('loading');
+
+    //         },
+    //         success: function(data) {
+    //             if (data.status == 1) {
+    //                 var message = "";
+    //                 $.each(data.msg, function(index, value) {
+
+    //                     message += value;
+    //                 });
+    //                 errorMsg(message);
+    //             } else if (data.status == 2) {
+    //                 errorMsg(data.msg);
+    //             } else {
+    //                 $('#individual_form')[0].reset();
+    //                 for (instance in CKEDITOR.instances) {
+    //                     CKEDITOR.instances[instance].setData(" ");
+    //                 }
+    //                 $("ul.send_list").empty();
+    //                 attr = {};
+    //                 successMsg(data.msg);
+    //             }
+    //         },
+    //         error: function(jqXHR, textStatus, errorThrown) {
+
+    //         },
+    //         complete: function(data) {
+    //             $this.button('reset');
+    //         }
+    //     })
+
+    // });
 
 
 
-    $("#group_form").submit(function(event) {
-
-
+    $(".sdh_mail_func").submit(function(event) {
+        var sdh_id = $(this).find('input[type=file]').attr('id');
+        //console.log(sdh_id);
         event.preventDefault();
         for (var instanceName in CKEDITOR.instances) {
             CKEDITOR.instances[instanceName].updateElement();
@@ -682,15 +667,19 @@
 
         //===========
 
-        var ins = document.getElementById('group_file').files.length;
+        var ins = document.getElementById(sdh_id).files.length;
         for (var x = 0; x < ins; x++) {
-            formData.append("files[]", document.getElementById('group_file').files[x]);
+            formData.append("files[]", document.getElementById(sdh_id).files[x]);
         }
         //==========
 
+        var objArr = [];
+        var user_list = (!jQuery.isEmptyObject(attr)) ? JSON.stringify(attr) : "";
+        formData.append('user_list', user_list);
+
         var $form = $(this),
             url = $form.attr('action');
-        var $this = $('.submit_group');
+        var $this = $('.submit');
         $this.button('loading');
 
 
@@ -717,10 +706,12 @@
                 } else if (data.status == 2) {
                     errorMsg(data.msg);
                 } else {
-                    $('#group_form')[0].reset();
+                    $('.sdh_mail_func')[0].reset();
                     for (instance in CKEDITOR.instances) {
                         CKEDITOR.instances[instance].setData(" ");
                     }
+                    $("ul.send_list").empty();
+                    attr = {};
                     successMsg(data.msg);
                 }
             },
@@ -731,78 +722,6 @@
         })
 
     });
-
-
-    $("#birthday_form").submit(function(event) {
-
-
-        event.preventDefault();
-        for (var instanceName in CKEDITOR.instances) {
-            CKEDITOR.instances[instanceName].updateElement();
-        }
-        // var logoImg = $('input[name="group_attachment"]').get(0).files[0];
-        var formData = new FormData();
-        var other_data = $(this).serializeArray();
-        $.each(other_data, function(key, input) {
-            formData.append(input.name, input.value);
-        });
-
-        //===========
-
-        var ins = document.getElementById('group_file').files.length;
-        for (var x = 0; x < ins; x++) {
-            formData.append("files[]", document.getElementById('group_file').files[x]);
-        }
-        //==========
-
-        var $form = $(this),
-            url = $form.attr('action');
-        var $this = $('.submit_birthday');
-        $this.button('loading');
-
-
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: formData,
-            dataType: "JSON",
-            contentType: false,
-            processData: false,
-
-            beforeSend: function() {
-                $this.button('loading');
-
-            },
-            success: function(data) {
-                if (data.status == 1) {
-                    var message = "";
-                    $.each(data.msg, function(index, value) {
-
-                        message += value;
-                    });
-                    errorMsg(message);
-                } else if (data.status == 2) {
-                    errorMsg(data.msg);
-                } else {
-                    $('#birthday_form')[0].reset();
-
-                    for (instance in CKEDITOR.instances) {
-                        CKEDITOR.instances[instance].setData(" ");
-                    }
-                    successMsg(data.msg);
-                }
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-
-            },
-            complete: function(data) {
-                $this.button('reset');
-            }
-        })
-
-    });
-
-
 
     $(document).on('change', '#class_id', function(e) {
         $('.section_list').html("");
@@ -834,73 +753,6 @@
             }
         });
     });
-
-    $("#class_form").submit(function(event) {
-        event.preventDefault();
-        for (var instanceName in CKEDITOR.instances) {
-            CKEDITOR.instances[instanceName].updateElement();
-        }
-        // var logoImg = $('input[name="class_attachment"]').get(0).files[0];
-        var formData = new FormData();
-        var other_data = $(this).serializeArray();
-        $.each(other_data, function(key, input) {
-            formData.append(input.name, input.value);
-        });
-        //For image file
-        // formData.append('logo', logoImg);
-        var ins = document.getElementById('class_file').files.length;
-        for (var x = 0; x < ins; x++) {
-            formData.append("files[]", document.getElementById('class_file').files[x]);
-        }
-
-        var $form = $(this),
-            url = $form.attr('action');
-        var $this = $('.submit_class');
-        $this.button('loading');
-
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: formData,
-            dataType: "JSON",
-            contentType: false,
-            processData: false,
-
-            beforeSend: function() {
-                $this.button('loading');
-
-            },
-            success: function(data) {
-                if (data.status == 1) {
-                    var message = "";
-                    $.each(data.msg, function(index, value) {
-
-                        message += value;
-                    });
-                    errorMsg(message);
-                } else if (data.status == 2) {
-                    errorMsg(data.msg);
-                } else {
-                    $('#class_form')[0].reset();
-                    for (instance in CKEDITOR.instances) {
-                        CKEDITOR.instances[instance].setData(" ");
-                    }
-                    $('.section_list').html("");
-                    successMsg(data.msg);
-                }
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-
-            },
-            complete: function(data) {
-                $this.button('reset');
-            }
-        });
-
-    });
-
-
-
 
     // $('.compose-textarea').wysihtml5({
     //     toolbar: {
