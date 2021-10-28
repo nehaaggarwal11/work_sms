@@ -710,9 +710,9 @@
                     for (instance in CKEDITOR.instances) {
                         CKEDITOR.instances[instance].setData(" ");
                     }
+                    successMsg(data.msg);
                     $("ul.send_list").empty();
                     attr = {};
-                    successMsg(data.msg);
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {},
