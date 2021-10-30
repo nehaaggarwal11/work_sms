@@ -9,13 +9,6 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-
-                    <?php if ($this->session->flashdata('flsh_msg')) {?>
-                                        <div class="alert alert-danger">
-                                        <?php echo $this->session->flashdata('flsh_msg') ?>
-                                    </div>
-                                    <?php }?>
-
                         <h3 class="box-title"><?php echo $title; ?></h3>
                         <div class="box-tools pull-right">
                             <a href="<?php echo base_url(); ?>category" class="btn btn-primary btn-sm"  data-toggle="tooltip" title="<?php echo $this->lang->line('add'); ?>" >

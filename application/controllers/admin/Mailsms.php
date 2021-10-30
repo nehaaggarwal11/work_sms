@@ -248,7 +248,7 @@ class Mailsms extends Admin_Controller
 
                             if ($user_mail_value['email'] != "") {
 
-                                $this->mailer->send_mail($user_mail_value['email'], $message_title, $message, $_FILES, $user_mail_value['guardianEmail']);
+                                $sdh_msg = $this->mailer->send_mail($user_mail_value['email'], $message_title, $message, $_FILES, $user_mail_value['guardianEmail']);
                             }
 
                         }
@@ -258,12 +258,16 @@ class Mailsms extends Admin_Controller
                     foreach ($user_array as $user_mail_key => $user_mail_value) {
                         if ($user_mail_value['mobileno'] != "") {
 
-                            $this->smsgateway->sendSMS($user_mail_value['mobileno'], "", ($message));
+                            $sdh_msg = $this->smsgateway->sendSMS($user_mail_value['mobileno'], "", ($message));
                         }
                     }
                 }
             }
-            echo json_encode(array('status' => 0, 'msg' => $this->lang->line('message_sent_successfully')));
+            if ($sdh_msg) {
+                echo json_encode(array('status' => 0, 'msg' => $this->lang->line('message_sent_successfully')));
+            } else {
+                echo json_encode(array('status' => 2, 'msg' => $this->lang->line('error_occured')));
+            }
         } else {
 
             $data = array(
@@ -324,7 +328,7 @@ class Mailsms extends Admin_Controller
                     if (!empty($this->mail_config)) {
                         foreach ($user_array as $user_mail_key => $user_mail_value) {
                             if ($user_mail_value['email'] != "") {
-                                $this->mailer->send_mail($user_mail_value['email'], $message_title, $message, $_FILES);
+                                $sdh_msg = $this->mailer->send_mail($user_mail_value['email'], $message_title, $message, $_FILES);
                             }
                         }
                     }
@@ -332,13 +336,17 @@ class Mailsms extends Admin_Controller
                 if ($send_sms) {
                     foreach ($user_array as $user_mail_key => $user_mail_value) {
                         if ($user_mail_value['mobileno'] != "") {
-                            $this->smsgateway->sendSMS($user_mail_value['mobileno'], "", ($message));
+                            $sdh_msg = $this->smsgateway->sendSMS($user_mail_value['mobileno'], "", ($message));
                         }
                     }
                 }
             }
 
-            echo json_encode(array('status' => 0, 'msg' => $this->lang->line('message_sent_successfully')));
+            if ($sdh_msg) {
+                echo json_encode(array('status' => 0, 'msg' => $this->lang->line('message_sent_successfully')));
+            } else {
+                echo json_encode(array('status' => 2, 'msg' => $this->lang->line('error_occured')));
+            }
         } else {
 
             $data = array(
@@ -430,7 +438,7 @@ class Mailsms extends Admin_Controller
                     if (!empty($this->mail_config)) {
                         foreach ($user_array as $user_mail_key => $user_mail_value) {
                             if ($user_mail_value['email'] != "") {
-                                $this->mailer->send_mail($user_mail_value['email'], $message_title, $message, $_FILES);
+                               $sdh_msg =  $this->mailer->send_mail($user_mail_value['email'], $message_title, $message, $_FILES) ;
                             }
                         }
                     }
@@ -438,13 +446,16 @@ class Mailsms extends Admin_Controller
                 if ($send_sms) {
                     foreach ($user_array as $user_mail_key => $user_mail_value) {
                         if ($user_mail_value['mobileno'] != "") {
-                            $this->smsgateway->sendSMS($user_mail_value['mobileno'], "", ($message));
+                            $sdh_msg = $this->smsgateway->sendSMS($user_mail_value['mobileno'], "", ($message));
                         }
                     }
                 }
             }
-
-            echo json_encode(array('status' => 0, 'msg' => $this->lang->line('message_sent_successfully')));
+            if ($sdh_msg) {
+                echo json_encode(array('status' => 0, 'msg' => $this->lang->line('message_sent_successfully')));
+            } else {
+                echo json_encode(array('status' => 2, 'msg' => $this->lang->line('error_occured')));
+            }
         } else {
 
             $data = array(
@@ -864,7 +875,7 @@ class Mailsms extends Admin_Controller
                     if (!empty($this->mail_config)) {
                         foreach ($user_array as $user_mail_key => $user_mail_value) {
                             if ($user_mail_value['email'] != "") {
-                                $this->mailer->send_mail($user_mail_value['email'], $message_title, $message, $_FILES);
+                                $sdh_msg = $this->mailer->send_mail($user_mail_value['email'], $message_title, $message, $_FILES);
                             }
                         }
                     }
@@ -873,13 +884,17 @@ class Mailsms extends Admin_Controller
                     foreach ($user_array as $user_mail_key => $user_mail_value) {
                         if ($user_mail_value['mobileno'] != "") {
 
-                            $this->smsgateway->sendSMS($user_mail_value['mobileno'], "", ($message));
+                            $sdh_msg =  $this->smsgateway->sendSMS($user_mail_value['mobileno'], "", ($message));
                         }
                     }
                 }
             }
 
-            echo json_encode(array('status' => 0, 'msg' => $this->lang->line('message_sent_successfully')));
+            if ($sdh_msg) {
+                echo json_encode(array('status' => 0, 'msg' => $this->lang->line('message_sent_successfully')));
+            } else {
+                echo json_encode(array('status' => 2, 'msg' => $this->lang->line('error_occured')));
+            }
         } else {
 
             $data = array(

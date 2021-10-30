@@ -61,19 +61,6 @@ class Category extends Admin_Controller {
             $data = array(
                 'category' => $this->input->post('category'),
             );
-            $arr=array();
-            $cat=$this->category_model->get();
-            foreach($cat as $c){
-                $arr[]=$c['category'];
-           
-        }
-        // die(json_encode($arr));
-        if(in_array($this->input->post('category'),$arr)){
-                $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">Category Name Already Exist</div>');
-                // redirect('admin/hostel/student_hostel_save');
-                redirect($this->uri->uri_string());
-            }
-            
             $this->category_model->add($data);
             $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">'.$this->lang->line('success_message').'</div>');
             redirect('category/index');

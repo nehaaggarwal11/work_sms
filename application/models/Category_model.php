@@ -56,11 +56,6 @@ class Category_model extends MY_Model {
         }
     }
 
-    // public function check(){
-    //     $que=$this->db->select('category')->from('categories')->get();
-    //     $que->result_array();
-    // }
-
     /**
      * This function will take the post data passed from the controller
      * If id is present, then it will do an update
@@ -92,16 +87,6 @@ class Category_model extends MY_Model {
 				//return $return_value;
 			}
         } else {
-            // $que=$this->db->select('category')->from('categories')->get();
-            // $cat=$que->result_array();
-            // die(json_encode($cat));
-            // extract($data);
-            // if(in_array($category,$cat)){
-            //     $this->session->set_flashdata('flsh_msg', 'Category Already Exist');
-            //     // redirect('admin/hostel/student_hostel_save');
-            //     redirect($this->uri->uri_string());
-            // }
-
             $this->db->insert('categories', $data);
             $id=$this->db->insert_id();
 			$message      = INSERT_RECORD_CONSTANT." On  categories id ".$id;

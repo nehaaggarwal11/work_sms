@@ -71,10 +71,9 @@ class Hostelroom extends Admin_Controller {
     function getRoom() {
         $hosel_id = $this->input->get('hostel_id');
         $data = $this->hostelroom_model->getRoomByHoselID($hosel_id);
-        // die(json_encode($data));
         echo json_encode($data);
     }
- 
+
     function edit($id) {
         if (!$this->rbac->hasPrivilege('hostel_rooms', 'can_edit')) {
             access_denied();

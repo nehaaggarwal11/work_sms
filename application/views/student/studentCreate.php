@@ -339,8 +339,8 @@
                                         if ($sch_setting->father_phone) {  ?>
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1"><?php echo $this->lang->line('father_phone'); ?></label>
-                                                    <input id="father_phone" name="father_phone" placeholder="" type="number" class="form-control" value="<?php echo set_value('father_phone'); ?>" />
+                                                    <label for="exampleInputEmail1"><?php echo $this->lang->line('father_phone'); ?></label><small class="req"> *</small></label>
+                                                    <input id="father_phone" name="father_phone" placeholder="" type="text" class="form-control" value="<?php echo set_value('father_phone'); ?>" required />
                                                     <span class="text-danger"><?php echo form_error('father_phone'); ?></span>
                                                 </div>
                                             </div>
@@ -348,8 +348,8 @@
                                         if ($sch_setting->father_occupation) { ?>
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1"><?php echo $this->lang->line('father_occupation'); ?></label>
-                                                    <input id="father_occupation" name="father_occupation" placeholder="" type="text" class="form-control" value="<?php echo set_value('father_occupation'); ?>" />
+                                                    <label for="exampleInputEmail1"><?php echo $this->lang->line('father_occupation'); ?></label><small class="req"> *</small></label>
+                                                    <input id="father_occupation" name="father_occupation" placeholder="" type="text" class="form-control" value="<?php echo set_value('father_occupation'); ?>" required />
                                                     <span class="text-danger"><?php echo form_error('father_occupation'); ?></span>
                                                 </div>
                                             </div>
@@ -378,8 +378,8 @@
                                         if ($sch_setting->mother_phone) { ?>
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1"><?php echo $this->lang->line('mother_phone'); ?></label>
-                                                    <input id="mother_phone" name="mother_phone" placeholder="" type="number" class="form-control" value="<?php echo set_value('mother_phone'); ?>" />
+                                                    <label for="exampleInputEmail1"><?php echo $this->lang->line('mother_phone'); ?></label><small class="req"> *</small></label>
+                                                    <input id="mother_phone" name="mother_phone" placeholder="" type="text" class="form-control" value="<?php echo set_value('mother_phone'); ?>" required />
                                                     <span class="text-danger"><?php echo form_error('mother_phone'); ?></span>
                                                 </div>
                                             </div>
@@ -387,8 +387,8 @@
                                         if ($sch_setting->mother_occupation) { ?>
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="exampleInputEmail1"><?php echo $this->lang->line('mother_occupation'); ?></label>
-                                                    <input id="mother_occupation" name="mother_occupation" placeholder="" type="text" class="form-control" value="<?php echo set_value('mother_occupation'); ?>" />
+                                                    <label for="exampleInputEmail1"><?php echo $this->lang->line('mother_occupation'); ?></label><small class="req"> *</small></label>
+                                                    <input id="mother_occupation" name="mother_occupation" placeholder="" type="text" class="form-control" value="<?php echo set_value('mother_occupation'); ?>" required />
                                                     <span class="text-danger"><?php echo form_error('mother_occupation'); ?></span>
                                                 </div>
                                             </div>
@@ -483,7 +483,7 @@
                                         <?php }
                                         if ($sch_setting->guardian_address) { ?>
                                             <div class="col-md-6">
-                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('guardian_address'); ?></label>
+                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('guardian_address'); ?></label><small class="req"> *</small></label>
                                                 <textarea id="guardian_address" name="guardian_address" placeholder="" class="form-control" rows="2" required><?php echo set_value('guardian_address'); ?></textarea>
                                                 <span class="text-danger"><?php echo form_error('guardian_address'); ?></span>
                                             </div>

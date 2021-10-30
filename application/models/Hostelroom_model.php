@@ -2,7 +2,7 @@
 
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
- 
+
 class Hostelroom_model extends MY_Model {
 
     public function __construct() {
@@ -56,7 +56,7 @@ class Hostelroom_model extends MY_Model {
         //return $return_value;
         }
     }
-   
+
     public function getRoomByHoselID($hostel_id) {
         $this->db->select('hostel_rooms.*,room_types.room_type');
         $this->db->from('hostel_rooms');
@@ -65,7 +65,6 @@ class Hostelroom_model extends MY_Model {
         $query = $this->db->get();
         return $query->result();
     }
-
 
     /**
      * This function will take the post data passed from the controller
