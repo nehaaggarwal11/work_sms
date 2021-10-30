@@ -282,7 +282,7 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                         <li class="pull-right">
                             <?php if ($a) {
                              ?>
-                                <a href="#" class="change_password text-green" data-toggle="tooltip" data-placement="bottom" title="<?php echo $this->lang->line('change_password'); ?>" ></i> <i class="fa fa-key"></i></a>
+                                <a href="#" class="change_password text-green" data-toggle="tooltip" data-placement="bottom" title="<?php echo $this->lang->line('change_password'); ?>" ></i> <i class="fa fa-key"></i><?php echo $this->lang->line('change_password'); ?></a>
 
                         <?php 
                         }

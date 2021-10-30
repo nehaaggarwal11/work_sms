@@ -85,14 +85,14 @@
                                                     if ($conference_value->created_id == $logged_staff_id) {
                                                         echo $this->lang->line('self');
                                                     } else {
-                                                        echo $this->conference_model->sdhGetRole($conference_value->staff_id).'('. $conference_value->create_by_name.')';
+                                                        echo $this->conference_model->sdhGetRole($conference_value->staff_id) . '(' . $conference_value->create_by_name . ')';
                                                     }
                                                     ?></td>
 
                                                 <td class="mailbox-name">
                                                     <?php
-                                                        echo $this->conference_model->sdhGetRole($conference_value->staff_id) . '(' .  $conference_value->create_for_name . ')';
-                                                   ?>
+                                                    echo $this->conference_model->sdhGetRole($conference_value->staff_id) . '(' .  $conference_value->create_for_name . ')';
+                                                    ?>
                                                 </td>
 
                                                 <td class="mailbox-name">
@@ -104,9 +104,9 @@
                                                     <form class="chgstatus_form" method="POST" action="<?php echo site_url('admin/conference/chgstatus') ?>">
                                                         <input type="hidden" name="conference_id" value="<?php echo $conference_value->id; ?>">
                                                         <select class="form-control chgstatus_dropdown" name="chg_status">
-                                                            <option value="0" <?php echo ($conference_value->status == 0) ? "selected='selected'":""; ?>><?php echo $this->lang->line('awaited'); ?></option>
-                                                            <option value="1" <?php echo ($conference_value->status == 1) ? "selected='selected'":""; ?>><?php echo $this->lang->line('cancelled'); ?> </option>
-                                                            <option value="2" <?php echo ($conference_value->status == 2) ? "selected='selected'":""; ?>><?php echo $this->lang->line('finished'); ?> </option>
+                                                            <option value="0" <?php echo ($conference_value->status == 0) ? "selected='selected'" : ""; ?>><?php echo $this->lang->line('awaited'); ?></option>
+                                                            <option value="1" <?php echo ($conference_value->status == 1) ? "selected='selected'" : ""; ?>><?php echo $this->lang->line('cancelled'); ?> </option>
+                                                            <option value="2" <?php echo ($conference_value->status == 2) ? "selected='selected'" : ""; ?>><?php echo $this->lang->line('finished'); ?> </option>
                                                         </select>
                                                     </form>
                                                 </td>
@@ -115,7 +115,7 @@
                                                     if ($conference_value->status == 0) {
                                                     ?>
                                                         <a data-placement="left" href="<?php echo $return_response->start_url; ?>" class="btn btn-default btn-xs" target="_blank">
-                                                            <i class="fa fa-sign-in"></i> <?php echo $this->lang->line('start') . ' ' . $this->lang->line('class'); ?>
+                                                            <span class="label label-success"><i class="fa fa-video-camera"></i> <?php echo $this->lang->line('start') ?></span>
                                                         </a>
                                                     <?php
                                                     }

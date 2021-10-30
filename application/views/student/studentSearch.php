@@ -146,6 +146,9 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                                         } else {
                                             $count = 1;
                                             foreach ($resultlist as $student) {
+                                                // echo '<pre>';
+                                                // print_r($student);
+                                                // echo '</pre>';
                                                 ?>
                                                 <tr>
 												
@@ -168,7 +171,7 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
 													<?php if ($sch_setting->category) {  ?>
                                                     <td><?php echo $student['category']; ?></td>
 													<?php } if ($sch_setting->mobile_no) {  ?>
-                                                    <td><?php echo $student['mobileno']; ?></td>
+                                                    <td><?php echo $student['mobileno']? $student['mobileno']: $student['guardian_phone']; ?></td>
                                                     <?php }
                                                     if (!empty($fields)) {
 
