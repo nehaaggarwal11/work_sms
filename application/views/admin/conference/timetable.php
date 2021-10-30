@@ -189,7 +189,7 @@
                                                     if ($conference_value->status == 0) {
                                                     ?>
                                                         <a data-placement="left" href="<?php echo $return_response->start_url; ?>" class="btn btn-default btn-xs" target="_blank">
-                                                            <i class="fa fa-sign-in"></i> <?php echo $this->lang->line('start') . " " . $this->lang->line('class') ?>
+                                                            <span class="label label-success"><i class="fa fa-video-camera"></i> <?php echo $this->lang->line('start') ?></span>
                                                         </a>
                                                     <?php
                                                     }

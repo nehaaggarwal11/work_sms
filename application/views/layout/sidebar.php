@@ -477,7 +477,7 @@
                             <i class="fa fa-video-camera ftlayer"></i><span><?php echo $this->lang->line('gmeet_live_classes'); ?></span> <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <?php if ($this->rbac->hasPrivilege('live_classe', 'can_view')) { ?>
+                            <?php if ($this->rbac->hasPrivilege('gmeet_live_classes', 'can_view')) { ?>
                                 <li class="<?php echo set_Submenu('gmeet/live_class'); ?>"><a href="<?php echo base_url(); ?>admin/gmeet/timetable"><i class="fa fa-angle-double-right"></i> <?php echo $this->lang->line('live_class'); ?></a></li>
                             <?php } ?>
                             <?php if ($this->rbac->hasPrivilege('live_meeting', 'can_view')) { ?>

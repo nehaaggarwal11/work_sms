@@ -147,13 +147,13 @@
                                                         if ($conference_value->created_id == $logged_staff_id) {
                                                     ?>
                                                             <a data-placement="left" href="<?php echo $return_response->start_url; ?>" class="btn btn-default btn-xs" target="_blank">
-                                                                <i class="fa fa-sign-in"></i> <?php echo $this->lang->line('start') . ' ' . $this->lang->line('meeting'); ?>
+                                                                <span class="label label-success"><i class="fa fa-video-camera"></i> <?php echo $this->lang->line('start') ?></span>
                                                             </a>
                                                         <?php
                                                         } else {
                                                         ?>
                                                             <a data-placement="left" href="<?php echo $return_response->join_url; ?>" data-id="<?php echo $conference_value->id; ?>" class="btn btn-default btn-xs join-btn" target="_blank">
-                                                                <i class="fa fa-sign-in"></i> <?php echo $this->lang->line('join') . ' ' . $this->lang->line('meeting'); ?>
+                                                               <span class="label label-warning"><i class="fa fa-video-camera"></i> <?php echo $this->lang->line('join') ?></span>
                                                             </a>
                                                         <?php
                                                         }
