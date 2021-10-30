@@ -262,7 +262,7 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
 
                                 <li class="pull-right">
                                     <a href="#"  class="schedule_modal text-green" data-toggle="tooltip" data-placement="bottom" title="<?php echo $this->lang->line('login_details'); ?>"><i class="fa fa-key"></i>
-                                        <?php echo $this->lang->line('login_details');    ?>
+                                        <?php //echo $this->lang->line('login_details');    ?>
                                     </a>
                                 </li>
                                 <?php
@@ -332,7 +332,7 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                                             <?php } if ($sch_setting->mobile_no) {  ?>
                                             <tr>
                                                 <td><?php echo $this->lang->line('mobile_no'); ?></td>
-                                                <td><?php echo $student['mobileno']? $student['mobileno']: $student['guardian_phone']; ?></td>
+                                                <td><?php echo $student['mobileno']; ?></td>
                                             </tr>
                                             <?php } if ($sch_setting->cast) {  ?>
                                             <tr>
@@ -347,7 +347,7 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                                             <?php } if ($sch_setting->student_email) {  ?>
                                             <tr>
                                                 <td><?php echo $this->lang->line('email'); ?></td>
-                                                <td><?php echo $student['email']? $student['email']: $student['guardian_email']; ?></td>
+                                                <td><?php echo $student['email']; ?></td>
                                             </tr>
                                             <?php } ?>
                                             <?php

@@ -1,14 +1,14 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
-            <i class="fa fa-mortar-board"></i> <?php echo $this->lang->line('gmeet_live_classes'); ?></h1>
+            <i class="fa fa-mortar-board"></i> <?php echo $this->lang->line('live_class'); ?></h1>
     </section>
     <section class="content">
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"><i class="fa fa-search"></i> <?php echo $this->lang->line('gmeet_live_classes'); ?></h3>
+                        <h3 class="box-title"><i class="fa fa-search"></i> <?php echo $this->lang->line('live_class'); ?></h3>
                         <div class="box-tools pull-right">
                         </div>
                     </div>

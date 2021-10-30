@@ -123,7 +123,7 @@
                                                 }
                                                 ?>><?php echo $class['class'] ?></option>
                                                         <?php
-                                                       // $count++;
+                                                        $count++;
                                                     }
                                                     ?>
                                         </select>

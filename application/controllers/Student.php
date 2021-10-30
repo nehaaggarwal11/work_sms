@@ -377,7 +377,7 @@ class Student extends Admin_Controller
             $father_occupation = $this->input->post('father_occupation');
             $mother_name       = $this->input->post('mother_name');
             $mother_phone      = $this->input->post('mother_phone');
-            $mother_occupation = $this->input->post('mother_occupation'); 
+            $mother_occupation = $this->input->post('mother_occupation');
 
             if (isset($measurement_date)) {
                 $data_insert['measurement_date'] = date('Y-m-d', $this->customlib->datetostrtotime($this->input->post('measure_date')));
@@ -465,7 +465,7 @@ class Student extends Admin_Controller
 
                 $data_insert['mother_occupation'] = $this->input->post('mother_occupation');
             }
-
+            // die(json_encode($data_insert));
             $insert                            = true;
             $data_setting                      = array();
             $data_setting['id']                = $this->sch_setting_detail->id;

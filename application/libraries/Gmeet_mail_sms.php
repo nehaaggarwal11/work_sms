@@ -339,7 +339,7 @@ class Gmeet_mail_sms {
             foreach ($detail as $staff_key => $staff_value) {
                 $send_to = $staff_key;
                 if ($send_to != "") {
-                    $msg = $this->getOnlineMeetingStaffContent($detail[$staff_key], $template,'0');
+                    $msg = $this->getOnlineMeetingStaffContent($detail[$staff_key], $template);
                     $subject = "Online Gmeet Meeting";
                     $this->CI->mailer->send_mail($send_to, $subject, $msg);
                 }
