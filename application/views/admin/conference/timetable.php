@@ -3,7 +3,8 @@
 
     <section class="content-header">
         <h1>
-            <i class="fa fa-mortar-board"></i> <?php echo $this->lang->line('live_class') ?></h1>
+            <i class="fa fa-mortar-board"></i> <?php echo $this->lang->line('live_class') ?>
+        </h1>
     </section>
 
     <section class="content">
@@ -18,16 +19,16 @@
                     <div class="box-body">
                         <?php
                         if (!empty($timetable)) {
-                            ?>
-                            <div class="table-responsive">    
+                        ?>
+                            <div class="table-responsive">
                                 <table class="table table-stripped">
                                     <thead>
                                         <tr>
                                             <?php
                                             foreach ($timetable as $tm_key => $tm_value) {
-                                                ?>
+                                            ?>
                                                 <th class="text text-center"><?php echo $tm_key; ?></th>
-                                                <?php
+                                            <?php
                                             }
                                             ?>
                                         </tr>
@@ -36,12 +37,12 @@
                                         <tr>
                                             <?php
                                             foreach ($timetable as $tm_key => $tm_value) {
-                                                ?>
+                                            ?>
                                                 <td class="text text-center" width="14%">
 
                                                     <?php
                                                     if (!$timetable[$tm_key]) {
-                                                        ?>
+                                                    ?>
                                                         <div class="attachment-block clearfix">
                                                             <b class="text text-center"><?php echo $this->lang->line('not'); ?> <br><?php echo $this->lang->line('scheduled'); ?></b><br>
                                                         </div>
@@ -49,12 +50,12 @@
                                                     } else {
 
                                                         foreach ($timetable[$tm_key] as $tm_k => $tm_kue) {
-                                                            ?>
+                                                        ?>
                                                             <div class="attachment-block clearfix <?php
-                                                            if ($this->rbac->hasPrivilege('live_classes', 'can_add')) {
-                                                                echo "online-timetable";
-                                                            }
-                                                            ?>" data-subject="<?php echo $tm_kue->subject_name . " (" . $tm_kue->subject_code . ")"; ?>" data-class="<?php echo $tm_kue->class . "(" . $tm_kue->section . ")"; ?>" data-class-id="<?php echo $tm_kue->class_id; ?>" data-section-id="<?php echo $tm_kue->section_id; ?>" data-time-from="<?php echo $tm_kue->time_from; ?>">
+                                                                                                    if ($this->rbac->hasPrivilege('live_classes', 'can_add')) {
+                                                                                                        echo "online-timetable";
+                                                                                                    }
+                                                                                                    ?>" data-subject="<?php echo $tm_kue->subject_name . " (" . $tm_kue->subject_code . ")"; ?>" data-class="<?php echo $tm_kue->class . "(" . $tm_kue->section . ")"; ?>" data-class-id="<?php echo $tm_kue->class_id; ?>" data-section-id="<?php echo $tm_kue->section_id; ?>" data-time-from="<?php echo $tm_kue->time_from; ?>">
                                                                 <b class="text-green"><?php echo $this->lang->line('subject') ?>: <?php echo $tm_kue->subject_name . " (" . $tm_kue->subject_code . ")"; ?>
 
                                                                 </b>
@@ -69,27 +70,27 @@
 
                                                             </div>
 
-                                                            <?php
+                                                    <?php
                                                         }
                                                     }
                                                     ?>
 
                                                 </td>
-                                                <?php
+                                            <?php
                                             }
                                             ?>
                                         </tr>
 
                                     </tbody>
                                 </table>
-                            </div>   
-                            <?php
+                            </div>
+                        <?php
                         } else {
-                            ?>
+                        ?>
                             <div class="alert alert-info">
                                 <?php echo $this->lang->line('no_record_found'); ?>
                             </div>
-                            <?php
+                        <?php
                         }
                         ?>
                     </div>
@@ -98,7 +99,7 @@
                         <h3 class="box-title"><i class="fa fa-search"></i> <?php echo $this->lang->line('live_class') ?></h3>
                         <div class="box-tools pull-right">
                             <?php if ($this->rbac->hasPrivilege('live_classes', 'can_add')) {
-                                ?>
+                            ?>
                                 <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-credential"><i class="fa fa-plus"></i> <?php echo $this->lang->line('add') . " " . $this->lang->line('credential'); ?></button>
                                 <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-classteacher-timetable"><i class="fa fa-plus"></i> <?php echo $this->lang->line('add'); ?></button>
                             <?php }
@@ -131,25 +132,25 @@
                                 <tbody>
                                     <?php
                                     if (empty($conferences)) {
-                                        ?>
+                                    ?>
                                         <?php
                                     } else {
                                         foreach ($conferences as $conference_key => $conference_value) {
                                             $return_response = json_decode($conference_value->return_response);
-                                            ?>
+                                        ?>
                                             <tr>
                                                 <td class="mailbox-name">
                                                     <a href="#" data-toggle="popover" class="detail_popover"><?php echo $conference_value->title; ?></a>
                                                     <div class="fee_detail_popover displaynone">
                                                         <?php
                                                         if ($conference_value->description == "") {
-                                                            ?>
+                                                        ?>
                                                             <p class="text text-danger"><?php echo $this->lang->line('no_description'); ?></p>
-                                                            <?php
+                                                        <?php
                                                         } else {
-                                                            ?>
+                                                        ?>
                                                             <p class="text text-info"><?php echo $conference_value->description; ?></p>
-                                                            <?php
+                                                        <?php
                                                         }
                                                         ?>
                                                     </div>
@@ -165,7 +166,7 @@
                                                     if ($conference_value->created_id == $logged_staff_id) {
                                                         echo "Self";
                                                     } else {
-                                                        echo $conference_value->create_by_name . " " . $conference_value->create_by_surname;
+                                                        echo $this->conference_model->sdhGetRole($conference_value->created_id) . '(' . $conference_value->create_by_name . ')';
                                                     }
                                                     ?></td>
                                                 <td class="mailbox-name">
@@ -186,28 +187,28 @@
                                                 <td class="mailbox-date pull-right">
                                                     <?php
                                                     if ($conference_value->status == 0) {
-                                                        ?>
-                                                        <a data-placement="left" href="<?php echo $return_response->start_url; ?>" class="btn btn-default btn-xs"  target="_blank">
+                                                    ?>
+                                                        <a data-placement="left" href="<?php echo $return_response->start_url; ?>" class="btn btn-default btn-xs" target="_blank">
                                                             <i class="fa fa-sign-in"></i> <?php echo $this->lang->line('start') . " " . $this->lang->line('class') ?>
                                                         </a>
-                                                        <?php
+                                                    <?php
                                                     }
                                                     ?>
                                                     <?php
                                                     if ($conference_value->created_id == $logged_staff_id) {
                                                         if ($this->rbac->hasPrivilege('live_classes', 'can_delete')) {
-                                                            ?>
-                                                            <a data-placement="left" href="<?php echo base_url(); ?>admin/conference/delete/<?php echo $conference_value->id . "/" . $return_response->id; ?>"class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');">
+                                                    ?>
+                                                            <a data-placement="left" href="<?php echo base_url(); ?>admin/conference/delete/<?php echo $conference_value->id . "/" . $return_response->id; ?>" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');">
                                                                 <i class="fa fa-remove"></i>
                                                             </a>
-                                                            <?php
+                                                    <?php
                                                         }
                                                     }
                                                     ?>
 
                                                 </td>
                                             </tr>
-                                            <?php
+                                    <?php
                                         }
                                     }
                                     ?>
@@ -215,7 +216,7 @@
                             </table><!-- /.table -->
                         </div>
                     </div>
-                </div>  
+                </div>
             </div>
         </div>
     </section>
@@ -282,19 +283,19 @@
                         </div>
                         <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
                             <label for="duration"> <?php echo $this->lang->line('class_duration_minutes') ?><small class="req"> *</small></label>
-                            <input type="number" class="form-control" id="duration" name="duration">
+                            <input type="number" class="form-control" id="duration" name="duration" min="1">
                             <span class="text text-danger" id="title_error"></span>
                         </div>
                         <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
                             <label for="class"> <?php echo $this->lang->line('host_video'); ?><small class="req"> *</small></label>
-                            <label class="radio-inline"><input type="radio" name="host_video"  value="1" checked><?php echo $this->lang->line('enable'); ?></label>
-                            <label class="radio-inline"><input type="radio" name="host_video" value="0" > <?php echo $this->lang->line('disabled'); ?></label>
+                            <label class="radio-inline"><input type="radio" name="host_video" value="1" checked><?php echo $this->lang->line('enable'); ?></label>
+                            <label class="radio-inline"><input type="radio" name="host_video" value="0"> <?php echo $this->lang->line('disabled'); ?></label>
                             <span class="text text-danger" id="class_error"></span>
                         </div>
                         <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
                             <label for="class"><?php echo $this->lang->line('client_video'); ?><small class="req"> *</small></label>
-                            <label class="radio-inline"><input type="radio" name="client_video"  value="1" checked> <?php echo $this->lang->line('enable'); ?></label>
-                            <label class="radio-inline"><input type="radio" name="client_video" value="0" > <?php echo $this->lang->line('disabled'); ?></label>
+                            <label class="radio-inline"><input type="radio" name="client_video" value="1" checked> <?php echo $this->lang->line('enable'); ?></label>
+                            <label class="radio-inline"><input type="radio" name="client_video" value="0"> <?php echo $this->lang->line('disabled'); ?></label>
                             <span class="text text-danger" id="class_error"></span>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -329,7 +330,7 @@
                         <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
                             <label for="date"> <?php echo $this->lang->line('class_date') ?><small class="req"> *</small></label>
                             <div class='input-group' id='meeting_classteacher_date'>
-                                <input type='text' class="form-control" name="date" readonly="readonly"/>
+                                <input type='text' class="form-control" name="date" readonly="readonly" />
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -338,20 +339,20 @@
                         </div>
                         <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
                             <label for="duration"> <?php echo $this->lang->line('class_duration_minutes') ?><small class="req"> *</small></label>
-                            <input type="number" class="form-control" id="duration" name="duration">
+                            <input type="number" class="form-control" id="duration" name="duration" min="1">
                             <span class="text text-danger" id="title_error"></span>
                         </div>
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <label for="class"> <?php echo $this->lang->line('staff') ?><small class="req"> *</small></label>
-                            <select  id="staff_id" name="staff_id" class="form-control" >
+                            <select id="staff_id" name="staff_id" class="form-control">
                                 <option value=""><?php echo $this->lang->line('select'); ?></option>
                                 <?php
                                 foreach ($stafflist as $staff) {
-                                    ?>
+                                ?>
                                     <option value="<?php echo $staff['id']; ?>"><?php
-                                        echo ($staff["surname"] == "") ? $staff["name"] : $staff["name"] . " " . $staff["surname"];
-                                        ?></option>
-                                    <?php
+                                                                                echo ($staff["surname"] == "") ? $staff["name"] : $staff["name"] . " " . $staff["surname"];
+                                                                                ?></option>
+                                <?php
                                 }
                                 ?>
                             </select>
@@ -359,13 +360,13 @@
                         </div>
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <label for="class"> <?php echo $this->lang->line('class') ?><small class="req"> *</small></label>
-                            <select  id="class_id" name="class_id" class="form-control" >
+                            <select id="class_id" name="class_id" class="form-control">
                                 <option value=""><?php echo $this->lang->line('select'); ?></option>
                                 <?php
                                 foreach ($classlist as $class) {
-                                    ?>
+                                ?>
                                     <option value="<?php echo $class['id'] ?>"><?php echo $class['class'] ?></option>
-                                    <?php
+                                <?php
                                 }
                                 ?>
                             </select>
@@ -373,7 +374,7 @@
                         </div>
                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <label for="section"> <?php echo $this->lang->line('section'); ?><small class="req"> *</small></label>
-                            <select  id="section_id" name="section_id" class="form-control" >
+                            <select id="section_id" name="section_id" class="form-control">
                                 <option value=""><?php echo $this->lang->line('select'); ?></option>
                             </select>
                             <span class="text text-danger" id="section_error"></span>
@@ -381,14 +382,14 @@
                         <div class="clearfix"></div>
                         <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
                             <label for="class"> <?php echo $this->lang->line('host_video'); ?><small class="req"> *</small></label>
-                            <label class="radio-inline"><input type="radio" name="host_video"  value="1" checked><?php echo $this->lang->line('enable') ?></label>
-                            <label class="radio-inline"><input type="radio" name="host_video" value="0" > <?php echo $this->lang->line('disabled') ?></label>
+                            <label class="radio-inline"><input type="radio" name="host_video" value="1" checked><?php echo $this->lang->line('enable') ?></label>
+                            <label class="radio-inline"><input type="radio" name="host_video" value="0"> <?php echo $this->lang->line('disabled') ?></label>
                             <span class="text text-danger" id="class_error"></span>
                         </div>
                         <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
                             <label for="class"> <?php echo $this->lang->line('client_video') ?><small class="req"> *</small></label>
-                            <label class="radio-inline"><input type="radio" name="client_video"  value="1" checked> <?php echo $this->lang->line('enable') ?></label>
-                            <label class="radio-inline"><input type="radio" name="client_video" value="0" > <?php echo $this->lang->line('client_video'); ?></label>
+                            <label class="radio-inline"><input type="radio" name="client_video" value="1" checked> <?php echo $this->lang->line('enable') ?></label>
+                            <label class="radio-inline"><input type="radio" name="client_video" value="0"> <?php echo $this->lang->line('client_video'); ?></label>
                             <span class="text text-danger" id="class_error"></span>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -405,7 +406,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    (function ($) {
+    (function($) {
         "use strict";
         var datetime_format = '<?php echo $result = strtr($this->customlib->getSchoolDateFormat(), ['d' => 'DD', 'm' => 'MM', 'Y' => 'YYYY']) ?>';
         $('#meeting_date,#meeting_classteacher_date').datetimepicker({
@@ -413,9 +414,9 @@
             showTodayButton: true,
             ignoreReadonly: true
         });
-        $(document).ready(function () {
+        $(document).ready(function() {
 
-            $(document).on('click', '.online-timetable', function (event) {
+            $(document).on('click', '.online-timetable', function(event) {
                 var password = makeid(5);
                 var class_name = $(this).data('class');
                 var subject_name = $(this).data('subject');
@@ -438,29 +439,29 @@
                 trigger: 'hover',
                 container: 'body',
                 html: true,
-                content: function () {
+                content: function() {
                     return $(this).closest('td').find('.fee_detail_popover').html();
                 }
             });
         });
-        $("form#form-addconference").submit(function (event) {
+        $("form#form-addconference").submit(function(event) {
             event.preventDefault();
             var $form = $(this),
-                    url = $form.attr('action');
+                url = $form.attr('action');
             var $button = $form.find("button[type=submit]:focus");
             $.ajax({
                 type: "POST",
                 url: url,
                 data: $form.serialize(),
                 dataType: "JSON",
-                beforeSend: function () {
+                beforeSend: function() {
                     $button.button('loading');
 
                 },
-                success: function (data) {
+                success: function(data) {
                     if (data.status == 0) {
                         var message = "";
-                        $.each(data.error, function (index, value) {
+                        $.each(data.error, function(index, value) {
                             message += value;
                         });
                         errorMsg(message);
@@ -471,20 +472,20 @@
                     }
                     $button.button('reset');
                 },
-                error: function (jqXHR, textStatus, errorThrown) {
+                error: function(jqXHR, textStatus, errorThrown) {
                     $button.button('reset');
                 },
-                complete: function (data) {
+                complete: function(data) {
                     $button.button('reset');
                 }
             });
         })
-        $('#modal-online-timetable').on('hidden.bs.modal', function () {
+        $('#modal-online-timetable').on('hidden.bs.modal', function() {
             $(this).find("input,textarea,select").not("input[type=radio]")
-                    .val('')
-                    .end();
+                .val('')
+                .end();
             $(this).find("input[type=checkbox], input[type=radio]")
-                    .prop('checked', false);
+                .prop('checked', false);
             $('input:radio[name="host_video"][value="1"]').prop('checked', true);
             $('input:radio[name="client_video"][value="1"]').prop('checked', true);
         });
@@ -494,53 +495,56 @@
             showTodayButton: true,
             ignoreReadonly: true
         });
-        $('#modal-online-timetable').on('shown.bs.modal', function (e) {
+        $('#modal-online-timetable').on('shown.bs.modal', function(e) {
             var password = makeid(5);
             $('#password').val("").val(password);
         });
-        $('#modal-credential').on('shown.bs.modal', function (e) {
+        $('#modal-credential').on('shown.bs.modal', function(e) {
             var $modalDiv = $(e.delegateTarget);
             $.ajax({
                 type: "POST",
                 url: base_url + 'admin/conference/getcredential',
                 data: {},
                 dataType: "JSON",
-                beforeSend: function () {
+                beforeSend: function() {
 
                     $modalDiv.addClass('modal_loading');
                 },
-                success: function (data) {
+                success: function(data) {
                     $('#zoom_api_key').val(data.zoom_api_key);
                     $('#zoom_api_secret').val(data.zoom_api_secret);
                     $modalDiv.removeClass('modal_loading');
                 },
-                error: function (jqXHR, textStatus, errorThrown) {
+                error: function(jqXHR, textStatus, errorThrown) {
                     $modalDiv.removeClass('modal_loading');
                 },
-                complete: function (data) {
+                complete: function(data) {
                     $modalDiv.removeClass('modal_loading');
                 }
             });
         })
-        $("form#form-addcredential").submit(function (event) {
+        $("form#form-addcredential").submit(function(event) {
             event.preventDefault();
             var $form = $(this),
-                    url = $form.attr('action');
+                url = $form.attr('action');
             var $button = $form.find("button[type=submit]:focus");
             var formData = $form.serializeArray();
-            formData.push({name: 'button', value: $button.val()});
+            formData.push({
+                name: 'button',
+                value: $button.val()
+            });
             $.ajax({
                 type: "POST",
                 url: url,
                 data: formData,
                 dataType: "JSON",
-                beforeSend: function () {
+                beforeSend: function() {
                     $button.button('loading');
                 },
-                success: function (data) {
+                success: function(data) {
                     if (data.status == 0) {
                         var message = "";
-                        $.each(data.error, function (index, value) {
+                        $.each(data.error, function(index, value) {
                             message += value;
                         });
                         errorMsg(message);
@@ -551,16 +555,16 @@
                     }
                     $button.button('reset');
                 },
-                error: function (jqXHR, textStatus, errorThrown) {
+                error: function(jqXHR, textStatus, errorThrown) {
                     $button.button('reset');
                 },
-                complete: function (data) {
+                complete: function(data) {
                     $button.button('reset');
                 }
             });
         })
 
-        $('#modal-classteacher-timetable').on('shown.bs.modal', function (e) {
+        $('#modal-classteacher-timetable').on('shown.bs.modal', function(e) {
             $("#class_id", this).prop("selectedIndex", 0);
             $("#section_id", this).find('option:not(:first)').remove();
             var password = makeid(5);
@@ -568,15 +572,15 @@
 
         });
 
-        $(document).on('change', '#form-addconference #class_id', function (e) {
+        $(document).on('change', '#form-addconference #class_id', function(e) {
             $('#section_id').html("");
             var class_id = $(this).val();
             getSectionByClass(class_id, 0);
         });
-        $(document).on('change', '.chgstatus_dropdown', function () {
+        $(document).on('change', '.chgstatus_dropdown', function() {
             $(this).parent('form.chgstatus_form').submit();
         });
-        $("form.chgstatus_form").submit(function (e) {
+        $("form.chgstatus_form").submit(function(e) {
             e.preventDefault();
             var form = $(this);
             var url = form.attr('action');
@@ -585,23 +589,25 @@
                 url: url,
                 data: form.serialize(),
                 dataType: "JSON",
-                success: function (data)
-                {
+                success: function(data) {
                     if (data.status == 0) {
                         var message = "";
-                        $.each(data.error, function (index, value) {
+                        $.each(data.error, function(index, value) {
 
                             message += value;
                         });
                         errorMsg(message);
                     } else {
                         successMsg(data.message);
-                        window.location.reload(true);
+                        setTimeout(() => {
+                            window.location.reload(true);
+                        }, 1500)
                     }
                 }
             });
         });
     })(jQuery);
+
     function makeid(length) {
         var result = '';
         var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -611,6 +617,7 @@
         }
         return result;
     }
+
     function Converttimeformat(time) {
         var hrs = Number(time.match(/^(\d+)/)[1]);
         var mnts = Number(time.match(/:(\d+)/)[1]);
@@ -631,6 +638,7 @@
             second: 0
         };
     }
+
     function getSectionByClass(class_id, section_id) {
 
         if (class_id != "") {
@@ -640,14 +648,15 @@
             $.ajax({
                 type: "GET",
                 url: base_url + "sections/getByClass",
-                data: {'class_id': class_id},
+                data: {
+                    'class_id': class_id
+                },
                 dataType: "json",
-                beforeSend: function () {
+                beforeSend: function() {
                     $('#form-addconference #section_id').addClass('dropdownloading');
                 },
-                success: function (data) {
-                    $.each(data, function (i, obj)
-                    {
+                success: function(data) {
+                    $.each(data, function(i, obj) {
                         var sel = "";
                         if (section_id == obj.section_id) {
                             sel = "selected";
@@ -656,7 +665,7 @@
                     });
                     $('#form-addconference #section_id').append(div_data);
                 },
-                complete: function () {
+                complete: function() {
                     $('#form-addconference #section_id').removeClass('dropdownloading');
                 }
             });

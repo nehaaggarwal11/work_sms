@@ -68,13 +68,11 @@ class Conference extends Admin_Controller {
         $data['role'] = $role;
         $staff_id = $this->customlib->getStaffID();
         $data['logged_staff_id'] = $staff_id;
-
         if ($role->id == 2) {
             $stafflist = $this->staff_model->getEmployee(2);
             $data['stafflist'] = $stafflist;
             $data['timetable'] = array();
             $days = $this->customlib->getDaysname();
-
             $data['conferences'] = $this->conference_model->getByStaff($this->customlib->getStaffID());
             $userdata = $this->customlib->getUserData();
             $role_id = $userdata["role_id"];
@@ -117,7 +115,6 @@ class Conference extends Admin_Controller {
 
         $this->load->view('layout/header');
         if ($role->id == 2) {
-
             $this->load->view('admin/conference/timetable', $data);
         } else {
             $roles = $this->role_model->get();
@@ -576,7 +573,6 @@ class Conference extends Admin_Controller {
 
     public function chgstatus() {
         $response = array();
-
         $this->form_validation->set_rules('conference_id', $this->lang->line('zoom_api_key'), 'required|trim|xss_clean');
         $this->form_validation->set_rules('chg_status', $this->lang->line('zoom_api_secret'), 'required|trim|xss_clean');
 
@@ -590,8 +586,8 @@ class Conference extends Admin_Controller {
             $insert_array = array(
                 'status' => $this->input->post('chg_status'),
             );
-            $insert_id = $this->conference_model->update($this->input->post('conference_id'), $insert_array);
-            $response = array('status' => 1, 'message' => $this->lang->line('update_message'));
+             $insert_id = $this->conference_model->update($this->input->post('conference_id'), $insert_array);
+             $response = array('status' => 1, 'message' => $this->lang->line('update_message'));
         }
 
         return $this->output

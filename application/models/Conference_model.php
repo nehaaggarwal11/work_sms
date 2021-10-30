@@ -59,24 +59,29 @@ class Conference_model extends MY_Model {
     }
 
     public function getByStaff($staff_id = null) {
-        $this->db->select('conferences.*,classes.class,sections.section,for_create.name as `create_for_name`,for_create.surname as `create_for_surname,create_by.name as `create_by_name`,create_by.surname as `create_by_surname,for_create.employee_id as `for_create_employee_id`,for_create_role.name as `for_create_role_name`,create_by_role.name as `create_by_role_name`,create_by.employee_id as `create_by_employee_id`')->from('conferences');
-        $this->db->join('classes', 'classes.id = conferences.class_id');
-        $this->db->join('sections', 'sections.id = conferences.section_id');
-        $this->db->join('staff as for_create', 'for_create.id = conferences.staff_id');
-        $this->db->join('staff as create_by', 'create_by.id = conferences.created_id');
-        $this->db->join('staff_roles', 'staff_roles.id = for_create.id');
-        $this->db->join('roles as `for_create_role`', 'for_create_role.id = staff_roles.role_id');
-        $this->db->join('staff_roles as staff_create_by_roles', 'staff_create_by_roles.id = create_by.id');
-        $this->db->join('roles as `create_by_role`', 'create_by_role.id = staff_create_by_roles.role_id');
-        $this->db->where('conferences.session_id', $this->current_session);
         if ($staff_id != "") {
-            $this->db->where('conferences.staff_id', $staff_id);
+            $this->db->select('conferences.*,classes.class,sections.section,for_create.name as `create_for_name`,for_create.surname as `create_for_surname,create_by.name as `create_by_name`,')->from('conferences')->where('conferences.staff_id', $staff_id);
+            $this->db->join('classes', 'classes.id = conferences.class_id');
+            $this->db->join('sections', 'sections.id = conferences.section_id');
+            $this->db->join('staff as for_create', 'for_create.id = conferences.staff_id');
+            $this->db->join('staff as create_by', 'create_by.id = conferences.created_id');
+            $this->db->order_by('DATE(`conferences`.`date`)', 'DESC');
+            $this->db->order_by('conferences.date', 'DESC');
         }
-
-        $this->db->order_by('DATE(`conferences`.`date`)', 'DESC');
-        $this->db->order_by('conferences.date', 'DESC');
+        else{
+            $this->db->select('conferences.*,classes.class,sections.section,for_create.name as `create_for_name`,for_create.surname as `create_for_surname,create_by.name as `create_by_name`')->from('conferences');
+            $this->db->join('classes', 'classes.id = conferences.class_id');
+            $this->db->join('sections', 'sections.id = conferences.section_id');
+            $this->db->join('staff as for_create', 'for_create.id = conferences.staff_id');
+            $this->db->join('staff as create_by', 'create_by.id = conferences.created_id');
+            $this->db->where('conferences.session_id', $this->current_session);
+            $this->db->order_by('DATE(`conferences`.`date`)', 'DESC');
+            $this->db->order_by('conferences.date', 'DESC'); 
+        }
+       
         $query = $this->db->get();
         return $query->result();
+        //echo $this->db->last_query();
     }
 
     public function getStaffMeeting($staff_id = null, $type = 'meeting') {
@@ -157,5 +162,14 @@ class Conference_model extends MY_Model {
         $query = $this->db->get();
         return $query->result();
     }
+
+    public function sdhGetRole($staff_id){
+        $this->db->from('staff_roles')->where('staff_id' , $staff_id);
+        $this->db->join('roles', "roles.id = staff_roles.role_id");
+        $q =  $this->db->get()->result();
+        return $q[0]->name;
+         //echo $this->db->last_query();
+    }
+
 
 }
