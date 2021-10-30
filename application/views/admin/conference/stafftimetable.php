@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo base_url('backend\dist\css\gmeet_addon.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>backend/dist/css/zoom_addon.css">
 <div class="content-wrapper">
 
     <section class="content-header">
@@ -13,40 +13,26 @@
                     <div class="box-header with-border">
                         <h3 class="box-title"><i class="fa fa-search"></i><?php echo $this->lang->line('live_class'); ?></h3>
                         <div class="box-tools pull-right">
-                            <?php if ($this->rbac->hasPrivilege('gmeet_live_classes', 'can_add')) { ?>
+                            <?php if ($this->rbac->hasPrivilege('live_classes', 'can_add')) { ?>
 
-
-                                <?php
-                                if ($link_status) {
-                                ?>
-                                    <a type="button" class="btn googlebtn btn-sm" href="<?php echo $auth_url ?>"><i class="fa fa-google"></i>Sign in with Google</a>
-                                <?php
-                                } else {
-                                ?>
-                                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-online-timetable"><i class="fa fa-plus"></i> <?php echo $this->lang->line('add'); ?> </button>
+                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-online-timetable"><i class="fa fa-plus"></i> <?php echo $this->lang->line('add'); ?> </button>
                             <?php
-                                }
                             }
                             ?>
-
                         </div>
                     </div>
                     <div class="box-body">
-                        <?php
-                        if ($this->session->flashdata('msg')) {
-                        ?>
+                        <?php if ($this->session->flashdata('msg')) { ?>
                             <?php echo $this->session->flashdata('msg') ?>
-                        <?php
-                        }
-
-                        ?>
+                        <?php } ?>
                         <div class="table-responsive">
                             <div class="download_label"><?php echo $this->lang->line('live_class'); ?></div>
-                            <table class="table table-hover table-striped table-bordered mintable-w900 example">
+                            <table class="table table-hover table-striped table-bordered example">
                                 <thead>
                                     <tr>
                                         <th><?php echo $this->lang->line('class') . ' ' . $this->lang->line('title'); ?></th>
                                         <th><?php echo $this->lang->line('date'); ?></th>
+                                        <th><?php echo $this->lang->line('api_used'); ?></th>
                                         <th><?php echo $this->lang->line('created_by'); ?> </th>
                                         <th><?php echo $this->lang->line('created_for'); ?></th>
                                         <th><?php echo $this->lang->line('class'); ?></th>
@@ -56,94 +42,101 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    if (empty($gmeets)) {
+                                    if (empty($conferences)) {
                                     ?>
 
                                         <?php
                                     } else {
-                                        foreach ($gmeets as $gmeet_key => $gmeet_value) {
+                                        foreach ($conferences as $conference_key => $conference_value) {
 
+                                            $return_response = json_decode($conference_value->return_response);
                                         ?>
                                             <tr>
                                                 <td class="mailbox-name">
-                                                    <a href="#" data-toggle="popover" class="detail_popover"><?php echo $gmeet_value->title; ?></a>
+                                                    <a href="#" data-toggle="popover" class="detail_popover"><?php echo $conference_value->title; ?></a>
 
                                                     <div class="fee_detail_popover displaynone">
                                                         <?php
-                                                        if ($gmeet_value->description == "") {
+                                                        if ($conference_value->description == "") {
                                                         ?>
                                                             <p class="text text-danger"><?php echo $this->lang->line('no_description'); ?></p>
                                                         <?php
                                                         } else {
                                                         ?>
-                                                            <p class="text text-info"><?php echo $gmeet_value->description; ?></p>
+                                                            <p class="text text-info"><?php echo $conference_value->description; ?></p>
                                                         <?php
                                                         }
                                                         ?>
                                                     </div>
                                                 </td>
 
-                                                <td class="mailbox-name" class="mailbox-name" data-sort="<?php echo strtotime($gmeet_value->date); ?>">
+                                                <td class="mailbox-name">
 
-                                                    <?php echo $this->customlib->dateyyyymmddToDateTimeformat($gmeet_value->date); ?>
+                                                    <?php echo $this->customlib->dateyyyymmddToDateTimeformat($conference_value->date); ?></td>
+                                                <td class="mailbox-name">
+
+                                                    <?php echo $this->lang->line($conference_value->api_type); ?>
 
                                                 </td>
 
                                                 <td class="mailbox-name">
 
                                                     <?php
-                                                    $name = ($gmeet_value->create_by_surname == "") ? $gmeet_value->create_by_name : $gmeet_value->create_by_name . " " . $gmeet_value->create_by_surname;
-                                                    echo $name . " (" . $gmeet_value->for_create_role_name . " : " . $gmeet_value->for_create_employee_id . ")";
-                                                    ?>
-
-                                                </td>
+                                                    if ($conference_value->created_id == $logged_staff_id) {
+                                                        echo $this->lang->line('self');
+                                                    } else {
+                                                        echo $this->conference_model->sdhGetRole($conference_value->staff_id).'('. $conference_value->create_by_name.')';
+                                                    }
+                                                    ?></td>
 
                                                 <td class="mailbox-name">
                                                     <?php
-                                                    $name = ($gmeet_value->create_for_surname == "") ? $gmeet_value->create_for_name : $gmeet_value->create_for_name . " " . $gmeet_value->create_for_surname;
-                                                    echo $name . " (" . $gmeet_value->for_create_role_name . " : " . $gmeet_value->for_create_employee_id . ")";
-                                                    ?>
+                                                        echo $this->conference_model->sdhGetRole($conference_value->staff_id) . '(' .  $conference_value->create_for_name . ')';
+                                                   ?>
                                                 </td>
 
                                                 <td class="mailbox-name">
-                                                    <ul class="liststyle1">
-                                                        <?php
-
-                                                        foreach ($gmeet_value->classes as $gmeet_class_key => $gmeet_class_value) {
-                                                        ?>
-                                                            <li> <i class="fa fa-check-square-o"></i> <?php echo $gmeet_class_value->class . " (" . $gmeet_class_value->section . ")" ?></li>
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </ul>
-
+                                                    <?php echo $conference_value->class . " (" . $conference_value->section . ")";
+                                                    ?>
 
                                                 </td>
-                                                <td class="mailbox-name" width="110">
-                                                    <form class="chgstatus_form" method="POST" action="<?php echo site_url('admin/gmeet/chgstatus') ?>">
-                                                        <input type="hidden" name="gmeet_id" value="<?php echo $gmeet_value->id; ?>">
+                                                <td class="mailbox-name">
+                                                    <form class="chgstatus_form" method="POST" action="<?php echo site_url('admin/conference/chgstatus') ?>">
+                                                        <input type="hidden" name="conference_id" value="<?php echo $conference_value->id; ?>">
                                                         <select class="form-control chgstatus_dropdown" name="chg_status">
-                                                            <option value="0" <?php if ($gmeet_value->status == 0) echo "selected='selected'" ?>><?php echo $this->lang->line('awaited'); ?></option>
-                                                            <option value="1" <?php if ($gmeet_value->status == 1) echo "selected='selected'" ?>><?php echo $this->lang->line('cancelled'); ?> </option>
-                                                            <option value="2" <?php if ($gmeet_value->status == 2) echo "selected='selected'" ?>><?php echo $this->lang->line('finished'); ?> </option>
+                                                            <option value="0" <?php echo ($conference_value->status == 0) ? "selected='selected'":""; ?>><?php echo $this->lang->line('awaited'); ?></option>
+                                                            <option value="1" <?php echo ($conference_value->status == 1) ? "selected='selected'":""; ?>><?php echo $this->lang->line('cancelled'); ?> </option>
+                                                            <option value="2" <?php echo ($conference_value->status == 2) ? "selected='selected'":""; ?>><?php echo $this->lang->line('finished'); ?> </option>
                                                         </select>
                                                     </form>
                                                 </td>
-                                                <td valign="bottom" class="mailbox-date relative text-right" width="90">
+                                                <td class="mailbox-date pull-right">
                                                     <?php
-                                                    if ($gmeet_value->status == 0) {
+                                                    if ($conference_value->status == 0) {
                                                     ?>
-                                                        <a href="<?php echo base_url(); ?>admin/gmeet/start/<?php echo $gmeet_value->id . "/class"; ?>" class="btn label-success btn-xs start-mr-20" target="_blank">
-                                                            <span class="label"><i class="fa fa-video-camera"></i> <?php echo $this->lang->line('start') ?></span>
+                                                        <a data-placement="left" href="<?php echo $return_response->start_url; ?>" class="btn btn-default btn-xs" target="_blank">
+                                                            <i class="fa fa-sign-in"></i> <?php echo $this->lang->line('start') . ' ' . $this->lang->line('class'); ?>
                                                         </a>
                                                     <?php
                                                     }
                                                     ?>
-                                                    <?php if ($this->rbac->hasPrivilege('gmeet_live_classes', 'can_delete')) { ?>
-                                                        <a data-placement="left" href="<?php echo base_url(); ?>admin/gmeet/delete/<?php echo $gmeet_value->id; ?>" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');">
-                                                            <i class="fa fa-remove"></i>
-                                                        </a>
-                                                    <?php } ?>
+
+                                                    <?php
+                                                    if ($conference_value->api_type != 'self') {
+                                                    ?>
+                                                        <?php
+                                                        if ($this->rbac->hasPrivilege('live_classes', 'can_delete')) {
+                                                        ?>
+                                                            <a data-placement="left" href="<?php echo base_url(); ?>admin/conference/delete/<?php echo $conference_value->id . "/" . $return_response->id; ?>" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');">
+                                                                <i class="fa fa-remove"></i>
+                                                            </a>
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                    <?php
+                                                    }
+                                                    ?>
 
                                                 </td>
                                             </tr>
@@ -160,9 +153,10 @@
         </div>
     </section>
 </div>
-<div class="modal fade" id="modal-online-timetable" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="modal fade" id="modal-online-timetable">
     <div class="modal-dialog">
-        <form id="form-addconference" action="<?php echo site_url('admin/gmeet/addByOther'); ?>" method="POST">
+        <form id="form-addconference" action="<?php echo site_url('admin/conference/addByOther'); ?>" method="POST">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -171,7 +165,6 @@
                 <div class="modal-body">
                     <input type="hidden" class="form-control" id="password" name="password">
                     <div class="row">
-
                         <div class="form-group col-sm-12 col-md-12 col-lg-12">
                             <label for="title"><?php echo $this->lang->line('class_title'); ?><small class="req"> *</small></label>
                             <input type="text" class="form-control" id="title" name="title">
@@ -190,7 +183,7 @@
                         </div>
                         <div class="form-group col-sm-6 col-md-6 col-lg-6">
                             <label for="duration"><?php echo $this->lang->line('class_duration_minutes'); ?><small class="req"> *</small></label>
-                            <input type="number" min="1" class="form-control" id="duration" name="duration">
+                            <input type="number" class="form-control" id="duration" min="1" name="duration">
                             <span class="text text-danger" id="title_error"></span>
                         </div>
                         <div class="clearfix"></div>
@@ -233,27 +226,25 @@
                         </div>
                         <div class="form-group col-sm-12 col-md-12 col-lg-12">
                             <label for="section"><?php echo $this->lang->line('section'); ?><small class="req"> *</small></label>
-                            <select id="section_id" name="section_id[]" class="form-control section-list fullselectbox" multiple="multiple">
+                            <select id="section_id" name="section_id" class="form-control">
                                 <option value=""><?php echo $this->lang->line('select'); ?></option>
                             </select>
                             <span class="text text-danger" id="section_error"></span>
                         </div>
-
                         <div class="clearfix"></div>
-                        <?php
-
-                        if (empty($gmeet_setting) || !$gmeet_setting->use_api) {
-                        ?>
-                            <div class="form-group col-sm-12 col-md-12 col-lg-12">
-                                <label for="url"> <?php echo $this->lang->line('gmeet') . " " . $this->lang->line('url'); ?> (<?php echo $this->lang->line('how_to_get');  ?> <a class="labelurl" href="https://smart-school.in/article/how-to-get-gmeet-url" target="_blank"> <?php echo $this->lang->line('gmeet') . " " . $this->lang->line('url'); ?></a>? )<small class="req"> *</small> </label>
-                                <input type="text" class="form-control" id="url" name="url">
-                                <span class="text text-danger" id="url_error"></span>
-                            </div>
-                            <div class="clearfix"></div>
-                        <?php
-                        }
-                        ?>
-
+                        <div class="form-group col-sm-6 col-md-6 col-lg-6">
+                            <label for="class"><?php echo $this->lang->line('host_video'); ?><small class="req"> *</small></label>
+                            <label class="radio-inline"><input type="radio" name="host_video" value="1" checked><?php echo $this->lang->line('enable'); ?></label>
+                            <label class="radio-inline"><input type="radio" name="host_video" value="0"><?php echo $this->lang->line('disabled'); ?> </label>
+                            <span class="text text-danger" id="class_error"></span>
+                        </div>
+                        <div class="form-group col-sm-6 col-md-6 col-lg-6">
+                            <label for="class"><?php echo $this->lang->line('client_video'); ?><small class="req"> *</small></label>
+                            <label class="radio-inline"><input type="radio" name="client_video" value="1" checked><?php echo $this->lang->line('enable'); ?></label>
+                            <label class="radio-inline"><input type="radio" name="client_video" value="0"><?php echo $this->lang->line('disabled'); ?></label>
+                            <span class="text text-danger" id="class_error"></span>
+                        </div>
+                        <div class="clearfix"></div>
                         <div class="form-group col-sm-12 col-md-12 col-lg-12">
                             <label for="description"><?php echo $this->lang->line('description') ?></label>
                             <textarea class="form-control" name="description" id="description"></textarea>
@@ -267,17 +258,11 @@
         </form>
     </div>
 </div>
-
-
 <script type="text/javascript">
     (function($) {
         "use strict";
-        var datetime_format = '<?php echo $result = strtr($this->customlib->getSchoolDateFormat(), ['d' => 'DD', 'm' => 'MM', 'M' => "MMM", 'Y' => 'YYYY']) ?>';
+        var datetime_format = '<?php echo $result = strtr($this->customlib->getSchoolDateFormat(), ['d' => 'DD', 'm' => 'MM', 'Y' => 'YYYY']) ?>';
         $(document).ready(function() {
-            $('.section-list').select2({
-                dropdownParent: "#modal-online-timetable"
-
-            });
             $('.detail_popover').popover({
                 placement: 'right',
                 trigger: 'hover',
@@ -292,14 +277,13 @@
         $('#meeting_date').datetimepicker({
             format: datetime_format + " HH:mm",
             showTodayButton: true,
-            //         locale:  moment.locale('en', {
-            //     week: { dow: start_week }
-            // }),
             ignoreReadonly: true
         });
         $('#modal-online-timetable').on('shown.bs.modal', function(e) {
             $("#class_id").prop("selectedIndex", 0);
             $("#section_id").find('option:not(:first)').remove();
+            var password = makeid(5);
+            $('#password').val("").val(password);
         })
         $("form#form-addconference").submit(function(event) {
             event.preventDefault();
@@ -327,7 +311,7 @@
                         successMsg(data.message);
                         setTimeout(() => {
                             window.location.reload(true);
-                        }, 1500);
+                        }, 1500)
                     }
                     $button.button('reset');
                 },
@@ -380,23 +364,31 @@
                         errorMsg(message);
                     } else {
                         successMsg(data.message);
-                        window.location.reload(true);
+                        setTimeout(() => {
+                            window.location.reload(true);
+                        }, 1500)
                     }
                 }
             });
         });
-
-
-
     })(jQuery);
+
+    function makeid(length) {
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
 
     function getSectionByClass(class_id, section_id) {
 
         if (class_id != "") {
             $('#section_id').html("");
             var base_url = '<?php echo base_url() ?>';
-            var div_data = '';
-
+            var div_data = '<option value=""><?php echo $this->lang->line('select'); ?></option>';
             $.ajax({
                 type: "GET",
                 url: base_url + "sections/getByClass",
@@ -410,12 +402,12 @@
                 success: function(data) {
                     $.each(data, function(i, obj) {
                         var sel = "";
-                        if (section_id == obj.id) {
+                        if (section_id == obj.section_id) {
                             sel = "selected";
                         }
-                        div_data += "<option value=" + obj.id + " " + sel + ">" + obj.section + "</option>";
+                        div_data += "<option value=" + obj.section_id + " " + sel + ">" + obj.section + "</option>";
                     });
-                    $('#section_id').html("").html(div_data);
+                    $('#section_id').append(div_data);
                 },
                 complete: function() {
                     $('#section_id').removeClass('dropdownloading');
@@ -441,7 +433,7 @@
                 $.each(data, function(i, obj) {
                     div_data += "<option value='" + obj.id + "'>" + obj.name + " " + obj.surname + "</option>";
                 });
-                $('#staff_id').html("").html(div_data);
+                $('#staff_id').append(div_data);
             },
             complete: function() {
                 $('#staff_id').removeClass('dropdownloading');

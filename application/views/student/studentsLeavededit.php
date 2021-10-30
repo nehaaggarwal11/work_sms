@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary">
-                <form action="<?php echo site_url("show_all_student/leavedstudent/" . $id) ?>"  id="employeeform" name="employeeform" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                <form action="<?php /*echo site_url("admin/show_all_student/leavedstudentsave/" . $id) */ ?>" name="employeeform" method="post" accept-charset="utf-8" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="tshadow mb25 bozero">
                                 <h3 class="pagetitleh2"> <?php echo $this->lang->line('edit'); ?> <?php echo $this->lang->line('student'); ?></h3>
@@ -20,18 +20,45 @@
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Current <?php echo $this->lang->line('email'); ?></label><small class="req"> *</small>
-                                                <input id="current_email" name="firstname" placeholder="" type="email" class="form-control"  value="" />
+                                                <label for="current_email">Current <?php echo $this->lang->line('email'); ?></label><small class="req"> *</small>
+                                                <input id="current_email" name="current_email" placeholder="" type="email" class="form-control"  value="" />
                                                 
                                             </div>
                                         </div>
                                         
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1"><?php echo $this->lang->line('date_of_birth'); ?></label><small class="req"> *</small>
-                                                <input id="dob" name="dob" placeholder="" type="text" class="form-control date"  value="" />
+                                                <label for="created_at">Created At</label><small class="req"> *</small>
+                                                <input id="created_at" name="created_at" placeholder="" type="text" class="form-control date"  value="" />
                                             </div>
                                         </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Current Phone</label><small class="req"> *</small>
+                                                <input id="dob" name="current_phone" placeholder="" type="number" class="form-control"  value="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="occupation">Occupation</label><small class="req"> *</small>
+                                                <input id="occupation" name="occupation" placeholder="" type="text" class="form-control"  value="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="address">Current Address</label><small class="req"> *</small>
+                                                <input id="address" name="address" placeholder="" type="text" class="form-control"  value="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <br>
+                                                <input name="submit" placeholder="" type="submit" class="form-control"  value="Submit" />
+                                            </div>
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
                             </div>

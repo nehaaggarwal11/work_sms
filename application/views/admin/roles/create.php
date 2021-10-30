@@ -89,7 +89,7 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                                                     if (!$data['is_superadmin']) {
                                                         ?>
                                                         <a data-placement="left" href="<?php echo site_url('admin/roles/permission/' . $data['id']); ?>" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('assign_permission'); ?>">
-                                                            <i class="fa fa-tag"></i>
+                                                            <i class="fa fa-tag"></i> Permissions
                                                         </a>
                                                         <a data-placement="left" href="<?php echo site_url('admin/roles/edit/' . $data['id']); ?>" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('edit'); ?>">
                                                             <i class="fa fa-pencil"></i>
