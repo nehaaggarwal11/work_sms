@@ -42,6 +42,16 @@ class Income extends Admin_Controller
                 'note'        => $this->input->post('description'),
                 'documents'   => $this->input->post('documents'),
             );
+            $arr=array();
+            $income=$this->income_model->get($id);
+            foreach($income as $in){
+                $arr[]=$in['invoice_no'];
+            }
+            // die(json_encode($arr));
+            if(in_array($this->input->post('invoice_no'),$arr)){
+                $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">Duplicate Invoice Number</div>');
+                redirect('admin/income/index');
+            }
             $insert_id = $this->income_model->add($data);
             if (isset($_FILES["documents"]) && !empty($_FILES['documents']['name'])) {
                 $fileInfo = pathinfo($_FILES["documents"]["name"]);
@@ -129,6 +139,7 @@ class Income extends Admin_Controller
             $data = array(
                 'income' => $this->input->post('income'),
             );
+            
             $this->income_model->add($data);
             $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">' . $this->lang->line('success_message') . '</div>');
             redirect('income/index');

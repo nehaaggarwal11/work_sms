@@ -57,10 +57,23 @@ class Expensehead extends Admin_Controller {
             $this->load->view('admin/expensehead/expenseheadList', $data);
             $this->load->view('layout/footer', $data);
         } else {
+                $str=ucwords($this->input->post('expensehead'));
             $data = array(
-                'exp_category' => $this->input->post('expensehead'),
+                'exp_category' => $str,
                 'description' => $this->input->post('description'),
             );
+
+            $arr=array();
+            $expensehead=$this->expensehead_model->get();
+            foreach($expensehead as $in){
+                $arr[]=$in['exp_category'];
+            }
+            // die(json_encode($arr));
+            if(in_array($str,$arr)){
+                $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">Duplicate Expense Head Name</div>');
+                redirect('admin/expensehead/index');
+            }
+
             $this->expensehead_model->add($data);
             $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">'.$this->lang->line('success_message').'</div>');
             redirect('admin/expensehead/index');

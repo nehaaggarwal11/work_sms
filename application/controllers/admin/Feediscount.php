@@ -31,12 +31,25 @@ class Feediscount extends Admin_Controller {
             $this->load->view('admin/feediscount/feediscountList', $data);
             $this->load->view('layout/footer', $data);
         } else {
+            $str= ucwords($this->input->post('code'));
             $data = array(
                 'name' => $this->input->post('name'),
-                'code' => $this->input->post('code'),
+                'code' => $str,
                 'amount' => $this->input->post('amount'),
                 'description' => $this->input->post('description'),
             );
+
+            $arr=array();
+            $income=$this->feediscount_model->get();
+            foreach($income as $in){
+                $arr[]=$in['code'];
+            }
+            // die(json_encode($income));
+            if(in_array($str,$arr)){
+                $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">Duplicate Discount Code</div>');
+                redirect('admin/feediscount');
+            }
+
             $this->feediscount_model->add($data);
             $this->session->set_flashdata('msg', '<div class="alert alert-success">'.$this->lang->line('success_message').'</div>');
             redirect('admin/feediscount');

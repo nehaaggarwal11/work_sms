@@ -58,10 +58,21 @@ class Incomehead extends Admin_Controller {
             $this->load->view('admin/incomehead/incomeheadList', $data);
             $this->load->view('layout/footer', $data);
         } else {
+            $str=ucwords($this->input->post('incomehead'));
             $data = array(
-                'income_category' => $this->input->post('incomehead'),
+                'income_category' => $str,
                 'description' => $this->input->post('description'),
             );
+            $arr=array();
+            $incomehead=$this->incomehead_model->get();
+            foreach($incomehead as $in){
+                $arr[]=$in['income_category'];
+            }
+            // die(json_encode($arr));
+            if(in_array($str,$arr)){
+                $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">Duplicate Invoice Head Name</div>');
+                redirect('admin/incomehead/index');
+            }
             $this->incomehead_model->add($data);
             $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">'.$this->lang->line('success_message').'</div>');
             redirect('admin/incomehead/index');

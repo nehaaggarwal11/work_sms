@@ -28,11 +28,32 @@ class Feetype extends Admin_Controller {
         if ($this->form_validation->run() == FALSE) {
             
         } else {
+            $str= ucwords($this->input->post('name'));
+            $str2= $this->input->post('code');
             $data = array(
-                'type' => $this->input->post('name'),
-                'code' => $this->input->post('code'),
+                'type' => $str,
+                'code' => $str2,
                 'description' => $this->input->post('description'),
             );
+
+            $arr=array();
+            $arr2=array();
+            $income=$this->feetype_model->get();
+            foreach($income as $in){
+                $arr[]=$in['type'];
+                $arr2[]=$in['code'];
+            }
+            // die(json_encode($arr));
+            if(in_array($str,$arr)){
+                $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">Duplicate Fees Type Name</div>');
+                redirect('admin/feetype/index');
+            }
+
+            if(in_array($str2,$arr2)){
+                $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">Duplicate Fees Type Code</div>');
+                redirect('admin/feetype/index');
+            }
+
             $this->feetype_model->add($data);
             $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">'.$this->lang->line('success_message').'</div>');
             redirect('admin/feetype/index');

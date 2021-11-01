@@ -71,7 +71,7 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"><?php echo $this->lang->line('amount'); ?><small class="req"> *</small></label>
-                                    <input id="amount" name="amount" placeholder="" type="text" class="form-control"  value="<?php echo set_value('amount', $income['amount']); ?>" />
+                                    <input id="amount" name="amount" placeholder="" type="number" class="form-control"  value="<?php echo set_value('amount', $income['amount']); ?>" />
                                     <span class="text-danger"><?php echo form_error('amount'); ?></span>
                                 </div>
                                 <div class="form-group">

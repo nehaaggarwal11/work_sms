@@ -41,7 +41,7 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"><?php echo $this->lang->line('amount'); ?></label> <small class="req">*</small>
-                                    <input id="amount" name="amount" type="text" class="form-control"  value="<?php echo set_value('amount'); ?>" />
+                                    <input id="amount" name="amount" type="number" class="form-control"  value="<?php echo set_value('amount'); ?>" />
                                     <span class="text-danger"><?php echo form_error('amount'); ?></span>
                                 </div>
 

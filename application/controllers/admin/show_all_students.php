@@ -41,7 +41,7 @@ class show_all_students extends Admin_Controller
             access_denied();
         }
         $this->session->set_userdata('top_menu', 'Student Information');
-        $this->session->set_userdata('sub_menu', 'show_all_students/show');
+        $this->session->set_userdata('sub_menu', 'admin/show_all_students/show');
         $data['title']           = 'All Student Information';
         $data['adm_auto_insert'] = $this->sch_setting_detail->adm_auto_insert;
         $data['sch_setting']     = $this->sch_setting_detail;
@@ -70,26 +70,33 @@ class show_all_students extends Admin_Controller
         if (!$this->rbac->hasPrivilege('student', 'can_edit')) {
             access_denied();
         }
+        $student=$this->students_leaved_model->getdata($id);
+        $students['student']=$student;
+
         $data['id']      = $id;
         if($this->input->post("submit")){
             // $data=array('current_email','created_at','current_phone', 'occupation','address','sudent_id');
             $data['current_email']=$this->input->post('current_email');
-            $data['created_at']=$this->input->post('created_at');
+            $data['created_at']=date('Y-m-d', $this->customlib->datetostrtotime($this->input->post('created_at')));
             $data['current_phone']=$this->input->post('current_phone');
             $data['occupation']=$this->input->post('occupation');
             $data['address']=$this->input->post('address');
+            $data['reason']=$this->input->post('reason');
+            $data['name']=$this->input->post('name');
             $data['studentid']=$id;
             // die(json_encode($data));
             $save=$this->students_leaved_model->add($data);
-            redirect('admin/show_all_students/show');
+            $this->session->set_flashdata('flsh_msg', 'Student Successfully Leaved');
+            redirect('admin/show_all_students/showlist');
         }
+        $sum=$students+$data;
         // die("Hii");
-        $this->load->view('layout/header',$data);
-        $this->load->view('student/studentsLeavededit',$data);
-        $this->load->view('layout/footer',$data);
+        $this->load->view('layout/header',$sum);
+        $this->load->view('student/studentsLeavededit',$sum);
+        $this->load->view('layout/footer',$sum);
     }
     public function leavedstudentsave($id){
-        
+        die("Hello");
             $data['current_email']=$this->input->post('current_email');
             $data['created_at']=$this->input->post('created_at');
             $data['current_phone']=$this->input->post('current_phone');

@@ -27,10 +27,23 @@ class FeeGroup extends Admin_Controller {
         if ($this->form_validation->run() == FALSE) {
             
         } else {
+            $str= ucwords($this->input->post('name'));
             $data = array(
-                'name' => $this->input->post('name'),
+                'name' => $str,
                 'description' => $this->input->post('description'),
             );
+
+            $arr=array();
+            $income=$this->feegroup_model->get();
+            foreach($income as $in){
+                $arr[]=$in['name'];
+            }
+            // die(json_encode($arr));
+            if(in_array($str,$arr)){
+                $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">Duplicate Fees Group Name</div>');
+                redirect('admin/feegroup/index');
+            }
+
             $this->feegroup_model->add($data);
             $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">'.$this->lang->line('success_message').'</div>');
             redirect('admin/feegroup/index');
