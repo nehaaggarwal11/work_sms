@@ -8,11 +8,21 @@
     <section>
     <section class="content">
     <div class="row">
+     <div class="col-md-12">
     
+    <div class="box box-primary">
+    <?php if ($this->session->flashdata('flsh_msg')) {?><div class="alert alert-danger">
+                                        <?php echo $this->session->flashdata('flsh_msg') ?>
+                                        </div>
+                                    <?php }?>
+                    <div class="box-header" style="display:inline-block">
+                        <h3 class="box-title"><i class="fa fa-search"></i>Leaved Students</h3>
+                    </div>
+                    <a style="color: #fff; display:inline-block; float:right; margin-top: 5px; margin-right: 12px;" href="show"><button class="btn btn-info"style="/*padding: 8px;border-radius: 8px;font-size: 18px;background: #282828;*/">Drop Out Student</button></a>
     <div class="table">
     <div class="nav-tabs-custom border0 navnoshadow">
                       <div class="box-header ptbnull"></div>  
-                      <ul class="nav nav-tabs">
+                      <ul class="nav nav-tabs" style="display: none;">
                             <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true"><i class="fa fa-list"></i> <?php echo $this->lang->line('list'); ?>  <?php echo $this->lang->line('view'); ?></a></li>
                             <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false"><i class="fa fa-newspaper-o"></i> <?php echo $this->lang->line('details'); ?> <?php echo $this->lang->line('view'); ?></a></li>
                         </ul>
@@ -24,7 +34,10 @@
                                         
         <tr>
             <th>
-                S.No.
+                 Student ID
+            </th>
+            <th>
+                Name
             </th>
             <th>
                 Current Email
@@ -39,6 +52,9 @@
                 Address
             </th>
             <th>
+			 Reason
+            </th>
+            <th>
                 Date
             </th>
         </tr>
@@ -48,8 +64,8 @@
         // print_r($student);
         foreach($student as $st)
         {
-            echo "<tr><td>".$st['id']."</td><td>".$st['current_email']."</td><td>".$st['current_phone']."</td><td>".$st['occupation']."</td><td>".$st['address']."</td><td>".$st['created_at']."</td></tr>";
-        }
+ echo "<tr><td>".$st['studentid']."</td><td>".$st['name']."</td><td>".$st['current_email']."</td><td>".$st['current_phone']."</td><td>".$st['occupation']."</td><td>".$st['address']."</td><td>".$st['reason']."</td><td>".date($this->customlib->getSchoolDateFormat(), $this->customlib->dateyyyymmddTodateformat($st['created_at']))."</td></tr>";
+ }
         ?>
         </tbody>
         </table>
@@ -59,9 +75,11 @@
         </div>
         </div>
         <div class="row">
-        <div class="col-md-3">
+       
+<!---	   <div class="col-md-3">
             <button style="padding: 8px;border-radius: 8px;font-size: 18px;background: #282828;"><a style="color: #fff;" href="show">Add Students</a></button>
         </div>
+		--->
     </div>
     </div>
 </div>

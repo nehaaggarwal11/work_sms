@@ -16,10 +16,17 @@ class students_leaved_model extends MY_Model
 	function get(){
 		return $this->db->select('*')->from('students_leaved')->get()->result_array();
 	}
+	
+	function getdata($id){
+		return $this->db->select('*')->from('students')->where('id',$id)->get()->result_array();
+	}
 
 	function add($data){	
 		// die(json_encode($data));	 
 		$this->db->insert('students_leaved',$data);
+		extract($data);
+		
+        $this->db->where('id', $id)->update('students', array('leave_date'=>$created_at,'add_info' => $reason));
         return true;
 	}
  	function add_event($data){

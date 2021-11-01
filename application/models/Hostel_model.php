@@ -126,5 +126,51 @@ class Hostel_model extends MY_Model {
      return $query->row_array();
 
     }
+	public function studentslist(){
+        $que=$this->db->from('students_leaved')->get();
+        $res=$que->result_array();
+        $result=array();
+        foreach($res as $re=>$val){
+            $result[]=$val['id'];
+        }
+        // die(json_encode($result));
+         $this->db->select("students.id as sid,students.*,hostel_name,type")->from('students')->join('hostel_rooms', ' hostel_rooms.id=students.hostel_room_id')->join('hostel', ' hostel.id=hostel_rooms.id')->where('hostel_room_id>','0')->where('leave_date=',NULL)->where_not_in('students.id',$result);
+        // die(json_encode($query));
+        // $query=$this->db->select() ->from('hostel')->where('hostel_room_id',true);
+        $query=$this->db->get();
+        return $query->result_array();
+    }
+    public function student_hostel($data){
+            // die(json_encode($data));	 
+            extract($data);
+            $this->db->where('id', $id)->update($table_name, array('hostel_room_id' => $hostel_room_id));
+            // $this->db->set('hostel_room_id',$this->input->post('hostel_room_id'))->where('id',$id)->update('students');
+            return true;   
+    }
+    public function count(){
+        $query=$this->db->select('hostel_room_id')->where('hostel_room_id',$this->input->post('hostel_room_id'))->get('students');
+        // die(json_encode($query->result_array()));
+        return $query->result_array();
+    }
+    public function hostelleave($data){
+        // die(json_encode($data));	 
+        extract($data);
+        $this->db->where('id', $id)->update($table_name, array('add_info' => $add_info,'leave_date' => $leave_date));
+        return true;   
+    } 
+    public function studenthostelleaved(){
+    
+    $this->db->select("students.id as sid,students.*,hostel_name,type");
+    $this->db->from('students');
+    $this->db->join('hostel_rooms', ' hostel_rooms.id=students.hostel_room_id');
+    $this->db->join('hostel', ' hostel.id=hostel_rooms.id');
+    $this->db->join('students_leaved','students_leaved.studentid=students.id','left');
+    $this->db->where('hostel_room_id>','0');
+    $this->db->where('leave_date<>',NULL);
+    $this->db->or_where('students_leaved.studentid=','students.id');
+    $query=$this->db->get();
+    return $query->result_array();
+    }
+    
 
 }
