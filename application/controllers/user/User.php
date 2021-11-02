@@ -343,9 +343,11 @@ class User extends Student_Controller
                 $this->student_model->adddoc($data_img);
 
             }
-
+            // $this->session->set_flashdata('flsh_msg', 'Leave has been added successfully. ');
+            redirect('user/user/dashboard');
             $msg   = $this->lang->line('success_message');
             $array = array('status' => 'success', 'error' => '', 'message' => $msg);
+            
 
         }
         echo json_encode($array);

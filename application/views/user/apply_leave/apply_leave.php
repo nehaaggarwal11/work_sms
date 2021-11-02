@@ -14,6 +14,11 @@
             <div class="col-md-12">
                 <div class="box box-info">
                     <div class="box-header with-border">
+                    <?php if ($this->session->flashdata('flsh_msg')) {?>
+                        <div class="alert alert-danger">
+                            <?php echo $this->session->flashdata('flsh_msg') ?>
+                        </div>
+                    <?php }?>
                         <h3 class="box-title"><i class="fa fa-users"></i> <?php echo $this->lang->line('leave')." ".$this->lang->line('list'); ?></h3>
 
                             <div class="box-tools pull-right">
@@ -263,7 +268,7 @@ $(document).ready(function () {
                     }
                 },
     error: function(xhr) { // if error occured
-        alert("Error occured.please try again");
+        window.location.href="apply_leave";
  $this.button('reset');
     },
     complete: function() {

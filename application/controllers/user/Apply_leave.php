@@ -73,7 +73,8 @@ class Apply_leave extends Student_Controller {
                 $data = array('id' => $leave_id, 'docs' => $img_name);
                 $this->apply_leave_model->add($data);
             }
-           
+            $this->session->set_flashdata('flsh_msg', 'Leave has been added successfully. ');
+
             $array = array('status' => 'success', 'error' => '', 'message' => $this->lang->line('success_message'));
         }
         echo json_encode($array);

@@ -44,7 +44,7 @@
                                                     <input type="hidden" name="<?php echo "roles_permissions_id_" . $value->permission_category[0]->id; ?>" value="<?php echo $value->permission_category[0]->roles_permissions_id; ?>" />
                                                     <?php echo $value->permission_category[0]->name ?></td>
                                                 <td>
-                                                    <?php
+                                                    <?php 
                                                     if ($value->permission_category[0]->enable_view == 1) {
                                                         ?>
                                                         <label class="">

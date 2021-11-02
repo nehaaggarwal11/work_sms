@@ -20,7 +20,7 @@
                     $this->rbac->hasPrivilege('visitor_book', 'can_view') ||
                     $this->rbac->hasPrivilege('phon_call_log', 'can_view') ||
                     $this->rbac->hasPrivilege('postal_dispatch', 'can_view') ||
-                    $this->rbac->hasPriAvilege('postal_receive', 'can_view') ||
+                    $this->rbac->hasPrivilege('postal_receive', 'can_view') ||
                     $this->rbac->hasPrivilege('complaint', 'can_view') ||
                     $this->rbac->hasPrivilege('setup_font_office', 'can_view'))) {
             ?>
@@ -935,7 +935,8 @@
             if ($this->module_lib->hasActive('hostel')) {
                 if (($this->rbac->hasPrivilege('hostel_rooms', 'can_view') ||
                     $this->rbac->hasPrivilege('room_type', 'can_view') ||
-                    $this->rbac->hasPrivilege('hostel', 'can_view'))) {
+                    $this->rbac->hasPrivilege('hostel', 'can_view')||
+                    $this->rbac->hasPrivilege('hostel/student_hostel', 'can_view'))) {
                 ?>
 
                     <li class="treeview <?php echo set_Topmenu('Hostel'); ?>">
@@ -962,7 +963,7 @@
                             }
                             ?>
                             <?php
-                                if ($this->rbac->hasPrivilege('assign_hostel', 'can_view')) {
+                                if ($this->rbac->hasPrivilege('hostel/student_hostel', 'can_view')) {
                                 ?>
                                     <li class="<?php echo set_Submenu('student_hostel/index'); ?>"><a href="<?php echo base_url(); ?>admin/hostel/student_hostel"><i class="fa fa-angle-double-right"></i> Assign Hostel</a></li>
                                 <?php
@@ -976,7 +977,7 @@
                             }
                             ?>
                             <?php
-                            if ($this->rbac->hasPrivilege('hostels_assigned', 'can_view')) {
+                            if ($this->rbac->hasPrivilege('studenthostelleaved', 'can_view')) {
                             ?>
                                 <li class="<?php echo set_Submenu('studenthostelleaved/index'); ?>"><a href="<?php echo base_url(); ?>admin/hostel/studenthostelleaved"><i class="fa fa-angle-double-right"></i> Hostel Leaved Students</a></li>
 
