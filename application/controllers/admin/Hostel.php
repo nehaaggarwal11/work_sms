@@ -102,7 +102,8 @@ class Hostel extends Admin_Controller {
         redirect('admin/hostel/index');
     }
 	 function hostels_assigned(){
-        
+        $this->session->set_userdata('top_menu', 'Hostel');
+        $this->session->set_userdata('sub_menu', 'hostel/hostels_assigned');
         $students=$this->hostel_model->studentslist();
         $student['students']=$students;
         // die(json_encode($students));
@@ -115,8 +116,8 @@ class Hostel extends Admin_Controller {
             access_denied();
         }
             
-        $this->session->set_userdata('top_menu', 'Student Information');
-        $this->session->set_userdata('sub_menu', 'student/search');
+        $this->session->set_userdata('top_menu', 'Hostel');
+        $this->session->set_userdata('sub_menu', 'hostel/student_hostel');
         $data['title']           = 'Student Search';
         $data['adm_auto_insert'] = $this->sch_setting_detail->adm_auto_insert;
         $data['sch_setting']     = $this->sch_setting_detail;
@@ -240,7 +241,8 @@ class Hostel extends Admin_Controller {
         $this->load->view('layout/footer');
     }
     function studenthostelleaved(){
-        
+        $this->session->set_userdata('top_menu', 'Hostel');
+        $this->session->set_userdata('sub_menu', 'hostel/studenthostelleaved');
         $students=$this->hostel_model->studenthostelleaved();
         $student['students']=$students;
         // die(json_encode($students));

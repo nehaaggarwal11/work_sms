@@ -88,7 +88,7 @@
                     $this->rbac->hasPrivilege('student_history', 'can_view') ||
                     $this->rbac->hasPrivilege('student_categories', 'can_view') ||
                     $this->rbac->hasPrivilege('student_houses', 'can_view') ||
-                    $this->rbac->hasPrivilege('disable_student', 'can_view') || $this->rbac->hasPrivilege('disable_reason', 'can_view') || $this->rbac->hasPrivilege('online_admission', 'can_view') || $this->rbac->hasPrivilege('multiclass_student', 'can_view') || $this->rbac->hasPrivilege('disable_reason', 'can_view'))) {
+                    $this->rbac->hasPrivilege('disable_student', 'can_view') || $this->rbac->hasPrivilege('disable_reason', 'can_view') || $this->rbac->hasPrivilege('online_admission', 'can_view') || $this->rbac->hasPrivilege('multiclass_student', 'can_view') || $this->rbac->hasPrivilege('show_all_students', 'can_view') || $this->rbac->hasPrivilege('disable_reason', 'can_view'))) {
                 ?>
 
 
@@ -159,7 +159,7 @@
                         <?php
                         }
 
-                        if ($this->rbac->hasPrivilege('student', 'can_delete')) {
+                        if ($this->rbac->hasPrivilege('show_all_students', 'can_view')) {
                         ?>
 							<li class="<?php echo set_Submenu('show_all_students/showlist'); ?>"><a href="<?php echo base_url(); ?>admin/show_all_students/showlist"><i class="fa fa-angle-double-right"></i>Drop Out Students</a></li>                        <?php
                         }
@@ -963,23 +963,23 @@
                             }
                             ?>
                             <?php
-                                if ($this->rbac->hasPrivilege('hostel/student_hostel', 'can_view')) {
+                                if ($this->rbac->hasPrivilege('assign_hostel', 'can_view')) {
                                 ?>
-                                    <li class="<?php echo set_Submenu('student_hostel/index'); ?>"><a href="<?php echo base_url(); ?>admin/hostel/student_hostel"><i class="fa fa-angle-double-right"></i> Assign Hostel</a></li>
+                                    <li class="<?php echo set_Submenu('hostel/student_hostel'); ?>"><a href="<?php echo base_url(); ?>admin/hostel/student_hostel"><i class="fa fa-angle-double-right"></i> Assign Hostel</a></li>
                                 <?php
                                 }
                             ?>
                             <?php
-                            if ($this->rbac->hasPrivilege('hostels_assigned', 'can_view')) {
+                            if ($this->rbac->hasPrivilege('assigned_hostels', 'can_view')) {
                             ?>
-                                <li class="<?php echo set_Submenu('hostels_assigned/index'); ?>"><a href="<?php echo base_url(); ?>admin/hostel/hostels_assigned"><i class="fa fa-angle-double-right"></i> Hostels Assigned</a></li>
+                                <li class="<?php echo set_Submenu('hostel/hostels_assigned'); ?>"><a href="<?php echo base_url(); ?>admin/hostel/hostels_assigned"><i class="fa fa-angle-double-right"></i> Hostels Assigned</a></li>
                             <?php
                             }
                             ?>
                             <?php
                             if ($this->rbac->hasPrivilege('studenthostelleaved', 'can_view')) {
                             ?>
-                                <li class="<?php echo set_Submenu('studenthostelleaved/index'); ?>"><a href="<?php echo base_url(); ?>admin/hostel/studenthostelleaved"><i class="fa fa-angle-double-right"></i> Hostel Leaved Students</a></li>
+                                <li class="<?php echo set_Submenu('hostel/studenthostelleaved'); ?>"><a href="<?php echo base_url(); ?>admin/hostel/studenthostelleaved"><i class="fa fa-angle-double-right"></i> Hostel Leaved Students</a></li>
 
                             <?php
                             }
