@@ -40,6 +40,7 @@ class show_all_students extends Admin_Controller
         if (!$this->rbac->hasPrivilege('student', 'can_view')) {
             access_denied();
         }
+        $drop=array();
         $this->session->set_userdata('top_menu', 'Student Information');
         $this->session->set_userdata('sub_menu', 'admin/show_all_students/show');
         $data['title']           = 'All Student Information';
@@ -48,7 +49,12 @@ class show_all_students extends Admin_Controller
         $data['fields']          = $this->customfield_model->get_custom_fields('students', 1);
         $class                   = $this->class_model->get();
         $data['classlist']       = $class;
-
+        $dropout=$this->students_leaved_model->get();
+        foreach($dropout as $do){
+            $drop[]=$do['id'];
+        }
+        // die($drop);
+        $data['dropout']=$drop;
         $resultlist          = $this->student_model->getStudents();
         $data['resultlist']  = $resultlist;
 

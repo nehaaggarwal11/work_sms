@@ -129,7 +129,7 @@ class Hostel_model extends MY_Model {
 	public function studentslist(){
         $que=$this->db->from('students_leaved')->get();
         $res=$que->result_array();
-        $result=array();
+        $result=array('0');
         foreach($res as $re=>$val){
             $result[]=$val['id'];
         }

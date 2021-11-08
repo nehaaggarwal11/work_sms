@@ -1,5 +1,6 @@
 <?php
 $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
+// die(json_encode($dropout));
 ?>
 <style type="text/css">
     @media print
@@ -146,6 +147,7 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                                         } else {
                                             $count = 1;
                                             foreach ($resultlist as $student) {
+                                                if(!in_array($student['id'],$dropout)){
                                                 ?>
                                                 <tr>
 												
@@ -192,14 +194,16 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                                                         <a href="<?php echo base_url(); ?>student/view/<?php echo $student['id'] ?>" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('show'); ?>" >
                                                             <i class="fa fa-reorder"></i>
                                                         </a>
-                                                        <?php
+                                                        <?php 
                                                         if ($this->rbac->hasPrivilege('student', 'can_edit')) {
+                                                            
+                                                           
                                                             ?>
                                                             <a href="<?php echo base_url(); ?>admin/show_all_students/leavedstudent/<?php echo $student['id'] ?>" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('edit'); ?>">
                                                                 <i class="fa fa-pencil"></i>
                                                             </a>
                                                             <?php
-                                                        }
+                                                          }
                                                         if ($this->rbac->hasPrivilege('collect_fees', 'can_add')) {
                                                             ?>
                                                             <a href="<?php echo base_url(); ?>studentfee/addfee/<?php echo $student['student_session_id'] ?>" class="btn btn-default btn-xs" data-toggle="tooltip" title="" data-original-title="<?php echo $this->lang->line('add_fees'); ?>">
@@ -210,7 +214,7 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                                                 </tr>
                                                 <?php
                                                 $count++;
-                                            }
+                                            }}
                                         }
                                         ?>
                                     </tbody>
