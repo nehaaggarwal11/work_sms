@@ -243,8 +243,8 @@
                     </li>
                 </ul>
                 <ul class="sidebar-menu verttop38" id="sibe-box">
-
-                    <li class="<?php echo set_Topmenu('Dashboard'); ?>"><a href="<?php echo base_url(); ?>user/user/dashboard"><i class="fa fa-user-plus ftlayer"></i> <span><?php echo $this->lang->line('my_profile'); ?></span></a></li>
+                    <li class="<?php echo set_Topmenu('Dashboard'); ?>"><a href="<?php echo base_url(); ?>user/user/dashboard"><i class="fa fa-user-plus ftlayer"></i> <span>Dashboard</span></a></li>
+                    <li class="<?php echo set_Topmenu('profile'); ?>"><a href="<?php echo base_url(); ?>user/user/profile"><i class="fa fa-user-plus ftlayer"></i> <span><?php echo $this->lang->line('my_profile'); ?></span></a></li>
                     <?php
                     if ($this->studentmodule_lib->hasActive('fees')) {
                     ?>

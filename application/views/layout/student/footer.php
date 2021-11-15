@@ -2,7 +2,62 @@
     &copy;  <?php echo date('Y'); ?> 
 </footer>
 <div class="control-sidebar-bg"></div>
+<div class="navbar" id="bottom_menu">
+<a href="#home" class="active"><i class="fa fa-home" aria-hidden="true"></i><br>Home</a>
+<a href="#news"><i class="fa fa-gears ftlayer"></i><br>Settings</a>
+<a href="#contact"><i class="fa fa-user" aria-hidden="true"></i><br>Profile</a>
+<a href="#contact"><i class="fa fa-sign-out fa-fw"></i><br>Logout</a>
 </div>
+</div>
+<style>
+    #bottom_menu{
+        display: none;
+    }
+@media only screen and (max-width:420px){
+    .nav-tabs>li.active>a{
+                        border:0px;
+                    }
+                    #bottom_menu {
+    display: block;
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    bottom: -33px;
+    width: 100%;
+    z-index: 99;
+    }
+
+    /* Style the links inside the navigation bar */
+    #bottom_menu a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    }
+    #bottom-menu a i{
+        font-size:26px;
+    }
+
+    /* Change the color of links on hover */
+    #bottom_menu a:hover {
+    background-color: #ddd;
+    color: black;
+    }
+
+    /* Add a color to the active/current link */
+    #bottom_menu a.active {
+    background-color: #04AA6D;
+    color: white;
+    }
+    #bottom_menu a{
+        width: 25%;
+    }
+     
+}
+</style>
 <script>
     $.widget.bridge('uibutton', $.ui.button);
 </script>

@@ -65,7 +65,15 @@ class User extends Student_Controller
 
     }
 
-    public function dashboard()
+    public function dashboard(){
+        $this->session->set_userdata('top_menu', 'Dashboard');
+        $this->load->view('layout/student/header');
+        $this->load->view('user/dashboard1');
+        $this->load->view('layout/student/footer');
+        
+    }
+
+    public function profile()
     {
 
         $this->session->set_userdata('top_menu', 'Dashboard');
