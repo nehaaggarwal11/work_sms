@@ -1,3 +1,53 @@
+<style>
+    #ss{
+        display: none;
+    }
+@media screen and (max-width:420px){
+    .mobile-box{
+        width:49%;
+        display: inline-block;
+    }
+    .topprograssstart{
+        padding-top: 24px;
+    }
+    #ss {
+    display: block;
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 99;
+    }
+
+    /* Style the links inside the navigation bar */
+    #ss a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    }
+
+    /* Change the color of links on hover */
+    #ss a:hover {
+    background-color: #ddd;
+    color: black;
+    }
+
+    /* Add a color to the active/current link */
+    #ss a.active {
+    background-color: #04AA6D;
+    color: white;
+    }
+    #ss a{
+        width: 25%;
+    }
+
+}
+</style>
 <?php  $currency_symbol=$this->customlib->getSchoolCurrencyFormat();  ?>
 <style type="text/css">
   .borderwhite{border-top-color: #fff !important;}
@@ -45,7 +95,7 @@
            if($this->module_lib->hasActive('fees_collection')){ 
           if($this->rbac->hasPrivilege('fees_awaiting_payment_widegts','can_view')){
             ?>
-             <div class="col-lg-3 col-md-6 col-sm-6">
+             <div class="mobile-box col-lg-3 col-md-6 col-sm-6 ">
               <div class="topprograssstart">
                 <p class="text-uppercase mt5 clearfix"><i class="fa fa-money ftlayer"></i><?php echo $this->lang->line('fees')." ".$this->lang->line('awaiting')." ".$this->lang->line('payment');?><span class="pull-right"><?php echo $total_paid; ?>/<?php echo $total_fees?></span>
                </p>
@@ -66,7 +116,7 @@
       if($this->rbac->hasPrivilege('conveted_leads_widegts','can_view')){
 
             ?>
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="mobile-box col-lg-3 col-md-6 col-sm-6">
               <div class="topprograssstart">
                 <p class="text-uppercase mt5 clearfix"><i class="fa fa-ioxhost ftlayer"></i> <?php echo $this->lang->line('converted')." ".$this->lang->line('leads')?><span class="pull-right"><?php  echo $total_complete+0; ?>/<?php echo $total_enquiry; ?></span>
                </p>
@@ -82,7 +132,7 @@
           if($this->rbac->hasPrivilege('staff_present_today_widegts','can_view')){
 
             ?>
-             <div class="col-lg-3 col-md-6 col-sm-6">
+             <div class="mobile-box col-lg-3 col-md-6 col-sm-6">
               <div class="topprograssstart">
                 <p class="text-uppercase mt5 clearfix"><i class="fa fa-calendar-check-o ftlayer"></i><?php echo $this->lang->line('staff').' '.$this->lang->line('present').' '.$this->lang->line('today'); ?><span class="pull-right"><?php echo $Staffattendence_data+0; ?>/<?php echo $getTotalStaff_data; ?></span>
                </p> 
@@ -100,7 +150,7 @@
             ?>
             
 
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="mobile-box col-lg-3 col-md-6 col-sm-6">
               <div class="topprograssstart">
                 <p class="text-uppercase mt5 clearfix"><i class="fa fa-calendar-check-o ftlayer"></i><?php echo $this->lang->line('student').' '.$this->lang->line('present').' '.$this->lang->line('today'); ?><span class="pull-right"> <?php echo 0+$attendence_data['total_half_day']+$attendence_data['total_late']+$attendence_data['total_present'];?>/<?php echo $total_students ; ?></span>
                </p>
@@ -451,7 +501,7 @@
                     <?php 
                     if($this->module_lib->hasActive('fees_collection')){
                     if ($this->rbac->hasPrivilege('Monthly fees_collection_widget', 'can_view')) { ?>
-                        <div class="col-md-4 col-sm-6">
+                        <div class="mobile-box col-md-4 col-sm-6">
                             <div class="info-box">
                                 <a href="<?php echo site_url('studentfee') ?>">
                                     <span class="info-box-icon bg-green"><i class="fa fa-money"></i></span>
@@ -467,7 +517,7 @@
                      if($this->module_lib->hasActive('expense')){
                     if ($this->rbac->hasPrivilege('monthly_expense_widget', 'can_view')) { ?>
 
-                        <div class="col-md-4 col-sm-6">
+                        <div class="mobile-box col-md-4 col-sm-6">
                             <div class="info-box">
                                 <a href="<?php echo site_url('admin/expense') ?>">
                                     <span class="info-box-icon bg-red"><i class="fa fa-credit-card"></i></span>
@@ -483,7 +533,7 @@
                      if ($this->rbac->hasPrivilege('student_count_widget', 'can_view')) { ?>
 
 
-                        <div class="col-md-4 col-sm-6">
+                        <div class="mobile-box col-md-4 col-sm-6">
                             <div class="info-box">
                                 <a href="<?php echo site_url('student/search') ?>">
                                     <span class="info-box-icon bg-aqua"><i class="fa fa-user"></i></span>
@@ -521,7 +571,7 @@
               
                     <?php foreach ($roles as $key => $value) {
                         ?>
-                        <div class="info-box">
+                        <div class="mobile-box info-box">
                             <a href="#">
                                 <span class="info-box-icon bg-yellow"><i class="fa fa-user-secret"></i></span>
                                 <div class="info-box-content">
@@ -722,6 +772,15 @@
         </div>
     </div>
 </div>  
+
+<div class="navbar" id="ss">
+  <a href="#home" class="active"><i class="fa fa-home" aria-hidden="true"></i><br>Home</a>
+  <a href="#news"><i class="fa fa-gears ftlayer"></i><br>Settings</a>
+  <a href="#contact"><i class="fa fa-user" aria-hidden="true"></i><br>Profile</a>
+  <a href="#contact"><i class="fa fa-sign-out fa-fw"></i><br>Logout</a>
+</div>
+
+
 <style>
   canvas {
     -moz-user-select: none;

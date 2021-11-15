@@ -66,7 +66,7 @@
                                             <div class="form-group">
                                                 <label for="address">Current Address</label><small class="req"> *</small>
                                                 <!-- <input id="address" name="address" placeholder="" type="text" class="form-control"  value=<?php /*if($st['current_address']!="") echo $st['current_address']; else echo "&nbsp;" ;*/?> /> -->
-                                                <textarea id="address" name="address" rows="4" cols="48"><?php if($st['current_address']!="") echo $st['current_address']; else echo "&nbsp;" ;?></textarea>
+                                                <textarea id="address" name="address" rows="4" cols="42"><?php if($st['current_address']!="") echo $st['current_address']; else echo "&nbsp;" ;?></textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-4"></div>

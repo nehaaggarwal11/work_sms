@@ -70,9 +70,89 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                     </div>
                 </div>
             </div>
+            <style>
+                .ss{
+                    display:none;
+                }
+                #bottom_menu{
+                    display:none;
+                }
+                @media only screen and (max-width:480px){
+                    .nn{
+                        display:none;
+                    }
+                    .ss{
+                        display:block;
+                    }
+                    .ss li i{
+                        font-size: 36px;
+                    }
+                    .ss li{
+                        width:46%;
+                        background: #fff;
+                        margin:6px;
+                        display:flex;
+                        justify-content: center;
+                    }
+                    .ss li a{
+                        color:#555;
+                    }
+                    .nav-tabs>li.active>a{
+                        border:0px;
+                    }
+                    #bottom_menu {
+    display: block;
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    bottom: -33px;
+    width: 100%;
+    z-index: 99;
+    }
+
+    /* Style the links inside the navigation bar */
+    #bottom_menu a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    }
+    #bottom-menu a i{
+        font-size:26px;
+    }
+
+    /* Change the color of links on hover */
+    #bottom_menu a:hover {
+    background-color: #ddd;
+    color: black;
+    }
+
+    /* Add a color to the active/current link */
+    #bottom_menu a.active {
+    background-color: #04AA6D;
+    color: white;
+    }
+    #bottom_menu a{
+        width: 25%;
+    }
+                }
+            </style>
             <div class="col-md-9">
+            <ul class="ss nav nav-tabs">
+                    <li class="active col-sm-4"><a href="#activity" data-toggle="tab" aria-expanded="true"><i class="fa fa-user"></i><br><?php echo $this->lang->line('profile'); ?></a></li>
+                    <?php if ($this->studentmodule_lib->hasActive('fees')) { ?>
+                            <li class="col-sm-4"><a href="#fee" data-toggle="tab" aria-expanded="true"><i class="fa fa-money"></i><br><?php echo $this->lang->line('fees'); ?></a></li>
+                            <li class="col-sm-4"><a href="#exam" data-toggle="tab" aria-expanded="true"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br><?php echo $this->lang->line('exam'); ?></a></li>
+                    <?php } ?>  
+                    <li class=""><a href="#documents" data-toggle="tab" aria-expanded="true"><i class="fa fa-file-pdf-o" aria-hidden="true"></i><br><?php echo $this->lang->line('documents'); ?></a></li>
+                    <li class=""><a href="#timelineh" data-toggle="tab" aria-expanded="true"><i class="fa fa-clock-o" aria-hidden="true"></i><br><?php echo $this->lang->line('timeline'); ?></a></li>  
+                </ul>
                 <div class="nav-tabs-custom theme-shadow">
-                    <ul class="nav nav-tabs">
+                    
+                    <ul class="nn nav nav-tabs">
                         <li class="active"><a href="#activity" data-toggle="tab" aria-expanded="true"><?php echo $this->lang->line('profile'); ?></a></li>
                         <?php if ($this->studentmodule_lib->hasActive('fees')) { ?>
                             <li class=""><a href="#fee" data-toggle="tab" aria-expanded="true"><?php echo $this->lang->line('fees'); ?></a></li>
@@ -1700,6 +1780,12 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
 
                                                                                                         </div>
                                                                                                     </div>
+                                                                                                </div>
+                                                                                                <div class="navbar" id="bottom_menu">
+                                                                                                    <a href="#home" class="active"><i class="fa fa-home" aria-hidden="true"></i><br>Home</a>
+                                                                                                    <a href="#news"><i class="fa fa-gears ftlayer"></i><br>Settings</a>
+                                                                                                    <a href="#contact"><i class="fa fa-user" aria-hidden="true"></i><br>Profile</a>
+                                                                                                    <a href="#contact"><i class="fa fa-sign-out fa-fw"></i><br>Logout</a>
                                                                                                 </div>
 
                                                                                                 <?php
