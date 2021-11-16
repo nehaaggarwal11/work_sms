@@ -28,17 +28,12 @@
 
                                                     </div>
                                                 </div>
-
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="created_at">Leave Date</label><small class="req"> *</small>
                                                         <input id="created_at" name="created_at" placeholder="" type="text" class="form-control date" required value="<?php echo set_value('created_at'); ?>" />
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="current_phone">Current Phone</label><small class="req"> *</small>
@@ -52,26 +47,21 @@
                                                         <input id="occupation" name="occupation" placeholder="" type="text" class="form-control" value="" />
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4"></div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <label for="reason">*Reason</label><small class="req"> *</small>
-                                                            <input id="reason" name="reason" placeholder="" type="text" class="form-control" value="" required />
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <label for="address">Current Address</label><small class="req"> *</small>
-                                                            <!-- <input id="address" name="address" placeholder="" type="text" class="form-control"  value=<?php /*if($st['current_address']!="") echo $st['current_address']; else echo "&nbsp;" ;*/ ?> /> -->
-                                                            <textarea id="address" name="address" rows="4" cols="42"><?php if ($st['current_address'] != "") echo $st['current_address'];
-                                                                                                                        else echo "&nbsp;"; ?></textarea>
-                                                        </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="reason">*Reason</label><small class="req"> *</small>
+                                                        <textarea id="reason" name="reason" placeholder="" class="form-control" value="" required rows="4" cols="42"></textarea>
                                                     </div>
-                                                    <div class="col-md-4"></div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="address">Current Address</label><small class="req"> *</small>
+                                                        <!-- <input id="address" name="address" placeholder="" type="text" class="form-control"  value=<?php /*if($st['current_address']!="") echo $st['current_address']; else echo "&nbsp;" ;*/ ?> /> -->
+                                                        <textarea id="address" class="form-control" name="address" rows="4" cols="42"><?php if ($st['current_address'] != "") echo $st['current_address'];
+                                                                                                                                        else echo "&nbsp;"; ?></textarea>
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -83,14 +73,8 @@
                                             </div>
 
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="col-md-3"></div>
-                                                <div class="col-md-3">
-                                                    <input name="submit" style="float: right;" placeholder="" type="submit" class="btn btn-info" value="Submit" />
-                                                </div>
-                                                <div class="col-md-6"></div>
-                                            </div>
+                                        <div class="box-footer">
+                                            <button type="submit" class="btn btn-info pull-right" autocomplete="off">Save</button>
                                         </div>
                                     <?php } ?>
                                 </div>

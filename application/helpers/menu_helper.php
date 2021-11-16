@@ -13,6 +13,7 @@ if (!function_exists('active_link')) {
 
     function set_Topmenu($top_menu_name) {
         $CI = get_instance();
+        //echo $CI->session->userdata('top_menu');
         $session_top_menu = $CI->session->userdata('top_menu');
         if ($session_top_menu == $top_menu_name) {
             return 'active';
@@ -22,7 +23,8 @@ if (!function_exists('active_link')) {
 
     function set_Submenu($sub_menu_name) {
         $CI = get_instance();
-        $session_sub_menu = $CI->session->userdata('sub_menu');
+        //echo $CI->session->userdata('sub_menu');
+         $session_sub_menu = $CI->session->userdata('sub_menu');
         if ($session_sub_menu == $sub_menu_name) {
             return 'active';
         }

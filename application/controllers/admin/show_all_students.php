@@ -19,6 +19,8 @@ class show_all_students extends Admin_Controller
         $this->load->model("classteacher_model");
         $this->load->model("timeline_model");
         $this->load->model('students_leaved_model');
+        $this->session->set_userdata('top_menu', 'Student Information');
+        $this->session->set_userdata('sub_menu', 'admin/show_all_students/show');
         $this->blood_group        = $this->config->item('bloodgroup');
         $this->sch_setting_detail = $this->setting_model->getSetting();
         $this->role;
@@ -41,8 +43,6 @@ class show_all_students extends Admin_Controller
             access_denied();
         }
         $drop=array();
-        $this->session->set_userdata('top_menu', 'Student Information');
-        $this->session->set_userdata('sub_menu', 'admin/show_all_students/show');
         $data['title']           = 'All Student Information';
         $data['adm_auto_insert'] = $this->sch_setting_detail->adm_auto_insert;
         $data['sch_setting']     = $this->sch_setting_detail;

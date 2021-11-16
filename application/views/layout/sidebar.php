@@ -161,12 +161,8 @@
 
                         if ($this->rbac->hasPrivilege('show_all_students', 'can_view')) {
                         ?>
-							<li class="<?php echo set_Submenu('show_all_students/showlist'); ?>"><a href="<?php echo base_url(); ?>admin/show_all_students/showlist"><i class="fa fa-angle-double-right"></i>Drop Out Students</a></li>                        <?php
-                        }
-                        ?>
-
-
-
+                            <li class="<?php echo set_Submenu('admin/show_all_students/show'); ?>"><a href="<?php echo base_url(); ?>admin/show_all_students/showlist"><i class="fa fa-angle-double-right"></i><?php echo "Drop Out " . $this->lang->line('student'); ?> </a></li>
+                        <?php } ?>
                         </ul>
                     </li>
                 <?php
@@ -493,9 +489,8 @@
 
                         </ul>
                     </li>
-            <?php 
-			}
-			
+            <?php
+                }
             } ?>
             <?php
             if ($this->module_lib->hasModule('zoom_live_classes')) {
@@ -734,7 +729,7 @@
             }
             ?>
 
-			 <?php
+            <?php
             if ($this->module_lib->hasModule('zoom_live_classes')) {
                 if ($this->module_lib->hasActive('zoom_live_classes')) {
                     if (($this->rbac->hasPrivilege('setting', 'can_view')) || ($this->rbac->hasPrivilege('live_classes', 'can_view')) || ($this->rbac->hasPrivilege('live_meeting', 'can_view'))) { ?>
@@ -771,7 +766,7 @@
                 }
             }
             ?>
-			
+
 
             <?php
             if ($this->module_lib->hasActive('download_center')) {
@@ -935,7 +930,7 @@
             if ($this->module_lib->hasActive('hostel')) {
                 if (($this->rbac->hasPrivilege('hostel_rooms', 'can_view') ||
                     $this->rbac->hasPrivilege('room_type', 'can_view') ||
-                    $this->rbac->hasPrivilege('hostel', 'can_view')||
+                    $this->rbac->hasPrivilege('hostel', 'can_view') ||
                     $this->rbac->hasPrivilege('hostel/student_hostel', 'can_view'))) {
                 ?>
 
@@ -959,15 +954,15 @@
                             if ($this->rbac->hasPrivilege('hostel', 'can_view')) {
                             ?>
                                 <li class="<?php echo set_Submenu('hostel/index'); ?>"><a href="<?php echo base_url(); ?>admin/hostel"><i class="fa fa-angle-double-right"></i> <?php echo $this->lang->line('hostel'); ?></a></li>
-								    <?php
+                            <?php
                             }
                             ?>
                             <?php
-                                if ($this->rbac->hasPrivilege('assign_hostel', 'can_view')) {
-                                ?>
-                                    <li class="<?php echo set_Submenu('hostel/student_hostel'); ?>"><a href="<?php echo base_url(); ?>admin/hostel/student_hostel"><i class="fa fa-angle-double-right"></i> Assign Hostel</a></li>
-                                <?php
-                                }
+                            if ($this->rbac->hasPrivilege('assign_hostel', 'can_view')) {
+                            ?>
+                                <li class="<?php echo set_Submenu('hostel/student_hostel'); ?>"><a href="<?php echo base_url(); ?>admin/hostel/student_hostel"><i class="fa fa-angle-double-right"></i> Assign Hostel</a></li>
+                            <?php
+                            }
                             ?>
                             <?php
                             if ($this->rbac->hasPrivilege('assigned_hostels', 'can_view')) {
