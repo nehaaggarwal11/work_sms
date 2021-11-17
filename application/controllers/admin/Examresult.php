@@ -13,6 +13,7 @@ class Examresult extends Admin_Controller
     {
         parent::__construct();
         $this->exam_type       = $this->config->item('exam_type');
+        $this->sch_current_session = $this->setting_model->getCurrentSession();
         $this->attendence_exam = $this->config->item('attendence_exam');
     }
 
@@ -72,6 +73,7 @@ class Examresult extends Admin_Controller
         $data['classlist']     = $class;
         $session               = $this->session_model->get();
         $data['sessionlist']   = $session;
+        $data['current_session'] = $this->sch_current_session;
         $this->form_validation->set_rules('class_id', $this->lang->line('class'), 'trim|required|xss_clean');
         $this->form_validation->set_rules('section_id', $this->lang->line('section'), 'trim|required|xss_clean');
         $this->form_validation->set_rules('session_id', $this->lang->line('student'), 'trim|required|xss_clean');
@@ -122,6 +124,7 @@ class Examresult extends Admin_Controller
         $data['classlist']   = $class;
         $session             = $this->session_model->get();
         $data['sessionlist'] = $session;
+        $data['current_session'] = $this->sch_current_session;
         $this->form_validation->set_rules('marksheet', $this->lang->line('marksheet'), 'trim|required|xss_clean');
         $this->form_validation->set_rules('class_id', $this->lang->line('class'), 'trim|required|xss_clean');
         $this->form_validation->set_rules('section_id', $this->lang->line('section'), 'trim|required|xss_clean');
@@ -209,6 +212,7 @@ class Examresult extends Admin_Controller
         $data['classlist']   = $class;
         $session             = $this->session_model->get();
         $data['sessionlist'] = $session;
+        $data['current_session'] = $this->sch_current_session;
         $this->form_validation->set_rules('class_id', $this->lang->line('class'), 'trim|required|xss_clean');
         $this->form_validation->set_rules('section_id', $this->lang->line('section'), 'trim|required|xss_clean');
         $this->form_validation->set_rules('session_id', $this->lang->line('session'), 'trim|required|xss_clean');
@@ -406,6 +410,7 @@ class Examresult extends Admin_Controller
         $data['classlist']   = $class;
         $session             = $this->session_model->get();
         $data['sessionlist'] = $session;
+        $data['current_session'] = $this->sch_current_session;
         $this->form_validation->set_rules('class_id', $this->lang->line('class'), 'trim|required|xss_clean');
         $this->form_validation->set_rules('section_id', $this->lang->line('section'), 'trim|required|xss_clean');
         $this->form_validation->set_rules('session_id', $this->lang->line('session'), 'trim|required|xss_clean');

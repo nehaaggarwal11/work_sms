@@ -55,10 +55,10 @@
                                         <?php
                                         foreach ($sessionlist as $session) {
                                             ?>
-                                            <option value="<?php echo $session['id'] ?>" <?php
-                                            if (set_value('session_id') == $session['id']) {
+                                            <option value="<?php echo $session['id'] ?>"<?php echo set_select('session_id', 'session_id', (($current_session == $session['id']) ? true : false)); ?> <?php
+                                          /*  if (set_value('session_id') == $session['id']) {
                                                 echo "selected=selected";
-                                            }
+                                            } */
                                             ?>><?php echo $session['session'] ?></option>
                                                     <?php
                                                 }
