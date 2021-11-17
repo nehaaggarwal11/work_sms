@@ -39,7 +39,7 @@
                                     ?>
 
                                     <label class="radio-inline">
-                                    <input type="radio" value="<?php echo $subject_type_key?>" name="type" <?php echo set_radio('type', $subject_type_key, set_value('type')); ?> ><?php echo $subject_type_value; ?> 
+                                    <input type="checkbox" value="<?php echo $subject_type_key?>" name="type[]" <?php echo set_radio('type', $subject_type_key, set_value('type')); ?> ><?php echo $subject_type_value; ?> 
                                                                     </label>
                                     <?php 
                                     }

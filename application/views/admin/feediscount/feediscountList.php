@@ -132,23 +132,23 @@
                                                 if ($this->rbac->hasPrivilege('fees_discount_assign', 'can_view')) {
                                                     ?>
                                                     <a data-placement="left" href="<?php echo base_url(); ?>admin/feediscount/assign/<?php echo $feediscount['id'] ?>" 
-                                                       class="btn btn-default btn-xs" data-toggle="tooltip" title="<?php echo $this->lang->line('assign / view'); ?>">
-                                                        <i class="fa fa-tag"></i>
+                                                       class="btn btn-info btn-xs" data-toggle="tooltip" title="<?php echo $this->lang->line('assign / view'); ?>">
+                                                        <i class="fa fa-tag"></i> <?php echo $this->lang->line('assign / view'); ?>
                                                     </a>
                                                     <?php
                                                 }
                                                 if ($this->rbac->hasPrivilege('fees_discount', 'can_edit')) {
                                                     ?>
 
-                                                    <a data-placement="left" href="<?php echo base_url(); ?>admin/feediscount/edit/<?php echo $feediscount['id'] ?>" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('edit'); ?>">
-                                                        <i class="fa fa-pencil"></i>
+                                                    <a data-placement="left" href="<?php echo base_url(); ?>admin/feediscount/edit/<?php echo $feediscount['id'] ?>" class="btn btn-info btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('edit'); ?>">
+                                                        <i class="fa fa-pencil"></i> <?php echo $this->lang->line('edit'); ?>
                                                     </a>
                                                     <?php
                                                 }
                                                 if ($this->rbac->hasPrivilege('fees_discount', 'can_delete')) {
                                                     ?>
-                                                    <a data-placement="left" href="<?php echo base_url(); ?>admin/feediscount/delete/<?php echo $feediscount['id'] ?>" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');">
-                                                        <i class="fa fa-remove"></i>
+                                                    <a data-placement="left" href="<?php echo base_url(); ?>admin/feediscount/delete/<?php echo $feediscount['id'] ?>" class="btn btn-info btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');">
+                                                        <i class="fa fa-remove"></i> <?php echo $this->lang->line('delete'); ?>
                                                     </a>
                                                 <?php } ?>
                                             </td>

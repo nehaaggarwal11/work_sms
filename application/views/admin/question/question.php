@@ -80,12 +80,12 @@
                                                                         ?></td>
                                             <td class="pull-right">
                                                 <?php if ($this->rbac->hasPrivilege('question_bank', 'can_edit')) { ?>
-                                                    <button type="button" data-placement="left" class="btn btn-default btn-xs question-btn-edit" data-toggle="tooltip" id="load" data-recordid="<?php echo $subject_value->id; ?>" title="<?php echo $this->lang->line('edit'); ?>"><i class="fa fa-pencil"></i></button>
+                                                    <button type="button" data-placement="left" class="btn btn-info btn-xs question-btn-edit" data-toggle="tooltip" id="load" data-recordid="<?php echo $subject_value->id; ?>" title="<?php echo $this->lang->line('edit'); ?>"><i class="fa fa-pencil"></i> <?php echo $this->lang->line('edit'); ?></button>
                                                 <?php }
                                                 if ($this->rbac->hasPrivilege('question_bank', 'can_delete')) {
                                                 ?>
-                                                    <a data-placement="left" href="<?php echo base_url(); ?>admin/question/delete/<?php echo $subject_value->id; ?>" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');">
-                                                        <i class="fa fa-remove"></i>
+                                                    <a data-placement="left" href="<?php echo base_url(); ?>admin/question/delete/<?php echo $subject_value->id; ?>" class="btn btn-info btn-xs" data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');">
+                                                        <i class="fa fa-remove"></i> <?php echo $this->lang->line('delete'); ?>
                                                     </a>
                                                 <?php } ?>
                                             </td>

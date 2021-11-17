@@ -84,17 +84,17 @@ if ($this->rbac->hasPrivilege('online_assign_view_student', 'can_view')) {
     }
     if ($this->rbac->hasPrivilege('add_questions_in_exam', 'can_view')) {
         ?>
-                                                <button type="button" class="btn btn-default btn-xs" data-recordid="<?php echo $subject_value->id; ?>" data-toggle="modal" data-target="#myQuestionModal" title="<?php echo $this->lang->line('add') . " " . $this->lang->line('question') ?>"><i class="fa fa-plus"></i></button>
+                                                <button type="button" class="btn btn-info btn-xs" data-recordid="<?php echo $subject_value->id; ?>" data-toggle="modal" data-target="#myQuestionModal" title="<?php echo $this->lang->line('add') . " " . $this->lang->line('question') ?>"><i class="fa fa-plus"></i> <?php echo $this->lang->line('add') . " " . $this->lang->line('question') ?></button>
                                                 <?php
 }if ($this->rbac->hasPrivilege('online_examination', 'can_edit')) {
         ?>
-                                                 <button type="button" class="btn btn-default btn-xs question-btn-edit" data-toggle="tooltip" id="load" data-recordid="<?php echo $subject_value->id; ?>"  ><i class="fa fa-pencil"></i></button>
+                                                 <button type="button" class="btn btn-info btn-xs question-btn-edit" data-toggle="tooltip" id="load" data-recordid="<?php echo $subject_value->id; ?>"  ><i class="fa fa-pencil"></i> <?php echo $this->lang->line('edit');?></button>
                                                 <?php
 }
     if ($this->rbac->hasPrivilege('online_examination', 'can_delete')) {
         ?>
-                                                <a data-placement="left" href="<?php echo base_url(); ?>admin/onlineexam/delete/<?php echo $subject_value->id; ?>" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');">
-                                                    <i class="fa fa-remove"></i>
+                                                <a data-placement="left" href="<?php echo base_url(); ?>admin/onlineexam/delete/<?php echo $subject_value->id; ?>" class="btn btn-info btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');">
+                                                    <i class="fa fa-remove"></i> <?php echo $this->lang->line('delete'); ?>
                                                 </a>
                                             <?php
 }

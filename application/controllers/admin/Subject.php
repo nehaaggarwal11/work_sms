@@ -22,7 +22,7 @@ class Subject extends Admin_Controller {
         $data['subjectlist'] = $subject_result;
         $data['subject_types']=$this->customlib->subjectType();
         $this->form_validation->set_rules('name', $this->lang->line('subject_name'), 'trim|required|xss_clean|callback__check_name_exists');
-        $this->form_validation->set_rules('type', $this->lang->line('type'), 'trim|required|xss_clean');
+        // $this->form_validation->set_rules('type', $this->lang->line('type'), 'trim|required|xss_clean');
         if ($this->input->post('code')) {
             $this->form_validation->set_rules('code', $this->lang->line('code'), 'trim|required|callback__check_code_exists');
         }
@@ -31,15 +31,40 @@ class Subject extends Admin_Controller {
             $this->load->view('admin/subject/subjectList', $data);
             $this->load->view('layout/footer', $data);
         } else {
+           if(count($this->input->post('type'))>1){
+               
+               foreach($this->input->post('type') as $tp){
+                $data = array(
+                    'name' => $this->input->post('name'),
+                    'code' => $this->input->post('code'),
+                    'type' => $tp,
+                );
+                $this->subject_model->add($data);
+               }
+               
+               
+            $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">'.$this->lang->line('success_message').'</div>');
+            redirect('admin/subject/index');
+           }
+           else if(count($this->input->post('type'))<1){
+            $this->session->set_flashdata('msg', '<div class="alert alert-success text-left"> Please select subject type.</div>');
+            redirect('admin/subject/index');
+           }
+            else{
+                
+                foreach($this->input->post('type') as $tp){
+                    // die;    
             $data = array(
                 'name' => $this->input->post('name'),
                 'code' => $this->input->post('code'),
-                'type' => $this->input->post('type'),
+                'type' => $tp,
             );
+            // die(json_encode($data));
             $this->subject_model->add($data);
+        }
             $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">'.$this->lang->line('success_message').'</div>');
             redirect('admin/subject/index');
-        }
+        }}
     }
 
     function view($id) {

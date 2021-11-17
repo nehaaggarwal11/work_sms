@@ -192,21 +192,21 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                                                     ?>
 
                                                     <td class="pull-right">
-                                                        <a href="<?php echo base_url(); ?>student/view/<?php echo $student['id'] ?>" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('show'); ?>" >
-                                                            <i class="fa fa-reorder"></i>
+                                                        <a href="<?php echo base_url(); ?>student/view/<?php echo $student['id'] ?>" class="btn btn-info btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('show'); ?>" >
+                                                            <i class="fa fa-reorder"></i> <?php echo $this->lang->line('show'); ?>
                                                         </a>
                                                         <?php
                                                         if ($this->rbac->hasPrivilege('student', 'can_edit')) {
                                                             ?>
-                                                            <a href="<?php echo base_url(); ?>student/edit/<?php echo $student['id'] ?>" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('edit'); ?>">
-                                                                <i class="fa fa-pencil"></i>
+                                                            <a href="<?php echo base_url(); ?>student/edit/<?php echo $student['id'] ?>" class="btn btn-info btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('edit'); ?>">
+                                                                <i class="fa fa-pencil"></i> <?php echo $this->lang->line('edit'); ?>
                                                             </a>
                                                             <?php
                                                         }
                                                         if ($this->rbac->hasPrivilege('collect_fees', 'can_add')) {
                                                             ?>
-                                                            <a href="<?php echo base_url(); ?>studentfee/addfee/<?php echo $student['student_session_id'] ?>" class="btn btn-default btn-xs" data-toggle="tooltip" title="" data-original-title="<?php echo $this->lang->line('add_fees'); ?>">
-                                                            <span ><?php echo $currency_symbol; ?></span>
+                                                            <a href="<?php echo base_url(); ?>studentfee/addfee/<?php echo $student['student_session_id'] ?>" class="btn btn-info btn-xs" data-toggle="tooltip" title="" data-original-title="<?php echo $this->lang->line('add_fees'); ?>">
+                                                            <span ><?php echo $currency_symbol; ?></span> <?php echo $this->lang->line('add_fees'); ?>
                                                             </a>
                                                 <?php } ?>
                                                     </td>

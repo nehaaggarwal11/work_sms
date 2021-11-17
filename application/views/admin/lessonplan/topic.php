@@ -132,9 +132,9 @@
 										}; ?></td>
 										<td class="mailbox-date pull-right no-print">
                                             <?php if($this->rbac->hasPrivilege('topic','can_edit')){?>
-											<a data-placement="left" href="<?php echo base_url(); ?>admin/lessonplan/edittopic/<?php echo $result_value['lesson_id'] ?>" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('edit'); ?>"><i class="fa fa-pencil"></i></a>
+											<a data-placement="left" href="<?php echo base_url(); ?>admin/lessonplan/edittopic/<?php echo $result_value['lesson_id'] ?>" class="btn btn-info btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('edit'); ?>"><i class="fa fa-pencil"></i> <?php echo $this->lang->line('edit'); ?></a>
                                             <?php } if($this->rbac->hasPrivilege('topic','can_delete')){?>
-											<a data-placement="left" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="deletetopicbulk('<?php echo $result_value['lesson_id'] ?>');"><i class="fa fa-remove"></i></a> 
+											<a data-placement="left" class="btn btn-info btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="deletetopicbulk('<?php echo $result_value['lesson_id'] ?>');"><i class="fa fa-remove"></i> <?php echo $this->lang->line('delete'); ?></a> 
                                         <?php } ?>
 											
 										</td>

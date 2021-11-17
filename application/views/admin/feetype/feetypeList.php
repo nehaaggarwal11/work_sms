@@ -118,15 +118,15 @@
                                                 <?php
                                                 if ($this->rbac->hasPrivilege('fees_type', 'can_edit')) {
                                                     ?>
-                                                    <a data-placement="left" href="<?php echo base_url(); ?>admin/feetype/edit/<?php echo $feetype['id'] ?>" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('edit'); ?>">
-                                                        <i class="fa fa-pencil"></i>
+                                                    <a data-placement="left" href="<?php echo base_url(); ?>admin/feetype/edit/<?php echo $feetype['id'] ?>" class="btn btn-info btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('edit'); ?>">
+                                                        <i class="fa fa-pencil"></i> <?php echo $this->lang->line('edit'); ?>
                                                     </a>
                                                 <?php } ?>
                                                 <?php
                                                 if ($this->rbac->hasPrivilege('fees_type', 'can_delete')) {
                                                     ?>
-                                                    <a data-placement="left" href="<?php echo base_url(); ?>admin/feetype/delete/<?php echo $feetype['id'] ?>"class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');">
-                                                        <i class="fa fa-remove"></i>
+                                                    <a data-placement="left" href="<?php echo base_url(); ?>admin/feetype/delete/<?php echo $feetype['id'] ?>"class="btn btn-info btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');">
+                                                        <i class="fa fa-remove"></i> <?php echo $this->lang->line('delete'); ?>
                                                     </a>
                                                 <?php } ?>
                                             </td>

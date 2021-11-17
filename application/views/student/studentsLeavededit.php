@@ -37,7 +37,7 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="current_phone">Current Phone</label><small class="req"> *</small>
-                                                        <input id="current_phone" class="form-control" type="tel" name="current_phone" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required value=<?php echo (!empty($st['mobileno'])) ? $st['mobileno'] : " "; ?>>
+                                                        <input id="current_phone" class="form-control" type="tel" name="current_phone" onkeyup="addHyphen(this)" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12" required value=<?php echo (!empty($st['mobileno'])) ? $st['mobileno'] : " "; ?>>
                                                     </div>
                                                 </div>
 
@@ -74,7 +74,7 @@
 
                                         </div>
                                         <div class="box-footer">
-                                            <button type="submit" class="btn btn-info pull-right" autocomplete="off">Save</button>
+                                            <input type="submit" value="Save" name="submit" class="btn btn-info pull-right" autocomplete="off">
                                         </div>
                                     <?php } ?>
                                 </div>
@@ -86,3 +86,16 @@
         </div>
     </section>
 </div>
+<script>
+  window.addHyphen = function addHyphen(f) {
+    var r = /(\D+)/g,
+        npa = '',
+        nxx = '',
+        last4 = '';
+    f.value = f.value.replace(r, '');
+    npa = f.value.substr(0, 3);
+    nxx = f.value.substr(3, 3);
+    last4 = f.value.substr(6, 4);
+    f.value = npa + '-' + nxx + '-' + last4;
+}
+</script>

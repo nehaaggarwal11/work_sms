@@ -138,9 +138,9 @@
                                         }; ?></td>
                                         <td class="mailbox-date pull-right no-print">
                                             <?php if($this->rbac->hasPrivilege('lesson','can_edit')){?>
-                                            <a data-placement="left" href="<?php echo base_url(); ?>admin/lessonplan/editlesson/<?php echo $result_value['subject_group_class_sections_id'] ?>/<?php echo $result_value['subject_group_subject_id'] ?>" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('edit'); ?>"><i class="fa fa-pencil"></i></a>
+                                            <a data-placement="left" href="<?php echo base_url(); ?>admin/lessonplan/editlesson/<?php echo $result_value['subject_group_class_sections_id'] ?>/<?php echo $result_value['subject_group_subject_id'] ?>" class="btn btn-info btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('edit'); ?>"><i class="fa fa-pencil"></i> <?php echo $this->lang->line('edit'); ?></a>
                                                    <?php } if($this->rbac->hasPrivilege('lesson','can_delete')){ ?>
-                                            <a data-placement="left" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="deletelessonbulk('<?php echo $result_value['subject_group_class_sections_id'] ?>','<?php echo $result_value['subject_group_subject_id'] ?>');"><i class="fa fa-remove"></i></a>
+                                            <a data-placement="left" class="btn btn-info btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="deletelessonbulk('<?php echo $result_value['subject_group_class_sections_id'] ?>','<?php echo $result_value['subject_group_subject_id'] ?>');"><i class="fa fa-remove"></i> <?php echo $this->lang->line('delete'); ?></a>
                                             <?php } ?>                                                   
                                         </td>
                                     </tr>

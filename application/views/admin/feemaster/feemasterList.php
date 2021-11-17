@@ -200,15 +200,15 @@
                                                     <li> <i class="fa fa-money"></i>
                                                         <?php echo $feetype_value->code . " " . $currency_symbol . $feetype_value->amount; ?> &nbsp;&nbsp;
                                                         <?php if ($this->rbac->hasPrivilege('fees_master', 'can_edit')) { ?>
-                                                            <a href="<?php echo base_url(); ?>admin/feemaster/edit/<?php echo $feetype_value->id ?>"   data-toggle="tooltip" title="<?php echo $this->lang->line('edit'); ?>">
-                                                                <i class="fa fa-pencil"></i>
+                                                            <a href="<?php echo base_url(); ?>admin/feemaster/edit/<?php echo $feetype_value->id ?>"  class="btn btn-info btn-xs" data-toggle="tooltip" title="<?php echo $this->lang->line('edit'); ?>">
+                                                                <i class="fa fa-pencil"></i> <?php echo $this->lang->line('edit'); ?>
                                                             </a>&nbsp;
                                                             <?php
                                                         }
                                                         if ($this->rbac->hasPrivilege('fees_master', 'can_delete')) {
                                                             ?>
-                                                            <a href="<?php echo base_url(); ?>admin/feemaster/delete/<?php echo $feetype_value->id ?>" data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');">
-                                                                <i class="fa fa-remove"></i>
+                                                            <a href="<?php echo base_url(); ?>admin/feemaster/delete/<?php echo $feetype_value->id ?>" class="btn btn-info btn-xs" data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');">
+                                                                <i class="fa fa-remove"></i> <?php echo $this->lang->line('delete'); ?>
                                                             </a>
                                                         <?php } ?>
 
@@ -223,13 +223,13 @@
                                         <td class="mailbox-date pull-right">
                                             <?php if ($this->rbac->hasPrivilege('fees_group_assign', 'can_view')) { ?>
                                                 <a data-placement="left" href="<?php echo base_url(); ?>admin/feemaster/assign/<?php echo $feegroup->id ?>"
-                                                   class="btn btn-default btn-xs" data-toggle="tooltip" title="<?php echo $this->lang->line('assign / view'); ?>">
-                                                    <i class="fa fa-tag"></i>
+                                                   class="btn btn-info btn-xs" data-toggle="tooltip" title="<?php echo $this->lang->line('assign / view'); ?>">
+                                                    <i class="fa fa-tag"></i> <?php echo $this->lang->line('assign / view'); ?>
                                                 </a>
                                             <?php } ?>
                                             <?php if ($this->rbac->hasPrivilege('fees_master', 'can_delete')) { ?>
-                                                <a data-placement="left" href="<?php echo base_url(); ?>admin/feemaster/deletegrp/<?php echo $feegroup->id ?>" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');">
-                                                    <i class="fa fa-remove"></i>
+                                                <a data-placement="left" href="<?php echo base_url(); ?>admin/feemaster/deletegrp/<?php echo $feegroup->id ?>" class="btn btn-info btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');">
+                                                    <i class="fa fa-remove"></i> <?php echo $this->lang->line('delete'); ?>
                                                 </a>
                                             <?php } ?>
 

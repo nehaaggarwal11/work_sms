@@ -87,6 +87,7 @@ class Category_model extends MY_Model {
 				//return $return_value;
 			}
         } else {
+            // die(json_encode($data));
             $this->db->insert('categories', $data);
             $id=$this->db->insert_id();
 			$message      = INSERT_RECORD_CONSTANT." On  categories id ".$id;

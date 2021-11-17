@@ -81,6 +81,7 @@ class show_all_students extends Admin_Controller
 
         $data['id']      = $id;
         if($this->input->post("submit")){
+            // die(json_encode($_POST));
             // $data=array('current_email','created_at','current_phone', 'occupation','address','sudent_id');
             $data['current_email']=$this->input->post('current_email');
             $data['created_at']=date('Y-m-d', $this->customlib->datetostrtotime($this->input->post('created_at')));

@@ -73,6 +73,7 @@ class Customlib
         $gender           = array();
         $gender['Male']   = $this->CI->lang->line('male');
         $gender['Female'] = $this->CI->lang->line('female');
+        $gender['Others'] = "Others";
         return $gender;
     }
 

@@ -236,21 +236,21 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
 
                                                 </td>
                                                 <td class="mailbox-date text-right no-print">
-                                                    <a id="<?php echo $certificate->id ?>" class="btn btn-default btn-xs view_data" title="<?php echo $this->lang->line('view'); ?>">
-                                                        <i class="fa fa-reorder"></i>
+                                                    <a id="<?php echo $certificate->id ?>" class="btn btn-info btn-xs view_data" title="<?php echo $this->lang->line('view'); ?>">
+                                                        <i class="fa fa-reorder"></i> <?php echo $this->lang->line('view'); ?>
                                                     </a>
                                                     <?php
                                                     if ($this->rbac->hasPrivilege('design_admit_card', 'can_edit')) {
                                                         ?>
-                                                        <a data-placement="left" href="<?php echo site_url('admin/admitcard/edit/' . $certificate->id); ?>" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('edit'); ?>">
-                                                            <i class="fa fa-pencil"></i>
+                                                        <a data-placement="left" href="<?php echo site_url('admin/admitcard/edit/' . $certificate->id); ?>" class="btn btn-info btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('edit'); ?>">
+                                                            <i class="fa fa-pencil"></i> <?php echo $this->lang->line('edit'); ?>
                                                         </a>
                                                         <?php
                                                     }
                                                     if ($this->rbac->hasPrivilege('design_admit_card', 'can_delete')) {
                                                         ?>
-                                                        <a data-placement="left" href="<?php echo base_url(); ?>admin/admitcard/delete/<?php echo $certificate->id ?>" class="btn btn-default btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');">
-                                                            <i class="fa fa-remove"></i>
+                                                        <a data-placement="left" href="<?php echo base_url(); ?>admin/admitcard/delete/<?php echo $certificate->id ?>" class="btn btn-info btn-xs"  data-toggle="tooltip" title="<?php echo $this->lang->line('delete'); ?>" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');">
+                                                            <i class="fa fa-remove"></i> <?php echo $this->lang->line('delete'); ?>
                                                         </a>
                                                     <?php } ?>
                                                 </td>

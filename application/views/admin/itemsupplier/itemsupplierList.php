@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"> <?php echo $this->lang->line('phone'); ?></label>
-                                    <input id="phone" name="phone" placeholder="" type="number" class="form-control"  value="<?php echo set_value('phone'); ?>" />
+                                    <input id="phone" name="phone" onkeyup="addHyphen(this)" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12"  type="text" class="form-control"  value="<?php echo set_value('phone'); ?>" />
                                     <span class="text-danger"><?php echo form_error('phone'); ?></span>
                                 </div>
                                 <div class="form-group">
@@ -209,6 +209,20 @@
         </div>   <!-- /.row -->
     </section><!-- /.content -->
 </div>
+<script>
+  window.addHyphen = function addHyphen(f) {
+    var r = /(\D+)/g,
+        npa = '',
+        nxx = '',
+        last4 = '';
+    f.value = f.value.replace(r, '');
+    npa = f.value.substr(0, 3);
+    nxx = f.value.substr(3, 3);
+    last4 = f.value.substr(6, 4);
+    f.value = npa + '-' + nxx + '-' + last4;
+}
+</script>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $("#btnreset").click(function () {

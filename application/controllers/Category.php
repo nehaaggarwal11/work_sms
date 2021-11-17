@@ -58,9 +58,11 @@ class Category extends Admin_Controller {
             $this->load->view('category/categoryList', $data);
             $this->load->view('layout/footer', $data);
         } else {
+            
             $cats= ucwords($this->input->post('category'));
+            
             $data = array(
-                'category' => $cat,
+                'category' => $cats,
             );
             $arr=array();
             $cat=$this->category_model->get();
