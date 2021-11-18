@@ -145,11 +145,7 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                                         </thead>
                                         <tbody>
                                             <?php
-                                            if (empty($resultlist)) {
-                                            ?>
-
-                                                <?php
-                                            } else {
+                                            if (!empty($resultlist)) {
                                                 $count = 1;
                                                 foreach ($resultlist as $student) {
                                                     if (!in_array($student['id'], $dropout)) {
@@ -176,7 +172,7 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                                                                 <td><?php echo $student['category']; ?></td>
                                                             <?php }
                                                             if ($sch_setting->mobile_no) {  ?>
-                                                                <td><?php echo $student['mobileno']; ?></td>
+                                                                <td><?php echo $student['mobileno'] ? $student['mobileno']:$student['guardian_phone']; ?></td>
                                                                 <?php }
                                                             if (!empty($fields)) {
 
@@ -209,12 +205,12 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                                                                     </a>
                                                                 <?php
                                                                 }
-                                                                // if ($this->rbac->hasPrivilege('collect_fees', 'can_add')) {
+                                                                if ($this->rbac->hasPrivilege('collect_fees', 'can_add')) {
                                                                 ?>
-                                                                    <!-- <a href="<?php echo base_url(); ?>studentfee/addfee/<?php echo $student['student_session_id'] ?>" class="btn btn-info btn-xs" data-toggle="tooltip" title="" data-original-title="<?php echo $this->lang->line('add_fees'); ?>">
-                                                                        <span><?php echo $currency_symbol; ?></span>
-                                                                    </a> -->
-                                                                <?php //} ?>
+                                                                    <a href="<?php echo base_url(); ?>studentfee/addfee/<?php echo $student['student_session_id'] ?>" class="btn btn-info btn-xs" data-toggle="tooltip" title="" data-original-title="<?php echo $this->lang->line('add_fees'); ?>">
+                                                                        <span><?php echo $currency_symbol." ".$this->lang->line('add_fees'); ?></span>
+                                                                    </a>
+                                                                <?php } ?>
                                                             </td>
                                                         </tr>
                                             <?php

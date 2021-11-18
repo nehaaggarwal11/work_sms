@@ -72,7 +72,7 @@ class Category extends Admin_Controller {
         }
         // die(json_encode($cat));
         if(in_array($cats,$arr)){
-                $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">Category Name Already Exist</div>');
+                $this->session->set_flashdata('msg', '<div class="alert alert-danger text-left">Category Name Already Exist</div>');
                 // redirect('admin/hostel/student_hostel_save');
                 redirect($this->uri->uri_string());
             }

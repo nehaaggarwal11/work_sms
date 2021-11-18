@@ -28,12 +28,19 @@ class Disable_reason extends Admin_Controller {
           $data=array(
             'reason'=>$this->input->post('name'),
            );
-            
+            $posd = $this->input->post('name');
+            $cat = $this->disable_reason_model->get();
+            foreach ($cat as $c) {
+              $arr[] = $c['reason'];
+            }
+            if (in_array($posd, $arr)) {
+              $this->session->set_flashdata('msg', '<div class="alert alert-danger text-left">Name Already Exist</div>');
+              redirect($this->uri->uri_string());
+            }
             if($id==''){
                  $leave_id=$this->disable_reason_model->add($data);
             }else{
-                $data['id']=$this->input->post('reason_id');
-                
+               $data['id']=$this->input->post('reason_id');
                 $this->disable_reason_model->add($data);
             }
               $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">'.$this->lang->line('success_message').'</div>');

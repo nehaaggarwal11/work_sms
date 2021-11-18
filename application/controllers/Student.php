@@ -1703,6 +1703,7 @@ public function handle_uploadcreate_doc()
         $userdata                = $this->customlib->getUserData();
         $carray                  = array();
         $reason_list             = array();
+        $data["resultlist"] =  $result ;
         if (!empty($data["classlist"])) {
             foreach ($data["classlist"] as $ckey => $cvalue) {
 
@@ -1756,7 +1757,7 @@ public function handle_uploadcreate_doc()
         $data['disable_reason'] = $reason_list;
 
         $this->load->view("layout/header", $data);
-        $this->load->view("student/disablestudents", $data);
+        $this->load->view("student/disablestudentsdisablestudents", $data);
         $this->load->view("layout/footer", $data);
     }
 

@@ -621,6 +621,8 @@ if ($language_name != 'en') {
         var end = new Date(new Date().setYear(start.getFullYear() - 2));
         var six_month_before = new Date(new Date().setMonth(start.getMonth() - 5));
         var six_month_after = new Date(new Date().setMonth(start.getMonth() + 5));
+        var one_month_before = new Date(new Date().setMonth(start.getMonth() - 1));
+        var one_month_after = new Date(new Date().setMonth(start.getMonth() + 1));
 
         $('.dob').datepicker({
             todayHighlight: true,
@@ -632,7 +634,7 @@ if ($language_name != 'en') {
 
         $('.measure_date').datepicker({
             todayHighlight: true,
-            autoclose:true,
+            autoclose: true,
             format: date_format,
             endDate: start
         });
@@ -680,6 +682,51 @@ if ($language_name != 'en') {
             }).removeAttr('data-toggle');
         });
 
+        $('.oneMonthDate').datepicker({
+            todayHighlight: true,
+            format: date_format,
+            autoclose: true,
+            startDate: one_month_before,
+            endDate: one_month_after
+        });
 
+        window.addHyphen = function addHyphen(f) {
+            var r = /(\D+)/g,
+                npa = '',
+                nxx = '',
+                last4 = '';
+            f.value = f.value.replace(r, '');
+            npa = f.value.substr(0, 3);
+            nxx = f.value.substr(3, 3);
+            last4 = f.value.substr(6, 4);
+            if (f.value.length !== 0) {
+                f.value = npa + '-' + nxx + '-' + last4;
+                check_number(f);
+            }
+        }
+
+        const check_number = (vl) => {
+            if (vl.value == "--") {
+                vl.value = '';
+                node_append('* Add Numbers Only', vl);
+                return true;
+            } else if (vl.value.length < 10) {
+                //console.log('incorrect number');
+                node_append('*Incorrect Number', vl);
+                return true;
+            }
+        }
+        const node_append = (erro, vl) => {
+            let error = [erro];
+            let nodes = error.map(err => {
+                let er = document.createElement('span');
+                er.className = "sdh_input_error";
+                er.style.cssText = 'color:red;position:absolute';
+                er.textContent = err;
+                return er;
+            });
+            vl.parentNode.append(...nodes);
+            $('.sdh_input_error').fadeOut(3000);
+        }
     });
 </script>

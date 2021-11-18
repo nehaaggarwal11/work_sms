@@ -1,7 +1,8 @@
-<div class="content-wrapper" style="min-height: 348px;">  
+<div class="content-wrapper" style="min-height: 348px;">
     <section class="content-header">
         <h1>
-            <i class="fa fa-ioxhost"></i> <?php echo $this->lang->line('front_office'); ?></h1>
+            <i class="fa fa-ioxhost"></i> <?php echo $this->lang->line('front_office'); ?>
+        </h1>
     </section>
     <section class="content">
         <div class="row">
@@ -12,7 +13,7 @@
                         <div class="box-header with-border">
                             <h3 class="box-title"><?php echo $this->lang->line('edit'); ?> <?php echo $this->lang->line('complain'); ?></h3>
                         </div><!-- /.box-header -->
-                        <form id="form1" action="<?php echo site_url('admin/complaint/edit/' . $complaint_data['id']) ?>"   method="post" accept-charset="utf-8" enctype="multipart/form-data" >
+                        <form id="form1" action="<?php echo site_url('admin/complaint/edit/' . $complaint_data['id']) ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
                             <div class="box-body">
                                 <!-- <?php if ($this->session->flashdata('msg')) { ?>
                                     <?php echo $this->session->flashdata('msg') ?>
@@ -29,13 +30,13 @@
                                     <label for="exampleInputEmail1"><?php echo $this->lang->line('complain_type'); ?></label>
 
                                     <select name="complaint" class="form-control">
-                                        <option value=""><?php echo $this->lang->line('select'); ?></option>  
+                                        <option value=""><?php echo $this->lang->line('select'); ?></option>
                                         <?php
                                         foreach ($complaint_type as $key => $value) {
-                                            
-                                            ?>
+
+                                        ?>
                                             <option value="<?php echo $value['complaint_type']; ?>" <?php if (set_value('complaint', $complaint_data['complaint_type']) == $value['complaint_type']) echo "selected"; ?>><?php echo $value['complaint_type']; ?></option>
-    <?php } ?>                                       
+                                        <?php } ?>
                                     </select>
                                     <span class="text-danger"><?php echo form_error('complaint'); ?></span>
 
@@ -43,45 +44,45 @@
 
                                 <div class="form-group">
 
-                                    <label for="pwd"><?php echo $this->lang->line('source'); ?></label>  
+                                    <label for="pwd"><?php echo $this->lang->line('source'); ?></label>
                                     <select name="source" class="form-control">
-                                        <option value=""><?php echo $this->lang->line('select'); ?></option>  
+                                        <option value=""><?php echo $this->lang->line('select'); ?></option>
                                         <?php foreach ($complaintsource as $key => $value) { ?>
-                                            <option value="<?php echo $value['source']; ?>"<?php if (set_value('source', $complaint_data['source']) == $value['source']) echo "selected"; ?>><?php echo $value['source']; ?></option>
+                                            <option value="<?php echo $value['source']; ?>" <?php if (set_value('source', $complaint_data['source']) == $value['source']) echo "selected"; ?>><?php echo $value['source']; ?></option>
                                         <?php }
-                                        ?>                 
+                                        ?>
                                     </select>
                                     <span class="text-danger"><?php echo form_error('source'); ?></span>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="pwd"><?php echo $this->lang->line('complain_by'); ?></label> <small class="req"> *</small> 
-                                    <input type="text" class="form-control" value="<?php echo set_value('name', $complaint_data['name']); ?>"  name="name">
+                                    <label for="pwd"><?php echo $this->lang->line('complain_by'); ?></label> <small class="req"> *</small>
+                                    <input type="text" class="form-control" value="<?php echo set_value('name', $complaint_data['name']); ?>" name="name">
                                     <span class="text-danger"><?php echo form_error('name'); ?></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email"><?php echo $this->lang->line('phone'); ?></label> 
-                                    <input type="text" class="form-control" value="<?php echo set_value('contact', $complaint_data['contact']); ?>"  name="contact">
+                                    <label for="email"><?php echo $this->lang->line('phone'); ?></label>
+                                    <input type="tel" onblur="addHyphen(this)" maxlength="10" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" value="<?php echo set_value('contact', $complaint_data['contact']); ?>" name="contact">
                                 </div>
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label for="pwd"><?php echo $this->lang->line('date'); ?></label>
-                                        <input type="text" class="form-control date" value="<?php echo set_value('date', date($this->customlib->getSchoolDateFormat(), $this->customlib->dateyyyymmddTodateformat($complaint_data['date']))); ?>"  name="date" id="date" readonly>
+                                        <input type="text" class="form-control measure_date" value="<?php echo set_value('date', date($this->customlib->getSchoolDateFormat(), $this->customlib->dateyyyymmddTodateformat($complaint_data['date']))); ?>" name="date" id="date" readonly>
                                         <span class="text-danger"><?php echo form_error('date'); ?></span>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="pwd"><?php echo $this->lang->line('description'); ?></label>
-                                    <textarea class="form-control" id="description" name="description"rows="3"><?php echo set_value('description', $complaint_data['description']); ?></textarea>
+                                    <textarea class="form-control" id="description" name="description" rows="3"><?php echo set_value('description', $complaint_data['description']); ?></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="pwd"><?php echo $this->lang->line('action_taken'); ?></label>
-                                    <input type="text" class="form-control" value="<?php echo set_value('action_taken', $complaint_data['action_taken']); ?>"  name="action_taken">
+                                    <input type="text" class="form-control" value="<?php echo set_value('action_taken', $complaint_data['action_taken']); ?>" name="action_taken">
                                     <span class="text-danger"><?php echo form_error('action_taken'); ?></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="pwd"><?php echo $this->lang->line('assigned'); ?></label>
-                                    <input type="text" class="form-control" value="<?php echo set_value('assigned', $complaint_data['assigned']); ?>"  name="assigned">
+                                    <input type="text" class="form-control" value="<?php echo set_value('assigned', $complaint_data['assigned']); ?>" name="assigned">
                                     <span class="text-danger"><?php echo form_error('assigned'); ?></span>
                                 </div>
                                 <div class="form-group">
@@ -91,9 +92,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile"><?php echo $this->lang->line('attach_document'); ?></label>
-                                    <div><input class="filestyle form-control" type='file' name='file'  />
+                                    <div><input class="filestyle form-control" type='file' name='file' />
                                     </div>
-                                    <span class="text-danger"><?php echo form_error('file'); ?></span></div>
+                                    <span class="text-danger"><?php echo form_error('file'); ?></span>
+                                </div>
 
                             </div><!-- /.box-body -->
 
@@ -104,16 +106,17 @@
                         </form>
                     </div>
 
-                </div><!--/.col (right) -->
+                </div>
+                <!--/.col (right) -->
                 <!-- left column -->
             <?php } ?>
             <div class="col-md-<?php
-            if ($this->rbac->hasPrivilege('complaint', 'can_add') || $this->rbac->hasPrivilege('complaint', 'can_edit')) {
-                echo "8";
-            } else {
-                echo "12";
-            }
-            ?>">
+                                if ($this->rbac->hasPrivilege('complaint', 'can_add') || $this->rbac->hasPrivilege('complaint', 'can_edit')) {
+                                    echo "8";
+                                } else {
+                                    echo "12";
+                                }
+                                ?>">
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header ptbnull">
@@ -145,12 +148,12 @@
                                 <tbody>
                                     <?php
                                     if (empty($complaint_list)) {
-                                        ?>
+                                    ?>
 
                                         <?php
                                     } else {
                                         foreach ($complaint_list as $key => $value) {
-                                            ?>
+                                        ?>
                                             <tr>
                                                 <td class="mailbox-name"><?php echo $value['id']; ?></td>
                                                 <td class="mailbox-name"><?php echo $value['complaint_type']; ?></td>
@@ -161,30 +164,30 @@
 
 
                                                 <td class="mailbox-date pull-right" "="">
-                                                    <a onclick="getRecord(<?php echo $value['id']; ?>)" class="btn btn-default btn-xs" data-target="#complaintdetails"  title="<?php echo $this->lang->line('view'); ?>"><i class="fa fa-reorder"></i></a>
-        <?php if ($value['image'] !== "") { ?><a href="<?php echo base_url(); ?>admin/complaint/download/<?php echo $value['image']; ?>" class="btn btn-default btn-xs" data-toggle="tooltip" title="" data-original-title="<?php echo $this->lang->line('download'); ?>">
+                                                    <a onclick=" getRecord(<?php echo $value['id']; ?>)" class="btn btn-default btn-xs" data-target="#complaintdetails" title="<?php echo $this->lang->line('view'); ?>"><i class="fa fa-reorder"></i></a>
+                                                    <?php if ($value['image'] !== "") { ?><a href="<?php echo base_url(); ?>admin/complaint/download/<?php echo $value['image']; ?>" class="btn btn-default btn-xs" data-toggle="tooltip" title="" data-original-title="<?php echo $this->lang->line('download'); ?>">
                                                             <i class="fa fa-download"></i>
-                                                        </a>  <?php } ?> 
-        <?php if ($this->rbac->hasPrivilege('complaint', 'can_edit')) { ?>    
+                                                        </a> <?php } ?>
+                                                    <?php if ($this->rbac->hasPrivilege('complaint', 'can_edit')) { ?>
                                                         <a href="<?php echo base_url(); ?>admin/complaint/edit/<?php echo $value['id']; ?>" class="btn btn-default btn-xs" data-toggle="tooltip" title="" data-original-title="<?php echo $this->lang->line('edit'); ?>">
                                                             <i class="fa fa-pencil"></i>
                                                         </a>
                                                     <?php } ?>
                                                     <?php if ($this->rbac->hasPrivilege('complaint', 'can_delete')) { ?>
-            <?php if ($value['image'] !== "") { ?><a href="<?php echo base_url(); ?>admin/complaint/imagedelete/<?php echo $value['id']; ?>/<?php echo $value['image']; ?>" class="btn btn-default btn-xs" data-toggle="tooltip" title="" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');" data-original-title="<?php echo $this->lang->line('delete'); ?>">
+                                                        <?php if ($value['image'] !== "") { ?><a href="<?php echo base_url(); ?>admin/complaint/imagedelete/<?php echo $value['id']; ?>/<?php echo $value['image']; ?>" class="btn btn-default btn-xs" data-toggle="tooltip" title="" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');" data-original-title="<?php echo $this->lang->line('delete'); ?>">
                                                                 <i class="fa fa-remove"></i>
                                                             </a>
-            <?php } else { ?>
+                                                        <?php } else { ?>
                                                             <a href="<?php echo base_url(); ?>admin/complaint/delete/<?php echo $value['id']; ?>" class="btn btn-default btn-xs" data-toggle="tooltip" title="" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');" data-original-title="<?php echo $this->lang->line('delete'); ?>">
                                                                 <i class="fa fa-remove"></i>
                                                             </a>
-                                                        <?php }
+                                                    <?php }
                                                     }
                                                     ?>
                                                 </td>
 
                                             </tr>
-                                            <?php
+                                    <?php
                                         }
                                     }
                                     ?>
@@ -197,7 +200,8 @@
                         </div><!-- /.mail-box-messages -->
                     </div><!-- /.box-body -->
                 </div>
-            </div><!--/.col (left) -->
+            </div>
+            <!--/.col (left) -->
             <!-- right column -->
 
         </div>
@@ -222,13 +226,11 @@
 </div>
 </div><!-- /.content-wrapper -->
 <script type="text/javascript">
-    
-
     function getRecord(id) {
         //alert(id);
         $.ajax({
             url: '<?php echo base_url(); ?>admin/complaint/details/' + id,
-            success: function (result) {
+            success: function(result) {
                 //alert(result);
                 $('#getdetails').html(result);
             }
@@ -236,5 +238,4 @@
 
         });
     }
-
 </script>

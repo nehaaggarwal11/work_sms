@@ -30,10 +30,6 @@ class Schoolhouse extends Admin_Controller {
         // die(json_encode($_REQUEST));
         $data['title'] = 'Add School House';
         $houselist = $this->schoolhouse_model->get();
-        // $val_list = $this->schoolhouse_model->select('*')->Where('house_name', $this->input->post('house_name'));
-
-        // echo sizeof($val_list);
-
         $data["houselist"] = $houselist;
         $data["house_name"] = "";
         $data["description"] = "";
@@ -56,10 +52,8 @@ class Schoolhouse extends Admin_Controller {
                 $arr[]=$c['house_name'];
            
         }
-        // die(json_encode($arr));
         if(in_array($str,$arr)){
-                $this->session->set_flashdata('msg', '<div class="alert alert-success text-left">House Name Already Exist</div>');
-                // redirect('admin/hostel/student_hostel_save');
+                $this->session->set_flashdata('msg', '<div class="alert alert-danger text-left">House Name Already Exist</div>');
                 redirect($this->uri->uri_string());
             }
 

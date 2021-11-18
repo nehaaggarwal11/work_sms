@@ -1,5 +1,4 @@
-
-<div class="content-wrapper" style="min-height: 348px;">  
+<div class="content-wrapper" style="min-height: 348px;">
     <section class="content-header">
         <h1>
             <i class="fa fa-ioxhost"></i> <?php echo $this->lang->line('front_office'); ?>
@@ -15,7 +14,7 @@
                             <h3 class="box-title"><?php echo $this->lang->line('edit'); ?> <?php echo $this->lang->line('phone_call_log'); ?></h3>
                         </div><!-- /.box-header -->
 
-                        <form id="form1" action="<?php echo site_url('admin/generalcall/edit/' . $Call_data['id']) ?>"   method="post" accept-charset="utf-8" enctype="multipart/form-data" >
+                        <form id="form1" action="<?php echo site_url('admin/generalcall/edit/' . $Call_data['id']) ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
                             <div class="box-body">
 
                                 <?php echo $this->session->flashdata('msg') ?>
@@ -30,42 +29,44 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="pwd"><?php echo $this->lang->line('phone'); ?></label> <small class="req"> *</small> 
-                                    <input type="text" class="form-control" value="<?php echo set_value('contact', $Call_data['contact']); ?>" name="contact">
+                                    <label for="pwd"><?php echo $this->lang->line('phone'); ?></label> <small class="req"> *</small>
+                                    <input type="tel" onblur="addHyphen(this)" maxlength="10" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" value="<?php echo set_value('contact', $Call_data['contact']); ?>" name="contact">
                                     <span class="text-danger"><?php echo form_error('contact'); ?></span>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="pwd"><?php echo $this->lang->line('date'); ?></label>
-                                    <input id="date" name="date" placeholder="" type="text" class="form-control date"  value="<?php echo set_value('date', date($this->customlib->getSchoolDateFormat(), $this->customlib->dateyyyymmddTodateformat($Call_data['date']))); ?>" readonly="readonly" />
+                                    <input id="date" name="date" placeholder="" type="text" class="form-control date" value="<?php echo set_value('date', date($this->customlib->getSchoolDateFormat(), $this->customlib->dateyyyymmddTodateformat($Call_data['date']))); ?>" readonly="readonly" />
 
                                 </div>
                                 <div class="form-group">
-                                    <label for="email"><?php echo $this->lang->line('description'); ?></label> 
+                                    <label for="email"><?php echo $this->lang->line('description'); ?></label>
                                     <input type="text" class="form-control" value="<?php echo set_value('description', $Call_data['description']); ?>" name="description">
                                 </div>
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label for="pwd"><?php echo $this->lang->line('next_follow_up_date'); ?></label>
-                                        <input id="follow_up_date" name="follow_up_date" placeholder="" type="text" class="form-control date"  value="<?php if($Call_data['follow_up_date']!='0000-00-00'){ echo set_value('follow_up_date', date($this->customlib->getSchoolDateFormat(), $this->customlib->dateyyyymmddTodateformat($Call_data['follow_up_date']))); }  ?>" readonly="readonly" />
+                                        <input id="follow_up_date" name="follow_up_date" placeholder="" type="text" class="form-control returnDate" value="<?php if ($Call_data['follow_up_date'] != '0000-00-00') {
+                                                                                                                                                                echo set_value('follow_up_date', date($this->customlib->getSchoolDateFormat(), $this->customlib->dateyyyymmddTodateformat($Call_data['follow_up_date'])));
+                                                                                                                                                            }  ?>" readonly="readonly" />
                                         <span class="text-danger"><?php echo form_error('follow_up_date'); ?></span>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="pwd"><?php echo $this->lang->line('call_duration'); ?></label>
-                                    <input type="text" class="form-control" value="<?php echo set_value('call_dureation', $Call_data['call_dureation']); ?>" name="call_dureation">
+                                    <input type="number" class="form-control" value="<?php echo set_value('call_dureation', $Call_data['call_dureation']); ?>" name="call_dureation">
                                     <span class="text-danger"><?php echo form_error('call_dureation'); ?></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="pwd"><?php echo $this->lang->line('note'); ?></label>
-                                    <textarea class="form-control" id="description" name="note"  rows="3"><?php echo set_value('note', $Call_data['note']); ?></textarea>
+                                    <textarea class="form-control" id="description" name="note" rows="3"><?php echo set_value('note', $Call_data['note']); ?></textarea>
                                     <span class="text-danger"><?php echo form_error('note'); ?></span>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="pwd"><?php echo $this->lang->line('call_type'); ?></label><small class="req"> *</small> 
+                                    <label for="pwd"><?php echo $this->lang->line('call_type'); ?></label><small class="req"> *</small>
                                     <?php foreach ($call_type as $key => $value) { ?>
-                                        <label class="radio-inline"><input type="radio" name="call_type" value="<?php echo $key; ?>" <?php if (set_value('call_type', $Call_data['call_type']) == $key) { ?> checked=""<?php } ?>> <?php echo $value; ?></label>
+                                        <label class="radio-inline"><input type="radio" name="call_type" value="<?php echo $key; ?>" <?php if (set_value('call_type', $Call_data['call_type']) == $key) { ?> checked="" <?php } ?>> <?php echo $value; ?></label>
 
                                     <?php } ?>
                                     <span class="text-danger"><?php echo form_error('call_type'); ?></span>
@@ -81,16 +82,17 @@
                         </form>
                     </div>
 
-                </div><!--/.col (right) -->
+                </div>
+                <!--/.col (right) -->
                 <!-- left column -->
             <?php } ?>
             <div class="col-md-<?php
-            if ($this->rbac->hasPrivilege('phone_call_log', 'can_add') || $this->rbac->hasPrivilege('phone_call_log', 'can_edit')) {
-                echo "8";
-            } else {
-                echo "12";
-            }
-            ?>">
+                                if ($this->rbac->hasPrivilege('phone_call_log', 'can_add') || $this->rbac->hasPrivilege('phone_call_log', 'can_edit')) {
+                                    echo "8";
+                                } else {
+                                    echo "12";
+                                }
+                                ?>">
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header ptbnull">
@@ -99,7 +101,7 @@
                         </div><!-- /.box-tools -->
                     </div><!-- /.box-header -->
                     <div class="box-body">
-                         <div class="download_label"><?php echo $this->lang->line('phone_call_log'); ?></div>
+                        <div class="download_label"><?php echo $this->lang->line('phone_call_log'); ?></div>
                         <div class="table-responsive mailbox-messages">
                             <table class="table table-hover table-striped table-bordered example">
                                 <thead>
@@ -119,13 +121,13 @@
                                 <tbody>
                                     <?php
                                     if (empty($CallList)) {
-                                        ?>
+                                    ?>
 
                                         <?php
                                     } else {
                                         foreach ($CallList as $key => $value) {
                                             // print_r($value);
-                                            ?>
+                                        ?>
                                             <tr>
                                                 <td class="mailbox-name"><?php echo $value['name']; ?></td>
                                                 <td class="mailbox-name"><?php echo $value['contact']; ?></td>
@@ -134,7 +136,7 @@
                                                 <td class="mailbox-name"> <?php echo $value['call_type']; ?></td>
                                                 <td class="mailbox-date pull-right">
 
-                                                    <a  onclick="getRecord(<?php echo $value['id']; ?>)" class="btn btn-default btn-xs" data-target="#calldetails" data-toggle="modal" title="View"><i class="fa fa-reorder"></i></a>  
+                                                    <a onclick="getRecord(<?php echo $value['id']; ?>)" class="btn btn-default btn-xs" data-target="#calldetails" data-toggle="modal" title="View"><i class="fa fa-reorder"></i></a>
                                                     <?php if ($this->rbac->hasPrivilege('phone_call_log', 'can_edit')) { ?>
                                                         <a data-placement="left" href="<?php echo base_url('admin/generalcall/edit/' . $value['id']) ?>" class="btn btn-default btn-xs" data-toggle="tooltip" title="" data-original-title="<?php echo $this->lang->line('edit'); ?>">
                                                             <i class="fa fa-pencil"></i>
@@ -149,7 +151,7 @@
 
 
                                             </tr>
-                                            <?php
+                                    <?php
                                         }
                                     }
                                     ?>
@@ -162,7 +164,8 @@
                         </div><!-- /.mail-box-messages -->
                     </div><!-- /.box-body -->
                 </div>
-            </div><!--/.col (left) -->
+            </div>
+            <!--/.col (left) -->
 
         </div>
 
@@ -184,13 +187,11 @@
 </div>
 </div><!-- /.content-wrapper -->
 <script type="text/javascript">
-    
-
     function getRecord(id) {
         //alert(id);
         $.ajax({
             url: '<?php echo base_url(); ?>admin/generalcall/details/' + id,
-            success: function (result) {
+            success: function(result) {
                 //alert(result);
                 $('#getdetails').html(result);
             }
