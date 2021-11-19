@@ -74,8 +74,8 @@ if ($this->rbac->hasPrivilege('online_assign_view_student', 'can_view')) {
             if ((strtotime($subject_value->exam_to) >= strtotime(date('Y-m-d')))) {
                 ?>
                                   <a href="<?php echo base_url(); ?>admin/onlineexam/assign/<?php echo $subject_value->id ?>"
-                                                   class="btn btn-default btn-xs" data-toggle="tooltip" title="<?php echo $this->lang->line('assign / view'); ?>">
-                                                    <i class="fa fa-tag"></i>
+                                                   class="btn btn-info btn-xs" data-toggle="tooltip" title="<?php echo $this->lang->line('assign / view'); ?>">
+                                                    <i class="fa fa-tag"></i> <?php echo $this->lang->line('assign / view'); ?>
                                                 </a>
                                             <?php
 }

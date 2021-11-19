@@ -38,20 +38,18 @@ class approve_leave extends Admin_Controller {
     }
     $this->form_validation->set_rules('class_id', $this->lang->line('class'),'trim|required|xss_clean');
     $this->form_validation->set_rules('section_id', $this->lang->line('section'),'trim|required|xss_clean');
+    $listaudit =$this->apply_leave_model->get(null,$class_id,$section_id);
+            // die(json_encode($listaudit));
+            $data['results'] = $listaudit;
         if ($this->form_validation->run() == FALSE) {
 
         }else{
 
             $listaudit =$this->apply_leave_model->get(null,$class_id,$section_id);
+            // die(json_encode($listaudit));
             $data['results'] = $listaudit;
         }
       
-
-       
-        
-        
-       
-        
        
         $this->load->view('layout/header');
         $this->load->view('admin/approve_leave/index', $data);

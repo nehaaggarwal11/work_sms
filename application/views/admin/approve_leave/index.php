@@ -103,35 +103,33 @@ foreach ($results as $value) {
                                              <td><?php echo date($this->customlib->getSchoolDateFormat(), strtotime($value['to_date'])); ?></td>
 
 
-                                        <td ><?php if ($value['status'] == 0) {echo $this->lang->line('pending');} else {echo $this->lang->line('approve');}?>
+                                        <td ><?php if ($value['status'] == 0) {echo $this->lang->line('pending');} else if($value['status'] == 2){echo "Rejected";}  else {echo $this->lang->line('approve');}?>
                                                </td>
                                                <td><?php echo $value['staff_name'] . " " . $value['surname']; ?></td>
                                                 <td class="text-right">
+                                                   <?php
+                                                   if($value['status'] != 2){
+                                                   ?>
+                                                        <a data-placement="left" href="<?php echo base_url(); ?>admin/approve_leave/status/<?php echo $value['id'] ?>/2"  class="btn btn-info btn-xs" data-toggle="tooltip" data-original-title="<?php echo $this->lang->line('disapprove') ?>"> <i class="fa fa-times"  aria-hidden="true"></i> <?php echo $this->lang->line('disapprove') ?></a>
                                                     <?php
-if ($value['status'] == 1) {
-        ?>
-                                                        <a data-placement="left" href="<?php echo base_url(); ?>admin/approve_leave/status/<?php echo $value['id'] ?>/0"  class="btn btn-default btn-xs" data-toggle="tooltip" data-original-title="<?php echo $this->lang->line('disapprove') ?>"> <i class="fa fa-times"  aria-hidden="true"></i></a>
-                                                        <?php
-} else {
-        ?>
-                                                        <a data-placement="left" href="<?php echo base_url(); ?>admin/approve_leave/status/<?php echo $value['id'] ?>/1" class="btn btn-default btn-xs" data-toggle="tooltip" data-original-title="<?php echo $this->lang->line('approve') ?>"><i class="fa fa-check" aria-hidden="true"></i></a>
-                                                        <?php
-}
-    ?>
+                                                   }if($value['status'] != 1){
+                                                    ?>
+                                                        <a data-placement="left" href="<?php echo base_url(); ?>admin/approve_leave/status/<?php echo $value['id'] ?>/1" class="btn btn-info btn-xs" data-toggle="tooltip" data-original-title="<?php echo $this->lang->line('approve') ?>"><i class="fa fa-check" aria-hidden="true"> </i><?php echo $this->lang->line('approve') ?></a>
+                                                       
                                                      <?php
 
-    if ($value['docs'] != '') {
+                                                   }if ($value['docs'] != '') {
         ?>
-                                                          <a data-placement="left" href="<?php echo base_url(); ?>admin/approve_leave/download/<?php echo $value['docs'] ?>" class="btn btn-default btn-xs" data-toggle="tooltip" title="" data-original-title="<?php echo $this->lang->line('download'); ?>">
-                                                                    <i class="fa fa-download"></i>
-                                                                </a>
+                                                          <a data-placement="left" href="<?php echo base_url(); ?>admin/approve_leave/download/<?php echo $value['docs'] ?>" class="btn btn-info btn-xs" data-toggle="tooltip" title="" data-original-title="<?php echo $this->lang->line('download'); ?>">
+                                                                    <i class="fa fa-download"></i> <?php echo $this->lang->line('download'); ?>
+                                                                </a><br>
                                                         <?php
 }
     ?>
 
-                                                        <a data-placement="left" onclick="get('<?php echo $value['id']; ?>')" class="btn btn-default btn-xs" data-toggle="tooltip" data-original-title="<?php echo $this->lang->line('edit') ?>"><i class="fa fa-pencil"></i> </a>
+                                                        <a data-placement="left" onclick="get('<?php echo $value['id']; ?>')" class="btn btn-info btn-xs" data-toggle="tooltip" data-original-title="<?php echo $this->lang->line('view') ?>"><i class="fa fa-reorder"></i> <?php echo $this->lang->line('view') ?></a>
 
-                                                        <a data-placement="left" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');" href="<?php echo base_url(); ?>admin/approve_leave/remove_leave/<?php echo $value['id']; ?>" data-toggle="tooltip" data-original-title="<?php echo $this->lang->line('delete') ?>" class="btn btn-default btn-xs"><i class="fa fa-trash" ></i> </a>
+                                                        <a data-placement="left" onclick="return confirm('<?php echo $this->lang->line('delete_confirm') ?>');" href="<?php echo base_url(); ?>admin/approve_leave/remove_leave/<?php echo $value['id']; ?>" data-toggle="tooltip" data-original-title="<?php echo $this->lang->line('delete') ?>" class="btn btn-info btn-xs"><i class="fa fa-trash" ></i> <?php echo $this->lang->line('delete') ?></a>
 
 
 
@@ -452,3 +450,8 @@ $(document).ready(function () {
         }));
 
 </script>
+<script> 
+    $(document).ready(function () { 
+        $("#addleave_form *").prop("disabled", true); 
+    }); 
+</script> 

@@ -614,7 +614,9 @@ class Admin extends Admin_Controller
                             if (substr($line, 0, 2) == '--' || $line == '') {
                                 continue;
                             }
-
+                            if ($line=='1267'){
+                                continue;
+                            }
                             $sql .= $line;
 
                             if (substr(trim($line), -1, 1) == ';') {
