@@ -54,7 +54,7 @@
                                              <td><?php echo date($this->customlib->getSchoolDateFormat(),strtotime($value['to_date'])); ?></td>
                                              
                                                
-                                        <td><?php if($value['status']==0){ echo $this->lang->line('pending'); }else if($value['status']==2){echo "Dispproved";} else{ echo  $this->lang->line('approve'); }?>
+                                        <td><?php if($value['status']==0){ echo $this->lang->line('pending'); }else if($value['status']==2){echo "<span style='background-color:red;color:#fff;padding:4px 8px;'>Dispproved</span>";} else{ echo  "<span style='background-color:green;color:#fff;padding:4px 8px;'>".$this->lang->line('approve')."</span>"; }?>
                                                </td>
                                                 <td class="pull-right">
                                                     <?php 

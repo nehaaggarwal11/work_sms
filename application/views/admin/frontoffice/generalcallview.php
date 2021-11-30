@@ -30,7 +30,7 @@
 
                                 <div class="form-group">
                                     <label for="pwd"><?php echo $this->lang->line('phone'); ?></label><small class="req"> *</small>
-                                    <input type="tel" onblur="addHyphen(this)" maxlength="10" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" value="<?php echo set_value('contact'); ?>" name="contact">
+                                    <input type="tel" onkeyup="addHyphen(this)" maxlength="12" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" value="<?php echo set_value('contact'); ?>" name="contact">
                                     <span class="text-danger"><?php echo form_error('contact'); ?></span>
                                 </div>
 

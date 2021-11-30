@@ -49,7 +49,7 @@ class Homework extends Admin_Controller
         if ($this->form_validation->run() == false) {
 
         } else {
-
+            
             $class_id                 = $this->input->post("class_id");
             $section_id               = $this->input->post("section_id");
             $subject_group_id         = $this->input->post("subject_group_id");
@@ -58,6 +58,7 @@ class Homework extends Admin_Controller
             $data['section_id']       = $section_id;
             $data['subject_group_id'] = $subject_group_id;
             $data['subject_id']       = $subject_id;
+            
             $homeworklist             = $this->homework_model->search_homework($class_id, $section_id, $subject_group_id, $subject_id);
           
           $data["homeworklist"] = $homeworklist;
@@ -146,7 +147,7 @@ class Homework extends Admin_Controller
                 'created_by'               => $userdata["id"],
                 'evaluated_by'             => '',
             );
-
+            
             $id = $this->homework_model->add($data);
 
             if ($record_id > 0) {
@@ -188,7 +189,7 @@ class Homework extends Admin_Controller
 
                 $this->mailsmsconf->mailsms('homework', $sender_details);
             }
-
+            
             $msg   = $this->lang->line('success_message');
             $array = array('status' => 'success', 'error' => '', 'message' => $msg);
         }

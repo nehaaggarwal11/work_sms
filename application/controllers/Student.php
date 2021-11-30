@@ -1511,8 +1511,17 @@ public function handle_uploadcreate_doc()
         $data['fields']          = $this->customfield_model->get_custom_fields('students', 1);
         $class                   = $this->class_model->get();
         $data['classlist']       = $class;
-
         $resultlist          = $this->student_model->getStudents();
+        // if($this->student_model->getStudents()==false){
+        // $resultlist          = $this->student_model->getStudents();
+        // $resultlist          = $this->student_model->getStudents_withoutclass();
+        // }
+        // else{
+        //     $resultlist          = $this->student_model->getStudents();
+        // }
+        //    die;
+        
+        
         $data['resultlist']  = $resultlist;
 
         $userdata = $this->customlib->getUserData();
@@ -1757,7 +1766,7 @@ public function handle_uploadcreate_doc()
         $data['disable_reason'] = $reason_list;
 
         $this->load->view("layout/header", $data);
-        $this->load->view("student/disablestudentsdisablestudents", $data);
+        $this->load->view("student/disablestudents", $data);
         $this->load->view("layout/footer", $data);
     }
 

@@ -47,13 +47,13 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"><?php echo $this->lang->line('percent_from'); ?><small class="req"> *</small></label>
-                                    <input id="mark_from" name="mark_from" placeholder="" type="text" class="form-control"  value="<?php echo set_value('mark_from'); ?>" />
+                                    <input id="mark_from" name="mark_from" placeholder="" type="number" class="form-control"  value="<?php echo set_value('mark_from'); ?>" />
                                     <span class="text-danger"><?php echo form_error('mark_from'); ?></span>
                                 </div>
 
                                 <div class="form-group">
                                     <label><?php echo $this->lang->line('percent_upto'); ?><small class="req"> *</small></label>
-                                    <input id="mark_upto" name="mark_upto" placeholder="" type="text" class="form-control"  value="<?php echo set_value('mark_upto'); ?>" />
+                                    <input id="mark_upto" name="mark_upto" placeholder="" type="number" class="form-control"  value="<?php echo set_value('mark_upto'); ?>" />
                                     <span class="text-danger"><?php echo form_error('mark_upto'); ?></span>
                                 </div>
 
@@ -143,7 +143,7 @@
 
                                                                 <tr>                
                                                                     <td width="24%"><?php echo $grade_value->name ?></td>
-                                                                    <td width="40%"><?php echo $grade_value->mark_upto . " " . $this->lang->line('to') . " " . $grade_value->mark_from; ?> </td>
+                                                                    <td width="40%"><?php echo $grade_value->mark_from . " " . $this->lang->line('to') . " " .$grade_value->mark_upto; ?> </td>
                                                                     <td width="20%"><?php echo $grade_value->point ?> </td>
                                                                     <td class="text-right">
 

@@ -181,7 +181,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1"><?php echo $this->lang->line('phone'); ?></label>
-                                                    <input id="mobileno" name="contactno" placeholder="" type="number" class="form-control" min="1000000000" value="<?php echo set_value('contactno') ?>" />
+                                                    <input id="mobileno" name="contactno" placeholder="" type="tel" class="form-control" onkeyup="addHyphen(this)" maxlength="12" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<?php echo set_value('contactno') ?>" />
                                                     <!-- <input id="mobileno" name="contactno" placeholder="" type="text" class="form-control" value="<?php //echo set_value('contactno') 
                                                                                                                                                         ?>" /> -->
                                                     <span class="text-danger"><?php echo form_error('contactno'); ?></span>
@@ -192,7 +192,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1"><?php echo $this->lang->line('emergency_contact_number'); ?></label>
-                                                    <input id="mobileno" name="emergency_no" placeholder="" type="number" class="form-control" min="1000000000" value="<?php echo set_value('emergency_no') ?>" />
+                                                    <input id="mobileno" name="emergency_no" placeholder="" type="tel" class="form-control" onkeyup="addHyphen(this)" maxlength="12" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"  value="<?php echo set_value('emergency_no') ?>" />
                                                     <!-- <input id="mobileno" name="emergency_no" placeholder="" type="text" class="form-control" value="<?php // echo set_value('emergency_no')                                                                                                                                                         ?>" /> -->
                                                     <span class="text-danger"><?php echo form_error('emergency_no'); ?></span>
                                                 </div>

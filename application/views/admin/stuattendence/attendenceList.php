@@ -145,7 +145,7 @@
                                             <?php echo $this->lang->line('attendance'); ?>
                                             <?php echo $this->lang->line('date'); ?>
                                         </label>
-                                        <input id="date" name="date" placeholder="" type="text" class="form-control date"  value="<?php echo set_value('date', date($this->customlib->getSchoolDateFormat())); ?>" readonly="readonly"/>
+                                        <input id="date" name="date" placeholder="" type="text" class="form-control dob"  value="<?php echo set_value('date', date($this->customlib->getSchoolDateFormat())); ?>" readonly="readonly"/>
                                         <span class="text-danger"><?php echo form_error('date'); ?></span>
                                     </div>
                                 </div>

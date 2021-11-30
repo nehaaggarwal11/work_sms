@@ -340,7 +340,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1"><?php echo $this->lang->line('father_phone'); ?></label><small class="req"> *</small></label>
-                                                    <input id="father_phone" name="father_phone" placeholder="" type="tel" onblur="addHyphen(this)" maxlength="10" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" value="<?php echo set_value('father_phone'); ?>" required />
+                                                    <input id="father_phone" name="father_phone" placeholder="" type="tel" onkeyup="addHyphen(this)" maxlength="12" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" value="<?php echo set_value('father_phone'); ?>" required />
                                                     <span class="text-danger"><?php echo form_error('father_phone'); ?></span>
                                                 </div>
                                             </div>
@@ -379,7 +379,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1"><?php echo $this->lang->line('mother_phone'); ?></label><small class="req"> *</small></label>
-                                                    <input id="mother_phone" name="mother_phone" placeholder="" type="tel" onblur="addHyphen(this)" maxlength="10" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" value="<?php echo set_value('mother_phone'); ?>" required />
+                                                    <input id="mother_phone" name="mother_phone" placeholder="" type="tel" onkeyup="addHyphen(this)" maxlength="12" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" value="<?php echo set_value('mother_phone'); ?>" required />
                                                     <span class="text-danger"><?php echo form_error('mother_phone'); ?></span>
                                                 </div>
                                             </div>
@@ -449,7 +449,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1"><?php echo $this->lang->line('guardian_phone'); ?></label><small class="req"> *</small>
-                                                        <input id="guardian_phone" name="guardian_phone" placeholder="" type="text" class="form-control" value="<?php echo set_value('guardian_phone'); ?>" required readonly />
+                                                        <input id="guardian_phone" name="guardian_phone" type="tel" onblur="addHyphen(this)" maxlength="10" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" value="<?php echo set_value('guardian_phone'); ?>" required readonly />
                                                         <span class="text-danger"><?php echo form_error('guardian_phone'); ?></span>
                                                     </div>
                                                 </div>
@@ -1129,11 +1129,5 @@
 
     });
 </script>
-<script>
-    // var currentDate=new Date();
-    // var givenDate= document.getElementById("measure_date").value;
-    // if(givenDate>currentDate){
-    //     alert("Please select current As on date.");
-    // }
-</script>
+
 <script type="text/javascript" src="<?php echo base_url(); ?>backend/dist/js/savemode.js"></script>

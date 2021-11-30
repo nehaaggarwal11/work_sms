@@ -43,7 +43,7 @@
 
                                 <div class="form-group">
                                     <label for="pwd"><?php echo $this->lang->line('phone'); ?></label>
-                                    <input type="tel" class="form-control" onblur="addHyphen(this)" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<?php echo set_value('contact'); ?>" name="contact">
+                                    <input type="tel" class="form-control" maxlength="12" onkeyup="addHyphen(this)" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<?php echo set_value('contact'); ?>" name="contact">
 
                                 </div>
                                 <div class="form-group">
@@ -52,8 +52,8 @@
 
                                 </div>
                                 <div class="form-group">
-                                    <label for="email"><?php echo $this->lang->line('number_of_person'); ?></label>
-                                    <input type="text" class="form-control" value="<?php echo set_value('pepples'); ?>" name="pepples">
+                                    <label for="pepples"><?php echo $this->lang->line('number_of_person'); ?></label>
+                                    <input type="number" class="form-control" value="<?php echo set_value('pepples'); ?>" name="pepples">
                                 </div>
                                 <div class="form-group">
                                     <div class="form-group">

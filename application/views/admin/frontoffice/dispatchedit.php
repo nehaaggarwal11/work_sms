@@ -31,7 +31,7 @@
                                     ?>
                                     <label for="exampleInputEmail1"><?php echo $this->lang->line('reference_no'); ?></label>
 
-                                    <input type="text" class="form-control" value="<?php echo set_value('ref_no', $Dispatch_data['reference_no']); ?>" name="ref_no">
+                                    <input type="number" class="form-control" value="<?php echo set_value('ref_no', $Dispatch_data['reference_no']); ?>" name="ref_no">
                                     <span class="text-danger"><?php echo form_error('ref_no'); ?></span>
                                 </div>
                                 <div class="form-group">

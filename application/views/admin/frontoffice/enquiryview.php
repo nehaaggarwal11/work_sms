@@ -224,14 +224,14 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="pwd"><?php echo $this->lang->line('phone'); ?></label><small class="req"> *</small>
-                                            <input id="number" autocomplete="off" name="contact" onblur="addHyphen(this)" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" type="tel" class="form-control" value="<?php echo set_value('contact'); ?>" />
+                                            <input id="number" autocomplete="off" name="contact" type="text" onkeyup="addHyphen(this)" maxlength="12" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" value="<?php echo set_value('contact'); ?>" />
 
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label><?php echo $this->lang->line('email'); ?></label>
-                                            <input type="email" value="<?php echo set_value('email'); ?>" name="email" class="form-control">
+                                            <input type="email" name="email" class="form-control" required value="<?php echo set_value('email'); ?>">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">

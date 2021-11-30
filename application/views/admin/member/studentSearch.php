@@ -181,8 +181,20 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
                 <form action="<?php echo site_url('admin/member/add') ?>" id="add_member" method="post">
                     <input type="hidden" name="member_id" value="0" id="member_id">
                     <div class="form-group">
+                        <?php
+                        function random_number($maxlength = 10) {
+                            $chary = array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+                                            "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+                                            "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
+                            $return_str = "";
+                            for ( $x=0; $x<=$maxlength; $x++ ) {
+                                $return_str .= $chary[rand(0, count($chary)-1)];
+                            }
+                            return $return_str;
+                        } 
+                        ?>
                         <label for="exampleInputEmail1"><?php echo $this->lang->line('library_card_no'); ?></label>
-                        <input type="name" class="form-control" name="library_card_no" id="library_card_no" >
+                        <input type="name" class="form-control" name="library_card_no" value=<?php echo random_number(); ?> id="library_card_no" >
                         <span class="text-danger" id="library_card_no_error"></span>
                     </div>
                     <button type="submit" class="btn btn-primary btn-sm add-member" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Please Wait.."><?php echo $this->lang->line('add'); ?></button>
@@ -192,6 +204,7 @@ $currency_symbol = $this->customlib->getSchoolCurrencyFormat();
         </div>
     </div>
 </div>
+
 
 <script type="text/javascript">
     $(document).ready(function () {

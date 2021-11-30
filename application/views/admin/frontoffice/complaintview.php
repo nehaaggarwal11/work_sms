@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="email"><?php echo $this->lang->line('phone'); ?></label>
-                                    <input type="tel" onblur="addHyphen(this)" maxlength="10" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" value="<?php echo set_value('contact'); ?>" name="contact">
+                                    <input type="tel" onkeyup="addHyphen(this)" maxlength="12" placeholder="012-345-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" value="<?php echo set_value('contact'); ?>" name="contact">
                                 </div>
                                 <div class="form-group">
                                     <div class="form-group">

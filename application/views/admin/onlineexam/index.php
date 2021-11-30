@@ -173,7 +173,7 @@ function findOption($questionOpt, $find)
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="duration"><?php echo $this->lang->line('time') . " " . $this->lang->line('duration') ?></label>
+                        <label for="duration"><?php echo $this->lang->line('time') . " " . $this->lang->line('duration') ?> (Hours)</label>
                         <input type="text" class="form-control timepicker" id="duration" name="duration">
                         <span class="text text-danger duration_error"></span>
                     </div>
