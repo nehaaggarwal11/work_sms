@@ -1,3 +1,8 @@
+<style>
+    .table>tbody>tr.danger>td{
+        background: #fff;
+    }
+</style>
 <div class="content-wrapper" style="min-height: 348px;">
     <section class="content-header">
         <h1>
