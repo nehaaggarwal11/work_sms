@@ -48,7 +48,7 @@ class Student_model extends MY_Model
         $this->db->join('sections', 'sections.id = student_session.section_id');
         $this->db->join('categories', 'students.category_id = categories.id');
         $this->db->join('users', 'users.user_id = students.id');
-        $this->db->where('student_session.session_id', $this->current_session);
+        // $this->db->where('student_session.session_id', $this->current_session);
         $this->db->where('students.is_active', 'yes');
         $this->db->where('users.role', 'student');
        
@@ -189,7 +189,7 @@ $query = $this->db->query($sql);
         $this->db->join('school_houses', 'school_houses.id = students.school_house_id', 'left');
         $this->db->join('users', 'users.user_id = students.id', 'left');
 
-        $this->db->where('student_session.session_id', $this->current_session);
+        // $this->db->where('student_session.session_id', $this->current_session);
         $this->db->where('users.role', 'student');
  
         $this->db->where('student_session.id', $student_session_id);
@@ -217,7 +217,7 @@ $query = $this->db->query($sql);
         $this->db->join('school_houses', 'school_houses.id = students.school_house_id', 'left');
         $this->db->join('users', 'users.user_id = students.id', 'left');
 
-        $this->db->where('student_session.session_id', $this->current_session);
+        // $this->db->where('student_session.session_id', $this->current_session);
         $this->db->where('users.role', 'student');
         if ($id != null) {
             $this->db->where('students.id', $id);
@@ -252,7 +252,7 @@ $query = $this->db->query($sql);
         $this->db->join('school_houses', 'school_houses.id = students.school_house_id', 'left');
         $this->db->join('users', 'users.user_id = students.id', 'left');
 
-        $this->db->where('student_session.session_id', $this->current_session);
+        // $this->db->where('student_session.session_id', $this->current_session);
         $this->db->where('users.role', 'student');
             $this->db->where('students.is_active', 'yes');
             $this->db->where('students.admission_no', $admission_no);
@@ -350,7 +350,7 @@ public function search_alumniStudent($class_id = null, $section_id = null,$sessi
         $this->db->join('classes', 'student_session.class_id = classes.id');
         $this->db->join('sections', 'sections.id = student_session.section_id');
         $this->db->join('categories', 'students.category_id = categories.id', 'left');
-        $this->db->where('student_session.session_id',$this->current_session);
+        // $this->db->where('student_session.session_id',$this->current_session);
         $this->db->where('students.is_active', 'yes');
         $this->db->where('student_session.is_alumni', '1');
         $this->db->group_start();
@@ -377,7 +377,7 @@ public function search_alumniStudent($class_id = null, $section_id = null,$sessi
         $this->db->join('student_session', 'student_session.student_id = students.id');
         $this->db->join('classes', 'student_session.class_id = classes.id');
         $this->db->join('sections', 'sections.id = student_session.section_id');
-        $this->db->where('student_session.session_id', $this->current_session);
+        // $this->db->where('student_session.session_id', $this->current_session);
         if ($id != null) {
             $this->db->where('students.id', $id);
         } else {
