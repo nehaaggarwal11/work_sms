@@ -118,6 +118,7 @@ class Setting_model extends MY_Model {
     }
 
     public function add($data) {
+        // die(json_encode($data));
         $this->db->trans_start();
         $this->db->trans_strict(false);
         if (isset($data['id'])) {
@@ -128,6 +129,7 @@ class Setting_model extends MY_Model {
             $record_id = $insert_id = $data['id'];
             $this->log($message, $record_id, $action);
         } else {
+            
             $this->db->insert('sch_settings', $data);
             $insert_id = $this->db->insert_id();
             $message = INSERT_RECORD_CONSTANT . " On settings id " . $insert_id;

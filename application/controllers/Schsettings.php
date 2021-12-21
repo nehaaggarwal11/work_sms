@@ -232,6 +232,7 @@ class Schsettings extends Admin_Controller
         if (!$this->rbac->hasPrivilege('general_setting', 'can_edit')) {
             access_denied();
         }
+        // die(json_encode($this->input->post('description')));
         $auto_staff_id = false;
         $this->form_validation->set_rules('sch_session_id', $this->lang->line('session'), 'trim|required|xss_clean');
         $this->form_validation->set_rules('fee_due_days', $this->lang->line('fees_due_days'), 'trim|required|xss_clean');
@@ -296,6 +297,7 @@ class Schsettings extends Admin_Controller
                 'is_duplicate_fees_invoice' => form_error('is_duplicate_fees_invoice'),
                 'attendence_type'           => form_error('attendence_type'),
                 'fee_due_days'              => form_error('fee_due_days'),
+                'description'              => form_error('description'),
             );
             $array = array('status' => 'fail', 'error' => $data);
             echo json_encode($array);
@@ -332,12 +334,13 @@ class Schsettings extends Admin_Controller
                 'staffid_auto_insert'       => $this->input->post('staffid_auto_insert'),
                 'class_teacher'             => $this->input->post('class_teacher'),
                
-                'biometric_device'            => $this->input->post('biometric_device'),
-                'biometric'            => $this->input->post('biometric'),
+                'biometric_device'          => $this->input->post('biometric_device'),
+                'biometric'                 => $this->input->post('biometric'),
                 'is_duplicate_fees_invoice' => $this->input->post('is_duplicate_fees_invoice'),
                  'app_primary_color_code'    => $this->input->post('app_primary_color_code'),
                 'app_secondary_color_code'  => $this->input->post('app_secondary_color_code'),
-                'mobile_api_url'            => $this->input->post('mobile_api_url')
+                'mobile_api_url'            => $this->input->post('mobile_api_url'),
+                'description'               => $this->input->post('description')
             );
             $session_result=$this->session_model->get($this->input->post('sch_session_id'));
           // echo "<pre>"; print_r($session_result); echo "<pre>";die;
@@ -455,5 +458,7 @@ class Schsettings extends Admin_Controller
         }
         return true;
     }
+
+    
 
 }

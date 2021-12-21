@@ -1,7 +1,8 @@
 <style type="text/css">
   .wrapper {overflow: visible;}
 </style>
-
+<script src="<?php echo base_url(); ?>backend/plugins/ckeditor/ckeditor.js"></script>
+<script src="<?php echo base_url(); ?>backend/js/ckeditor_config.js"></script>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
@@ -673,6 +674,25 @@
 
 
                                 </div><!--./row-->
+                                <!-- login page setting -->
+                                <div class="row">
+                                <div class="col-md-12">
+                                        <div class="settinghr"></div>
+                                        <h4 class="session-head">Login Page Description</h4>
+                                </div><!--./col-md-12-->
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                            <label class="col-sm-2"> Description</label>
+                                        <div class="col-sm-10">
+                                        <textarea class="form-control ckeditor" name="description"></textarea>
+                                                <span class="text-danger">description</span>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                </div>
+
+                                <!-- login page end -->
 
                                 <div class="row">
                                     <div class="col-md-12">
